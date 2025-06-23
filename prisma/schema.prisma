@@ -6,7 +6,6 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../app/generated/prisma"
 }
 
 datasource db {
@@ -19,6 +18,7 @@ model Store {
   Name String
   posts   Review[] 
 }
+
 
 model Review {
   id       Int  @id @default(autoincrement())

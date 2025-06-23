@@ -2,8 +2,9 @@
   "name": "store_review",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "ts-node prisma/seed.js"
   },
   "scripts": {
     "dev": "next dev",
