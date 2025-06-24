@@ -1,3 +1,4 @@
+"use client";
 import Ratebox from "../Ratebox";
 
 export default function ReviewBox() {
