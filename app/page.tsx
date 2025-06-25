@@ -3,9 +3,9 @@ import { redirect } from "next/navigation";
 export default async function Home() {
   const cookieStore = await cookies();
 
-  if (!cookieStore.get("Review")) {
+  if (!cookieStore.get("review")) {
     redirect("/review");
   } else {
-    redirect("reviewed");
+    redirect("/reviewed");
   }
 }

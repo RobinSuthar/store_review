@@ -26,11 +26,11 @@ export const GET = async () => {
 export const POST = async (req: NextRequest) => {
   const storeId = 1;
 
-  const { Wine, Beer, Liquore, Staff, Question1, Question2 } = await req.json();
+  const { wine, beer, liquor, staff, question1, question2 } = await req.json();
   const shortName: string = uniqueNamesGenerator(customConfig);
 
   console.log(storeId);
-  console.log(Wine, Beer, Liquore, Staff, Question1, Question2);
+  console.log(wine, beer, liquor, staff, question1, question2);
   console.log(shortName);
 
   const cookieStore = await cookies();

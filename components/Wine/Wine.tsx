@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Select } from "../Select";
 import { TextInput } from "../TextInput";
+import SubmitResponse from "../SubmitResponse";
 
 const SUPPORTED_OPTIONS = [
   { selection: 1, result: "Bad" },
@@ -15,7 +16,7 @@ export default function Wine() {
   const [wineReview, setWineReview] = useState(SUPPORTED_OPTIONS[0].result);
   const [beerReview, setBeerReview] = useState(SUPPORTED_OPTIONS[0].result);
   const [staffReview, setStaffReview] = useState(SUPPORTED_OPTIONS[0].result);
-  const [liqour, setLiqourReview] = useState(SUPPORTED_OPTIONS[0].result);
+  const [liqourReview, setLiqourReview] = useState(SUPPORTED_OPTIONS[0].result);
   const [question1, setQuestion1] = useState("");
   const [question2, setQuestion2] = useState("");
   return (
@@ -94,7 +95,20 @@ export default function Wine() {
         }}
       />
       <div className="flex justify-center">
-        <button className="text-white bg-gray-800 mt-6 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">
+        <button
+          onClick={() => {
+            const reviewData = {
+              wine: Number(wineReview),
+              beer: Number(beerReview),
+              liqour: Number(liqourReview),
+              staff: Number(staffReview),
+              question1: question1,
+              question2: question2,
+            };
+            SubmitResponse(reviewData);
+          }}
+          className="text-white bg-gray-800 mt-6 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
+        >
           Submit
         </button>
       </div>

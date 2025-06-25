@@ -10,7 +10,7 @@ const Header = () => {
         <h5 className="text-sm">EST. 1961</h5>
       </div>
 
-      <div className="border-2 mt-2 border-y-black text-shadow-amber-100 "></div>
+      <div className="border-2 mt-3 border-y-black text-shadow-amber-100 "></div>
       <Description />
     </header>
   );
