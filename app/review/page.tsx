@@ -1,11 +1,9 @@
 import Header from "@/components/Header";
-import ReviewBox from "@/components/ReviewBox/Review";
 
 export default async function Page() {
   return (
-    <div>
+    <div className="bg-white">
       <Header />
-      <ReviewBox />
     </div>
   );
 }
