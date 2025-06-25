@@ -81,18 +81,23 @@ export default function Wine() {
       </div>
       <TextInput
         label={"Something you would like to be improved in the store ?"}
-        placeholder={"Amount"}
+        placeholder={"Type here..."}
         onChange={(value) => {
           setQuestion1(value);
         }}
       />
       <TextInput
         label={"Your Shopping experience ?"}
-        placeholder={"Amount"}
+        placeholder={"Type here..."}
         onChange={(value) => {
           setQuestion2(value);
         }}
       />
+      <div className="flex justify-center">
+        <button className="text-white bg-gray-800 mt-6 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">
+          Submit
+        </button>
+      </div>
     </div>
   );
 }

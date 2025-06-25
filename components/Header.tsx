@@ -1,21 +1,16 @@
 "use client";
-import highlanderImage from "../public/Highlander_Black_HR.jpg";
-import Image from "next/image";
 import Description from "./Description";
 
 const Header = () => {
   return (
     <header>
-      <div className="flex  justify-center items-center">
-        <Image
-          src={highlanderImage}
-          width={200}
-          height={200}
-          alt="Picture of the author"
-        />{" "}
+      <div className="flex-col text-black text-center justify-center items-center">
+        <h1 className="text-5xl mt-2">Highlander </h1>
+        <h3 className="text-sm"> Wine and Spirts</h3>
+        <h5 className="text-sm">EST. 1961</h5>
       </div>
 
-      <div className="border-2 border-y-black text-shadow-amber-100 "></div>
+      <div className="border-2 mt-2 border-y-black text-shadow-amber-100 "></div>
       <Description />
     </header>
   );
