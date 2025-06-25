@@ -42,6 +42,7 @@ export default function Wine() {
               (x) => x.selection === Number(value)
             );
             setBeerReview(selected?.result || "");
+            console.log(beerReview);
           }}
           options={SUPPORTED_OPTIONS.map((x) => ({
             key: x.selection.toString(),
@@ -58,6 +59,7 @@ export default function Wine() {
               (x) => x.selection === Number(value)
             );
             setLiqourReview(selected?.result || "");
+            console.log(liqourReview);
           }}
           options={SUPPORTED_OPTIONS.map((x) => ({
             key: x.selection.toString(),
@@ -73,6 +75,7 @@ export default function Wine() {
               (x) => x.selection === Number(value)
             );
             setStaffReview(selected?.result || "");
+            console.log(staffReview);
           }}
           options={SUPPORTED_OPTIONS.map((x) => ({
             key: x.selection.toString(),
@@ -105,6 +108,7 @@ export default function Wine() {
               question1: question1,
               question2: question2,
             };
+            console.log(reviewData);
             SubmitResponse(reviewData);
           }}
           className="text-white bg-gray-800 mt-6 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
