@@ -11,5 +11,6 @@ export default async function StorePage({ params }: Params) {
   const res = await fetch(`${apiUrl}/api/storereviews/${id}`);
   const data = await res.json();
   console.log(data);
+  console.log(data);
   return <div className="text-3xl text-black">Store Page for ID: {id}</div>;
 }
