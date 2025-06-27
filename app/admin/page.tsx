@@ -1,4 +1,4 @@
-export default async function Page() {
+export default async function Dashboard() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   const res = await fetch(`${apiUrl}/api/analysis`);
