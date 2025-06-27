@@ -3,16 +3,17 @@ import db from "@/lib/db";
 import { URL } from "url";
 export async function GET(
   req: NextRequest,
-  { params }: { params: { storeId: string } }
+  props: { params: Promise<{ storeId: string }> }
 ) {
-  const storeId = parseInt(params.storeId, 10);
-  console.log("requested store:", storeId);
+  const params = await props.params;
+  console.log("requested store:", params);
 
   const response = await db.review.findMany({
     where: {
-      StoreId: storeId,
+      StoreId: Number(params.storeId),
     },
   });
+  console.log("Response : ", response);
 
   return NextResponse.json({
     reviews: response,
