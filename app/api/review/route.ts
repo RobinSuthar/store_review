@@ -1,15 +1,13 @@
 import { cookies } from "next/headers";
 
 import { NextRequest, NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
+import db from "@/lib/db";
 import {
   uniqueNamesGenerator,
   Config,
   adjectives,
   colors,
 } from "unique-names-generator";
-
-const db = new PrismaClient();
 
 const customConfig: Config = {
   dictionaries: [adjectives, colors],
