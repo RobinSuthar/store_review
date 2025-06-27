@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default async function Dashboard() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -14,10 +16,12 @@ export default async function Dashboard() {
 
       {stores["message"].map((x: { id: number; Name: string }) => {
         return (
-          <div key={x.id} className="text-2xl text-black mt-5 f">
-            <div>{x.id}</div>
-            <div>{x.Name}</div>
-          </div>
+          <Link key={x.id} href={`/admin/store/${x.id}`}>
+            <div key={x.id} className="text-2xl text-black mt-5 f">
+              <div>{x.id}</div>
+              <div>{x.Name}</div>
+            </div>
+          </Link>
         );
       })}
     </div>
