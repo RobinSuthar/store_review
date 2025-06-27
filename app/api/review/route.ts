@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 
 import { NextRequest, NextResponse } from "next/server";
-// import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import {
   uniqueNamesGenerator,
   Config,
@@ -9,7 +9,7 @@ import {
   colors,
 } from "unique-names-generator";
 
-// const db = new PrismaClient();
+const db = new PrismaClient();
 
 const customConfig: Config = {
   dictionaries: [adjectives, colors],
@@ -24,18 +24,37 @@ export const GET = async () => {
 };
 
 export const POST = async (req: NextRequest) => {
-  const storeId = 1;
+  try {
+    const storeId = 1;
 
-  const { wine, beer, liquor, staff, question1, question2 } = await req.json();
-  const shortName: string = uniqueNamesGenerator(customConfig);
+    const { wine, beer, liqour, staff, question1, question2 } =
+      await req.json();
+    const shortName: string = uniqueNamesGenerator(customConfig);
 
-  console.log(storeId);
-  console.log(wine, beer, liquor, staff, question1, question2);
-  console.log(shortName);
+    console.log(storeId);
+    console.log(wine, beer, liqour, staff, question1, question2);
+    console.log(shortName);
 
-  const cookieStore = await cookies();
-  cookieStore.set("review", "yes");
-  return NextResponse.json({
-    message: "YEllow",
-  });
+    const cookieStore = await cookies();
+    const data = await db.review.create({
+      data: {
+        StoreId: 1,
+        Name: shortName,
+        Wine: wine,
+        Beer: beer,
+        Liquore: liqour,
+        Staff: staff,
+        Question1: question1,
+        Question2: question2,
+      },
+    });
+    console.log("Final Step : ", data);
+    cookieStore.set("review", "yes");
+
+    return NextResponse.json({
+      message: "Data Added Successfully into database!",
+    });
+  } catch (e) {
+    console.log(e);
+  }
 };

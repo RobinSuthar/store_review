@@ -16,7 +16,7 @@ export default async function SubmitResponse(data: Review) {
   const cookieStore = await cookies();
 
   try {
-    const response = await fetch("api/review", {
+    const response = await fetch("http://localhost:3000/api/review", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Select } from "../Select";
 import { TextInput } from "../TextInput";
 import SubmitResponse from "../SubmitResponse";
+import { redirect } from "next/navigation";
 
 const SUPPORTED_OPTIONS = [
   { selection: 1, result: "Bad" },
@@ -13,10 +14,10 @@ const SUPPORTED_OPTIONS = [
 ];
 
 export default function Wine() {
-  const [wineReview, setWineReview] = useState(SUPPORTED_OPTIONS[0].result);
-  const [beerReview, setBeerReview] = useState(SUPPORTED_OPTIONS[0].result);
-  const [staffReview, setStaffReview] = useState(SUPPORTED_OPTIONS[0].result);
-  const [liqourReview, setLiqourReview] = useState(SUPPORTED_OPTIONS[0].result);
+  const [wineReview, setWineReview] = useState(1);
+  const [beerReview, setBeerReview] = useState(1);
+  const [staffReview, setStaffReview] = useState(1);
+  const [liqourReview, setLiqourReview] = useState(1);
   const [question1, setQuestion1] = useState("");
   const [question2, setQuestion2] = useState("");
   return (
@@ -24,10 +25,9 @@ export default function Wine() {
       <div>Wine Selection </div>
       <Select
         onSelect={(value) => {
-          const selected = SUPPORTED_OPTIONS.find(
-            (x) => x.selection === Number(value)
-          );
-          setWineReview(selected?.result || "");
+          SUPPORTED_OPTIONS.find((x) => x.selection === Number(value));
+          setWineReview(Number(value));
+          console.log(wineReview);
         }}
         options={SUPPORTED_OPTIONS.map((x) => ({
           key: x.selection.toString(),
@@ -38,10 +38,8 @@ export default function Wine() {
         <div>Beer Selection </div>
         <Select
           onSelect={(value) => {
-            const selected = SUPPORTED_OPTIONS.find(
-              (x) => x.selection === Number(value)
-            );
-            setBeerReview(selected?.result || "");
+            SUPPORTED_OPTIONS.find((x) => x.selection === Number(value));
+            setBeerReview(Number(value));
             console.log(beerReview);
           }}
           options={SUPPORTED_OPTIONS.map((x) => ({
@@ -55,10 +53,8 @@ export default function Wine() {
         <div>Liqour Selection </div>
         <Select
           onSelect={(value) => {
-            const selected = SUPPORTED_OPTIONS.find(
-              (x) => x.selection === Number(value)
-            );
-            setLiqourReview(selected?.result || "");
+            SUPPORTED_OPTIONS.find((x) => x.selection === Number(value));
+            setLiqourReview(Number(value));
             console.log(liqourReview);
           }}
           options={SUPPORTED_OPTIONS.map((x) => ({
@@ -71,10 +67,8 @@ export default function Wine() {
         <div>Staff Behaviour </div>
         <Select
           onSelect={(value) => {
-            const selected = SUPPORTED_OPTIONS.find(
-              (x) => x.selection === Number(value)
-            );
-            setStaffReview(selected?.result || "");
+            SUPPORTED_OPTIONS.find((x) => x.selection === Number(value));
+            setStaffReview(Number(value));
             console.log(staffReview);
           }}
           options={SUPPORTED_OPTIONS.map((x) => ({
@@ -99,7 +93,7 @@ export default function Wine() {
       />
       <div className="flex justify-center">
         <button
-          onClick={() => {
+          onClick={async () => {
             const reviewData = {
               wine: Number(wineReview),
               beer: Number(beerReview),
@@ -108,8 +102,10 @@ export default function Wine() {
               question1: question1,
               question2: question2,
             };
-            console.log(reviewData);
-            SubmitResponse(reviewData);
+            console.log("From Front-end Check : ", reviewData);
+            await SubmitResponse(reviewData);
+
+            redirect("/reviewed");
           }}
           className="text-white bg-gray-800 mt-6 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
         >
