@@ -1,3 +1,4 @@
+import { ChartBarDefault } from "@/components/BarChart";
 import GraphChart from "@/components/GraphChart";
 import { redirect } from "next/navigation";
 
@@ -16,5 +17,14 @@ export default async function AnalyticsPage({ params }: Params) {
   const arrayData = data["reviews"];
   const totalReviews = arrayData.length;
 
-  return <div>sadasd</div>;
+  return (
+    <div className="gird grid-cols-2">
+      <div>
+        <ChartBarDefault />
+      </div>
+      <div>
+        <ChartBarDefault />
+      </div>{" "}
+    </div>
+  );
 }
