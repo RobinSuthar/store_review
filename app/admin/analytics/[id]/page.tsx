@@ -1,4 +1,5 @@
 import GraphChart from "@/components/GraphChart";
+import { redirect } from "next/navigation";
 
 type Params = {
   params: {
@@ -6,7 +7,7 @@ type Params = {
   };
 };
 
-export default async function StorePage({ params }: Params) {
+export default async function AnalyticsPage({ params }: Params) {
   const { id } = await params;
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -19,7 +20,13 @@ export default async function StorePage({ params }: Params) {
     <div className="text-3xl text-center mt-3 text-black">
       Store Page for ID: {id}
       <GraphChart totalNumberOfReviews={totalReviews} />
-      <button>View Analytics</button>
+      <button
+        onClick={(e) => {
+          redirect("/analytics");
+        }}
+      >
+        View Analytics
+      </button>
       <div className="grid justify-center grid-cols-3 gap-3 mt-3">
         {arrayData.map(
           (value: {
