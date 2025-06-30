@@ -6,7 +6,7 @@ import { StaffSort } from "@/lib/staffSort";
 import { wineSort } from "@/lib/wineSort";
 
 type Params = {
-  //asdas
+  //asdassad
   params: {
     id: string;
   };
