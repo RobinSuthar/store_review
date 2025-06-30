@@ -51,7 +51,6 @@ type Average = {
 
 export function ChartBarHorizontal(data: Props) {
   let totalNumber = 0;
-  console.log("Category:  ", data.category);
   let averageRating = 0;
   if (data.category == "Wine") {
     totalNumber =
@@ -160,9 +159,11 @@ export function ChartBarHorizontal(data: Props) {
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
         <div className="text-muted-foreground leading-none">
-          Showing Average (out of 5) for {data.category}
+          Showing Average (out of 5) for {totalNumber} Reviews
         </div>
-        <div>5/{averageRating.toFixed(2)}</div>
+        <div className="flex ">
+          <div>5/{averageRating.toFixed(2)}</div>
+        </div>
       </CardFooter>
     </Card>
   );
