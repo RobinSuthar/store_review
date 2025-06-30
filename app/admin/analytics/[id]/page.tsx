@@ -1,5 +1,8 @@
 import { ChartBarHorizontal } from "@/components/BarChart";
-import { CategoryType, reviewSort } from "@/lib/reviewSort";
+import { BeerSort } from "@/lib/beerSort";
+import { LiqourSort } from "@/lib/liqoureSort";
+import { StaffSort } from "@/lib/staffSort";
+import { wineSort } from "@/lib/wineSort";
 
 type Params = {
   params: {
@@ -20,7 +23,21 @@ export default async function AnalyticsPage({ params }: Params) {
   //   option3 = "Staff",
   //   option4 = "Liquore",
 
-  const wineDasta = reviewSort(arrayData, CategoryType.option1);
+  const wineData = wineSort(arrayData);
+
+  const beerData = BeerSort(arrayData);
+
+  const staffData = StaffSort(arrayData);
+
+  const liqoureData = LiqourSort(arrayData);
+
+  console.log("Wine : ", wineData);
+
+  console.log("Beer : ", beerData);
+
+  console.log("Staff : ", staffData);
+
+  console.log("Liqour : ", liqoureData);
   const totalReviews = arrayData.length;
   const reviewDataWine = {
     oneStar: 2,
