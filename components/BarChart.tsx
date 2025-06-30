@@ -1,6 +1,6 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
+import { ClockFading, TrendingUp } from "lucide-react";
 import { Bar, BarChart, XAxis, YAxis } from "recharts";
 
 import {
@@ -38,7 +38,86 @@ type Props = {
   };
 };
 
+type Average = {
+  category: string;
+  Ratings: {
+    oneStar: number;
+    twoStar: number;
+    threeStar: number;
+    fourStar: number;
+    fiveStar: number;
+  };
+};
+
 export function ChartBarHorizontal(data: Props) {
+  let totalNumber = 0;
+  let averageRating = 0;
+  if (data.category == "Wine") {
+    totalNumber =
+      data.Ratings.fiveStar +
+      data.Ratings.fourStar +
+      data.Ratings.threeStar +
+      data.Ratings.twoStar +
+      data.Ratings.oneStar;
+
+    const weightSum =
+      5 * data.Ratings.fiveStar +
+      4 * data.Ratings.fourStar +
+      data.Ratings.threeStar +
+      data.Ratings.twoStar +
+      data.Ratings.oneStar;
+
+    averageRating = weightSum / totalNumber;
+  }
+
+  if (data.category == "Staff") {
+    totalNumber =
+      data.Ratings.fiveStar +
+      data.Ratings.fourStar +
+      data.Ratings.threeStar +
+      data.Ratings.twoStar +
+      data.Ratings.oneStar;
+    const weightSum =
+      5 * data.Ratings.fiveStar +
+      4 * data.Ratings.fourStar +
+      data.Ratings.threeStar +
+      data.Ratings.twoStar +
+      data.Ratings.oneStar;
+
+    averageRating = weightSum / totalNumber;
+  }
+  if (data.category == "Beer") {
+    totalNumber =
+      data.Ratings.fiveStar +
+      data.Ratings.fourStar +
+      data.Ratings.threeStar +
+      data.Ratings.twoStar +
+      data.Ratings.oneStar;
+    const weightSum =
+      5 * data.Ratings.fiveStar +
+      4 * data.Ratings.fourStar +
+      data.Ratings.threeStar +
+      data.Ratings.twoStar +
+      data.Ratings.oneStar;
+
+    averageRating = weightSum / totalNumber;
+  }
+  if (data.category == "Liquor") {
+    totalNumber =
+      data.Ratings.fiveStar +
+      data.Ratings.fourStar +
+      data.Ratings.threeStar +
+      data.Ratings.twoStar +
+      data.Ratings.oneStar;
+    const weightSum =
+      5 * data.Ratings.fiveStar +
+      4 * data.Ratings.fourStar +
+      3 * data.Ratings.threeStar +
+      2 * data.Ratings.twoStar +
+      1 * data.Ratings.oneStar;
+
+    averageRating = weightSum / totalNumber;
+  }
   const chartData = [
     { month: "5 Star", desktop: data.Ratings.fiveStar },
     { month: "4 Star", desktop: data.Ratings.fourStar },
@@ -80,7 +159,10 @@ export function ChartBarHorizontal(data: Props) {
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
         <div className="text-muted-foreground leading-none">
-          Showing total visitors for the last 6 months
+          Showing Average (out of 5) for {totalNumber} Reviews
+        </div>
+        <div className="flex ">
+          <div>5/{averageRating.toFixed(2)}</div>
         </div>
       </CardFooter>
     </Card>
