@@ -1,4 +1,5 @@
 import { ChartBarHorizontal } from "@/components/BarChart";
+import QuestionDisplay from "@/components/question";
 import { BeerSort } from "@/lib/beerSort";
 import { LiqourSort } from "@/lib/liqoureSort";
 import { StaffSort } from "@/lib/staffSort";
@@ -27,11 +28,16 @@ export default async function AnalyticsPage({ params }: Params) {
   const liqoureData = LiqourSort(arrayData);
 
   return (
-    <div className="grid  md:grid-cols-4 gap-7 mt-8">
-      <ChartBarHorizontal category="Wine" Ratings={wineData} />
-      <ChartBarHorizontal category="Beer" Ratings={beerData} />
-      <ChartBarHorizontal category="Liquor" Ratings={liqoureData} />
-      <ChartBarHorizontal category="Staff" Ratings={staffData} />
+    <div>
+      <div className="grid  md:grid-cols-4 gap-7 mt-8">
+        <ChartBarHorizontal category="Wine" Ratings={wineData} />
+        <ChartBarHorizontal category="Beer" Ratings={beerData} />
+        <ChartBarHorizontal category="Liquor" Ratings={liqoureData} />
+        <ChartBarHorizontal category="Staff" Ratings={staffData} />
+      </div>
+      <div>
+        <QuestionDisplay data={arrayData} />
+      </div>
     </div>
   );
 }
