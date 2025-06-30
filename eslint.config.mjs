@@ -13,7 +13,7 @@ const eslintConfig = [
   {
     ignores: [
       "**/.next/**",
-      "app/generated/prisma/**", // ✅ ignore all generated Prisma files
+      "app/generated/prisma/**", 
     ],
   },
 

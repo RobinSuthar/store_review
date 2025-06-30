@@ -1,10 +1,3 @@
-export enum CategoryType {
-  option1 = "Wine",
-  option2 = "Beer",
-  option3 = "Staff",
-  option4 = "Liquore",
-}
-
 type Props = [
   {
     id: string;
@@ -18,16 +11,7 @@ type Props = [
   }
 ];
 
-//Return This
-//  Ratings: {
-//     oneStar: number;
-//     twoStar: number;
-//     threeStar: number;
-//     fourStar: number;
-//     fiveStar: number;
-//   };
-
-export function reviewSort(data: Props, basedOn: CategoryType) {
+export function wineSort(data: Props) {
   const reviewData = {
     oneStar: 0,
     twoStar: 0,
@@ -36,8 +20,6 @@ export function reviewSort(data: Props, basedOn: CategoryType) {
     fiveStar: 0,
   };
   data.map((e) => {
-    const selecction = e[basedOn as keyof typeof e];
-    console.log(selecction);
     if (e.Wine == 5) {
       reviewData.fiveStar++;
     }
