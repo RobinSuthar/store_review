@@ -1,6 +1,5 @@
-import { ChartBarDefault } from "@/components/BarChart";
-import GraphChart from "@/components/GraphChart";
-import { redirect } from "next/navigation";
+import { ChartBarHorizontal } from "@/components/BarChart";
+import { CategoryType, reviewSort } from "@/lib/reviewSort";
 
 type Params = {
   params: {
@@ -15,16 +14,51 @@ export default async function AnalyticsPage({ params }: Params) {
   const res = await fetch(`${apiUrl}/api/storereviews/${id}`);
   const data = await res.json();
   const arrayData = data["reviews"];
-  const totalReviews = arrayData.length;
+  console.log("array Data : ", arrayData);
+  //   option1 = "Wine",
+  //   option2 = "Beer",
+  //   option3 = "Staff",
+  //   option4 = "Liquore",
 
+  const wineDasta = reviewSort(arrayData, CategoryType.option1);
+  const totalReviews = arrayData.length;
+  const reviewDataWine = {
+    oneStar: 2,
+    twoStar: 8,
+    threeStar: 4,
+    fourStar: 1,
+    fiveStar: 5,
+  };
+
+  const reviewDataBeer = {
+    oneStar: 2,
+    twoStar: 7,
+    threeStar: 4,
+    fourStar: 4,
+    fiveStar: 7,
+  };
+
+  const reviewDataLiqour = {
+    oneStar: 3,
+    twoStar: 14,
+    threeStar: 4,
+    fourStar: 5,
+    fiveStar: 1,
+  };
+
+  const reviewDataStaff = {
+    oneStar: 2,
+    twoStar: 4,
+    threeStar: 4,
+    fourStar: 1,
+    fiveStar: 2,
+  };
   return (
-    <div className="gird grid-cols-2">
-      <div>
-        <ChartBarDefault />
-      </div>
-      <div>
-        <ChartBarDefault />
-      </div>{" "}
+    <div className="grid  md:grid-cols-4 gap-7 mt-8">
+      <ChartBarHorizontal category="Wine" Ratings={reviewDataWine} />
+      <ChartBarHorizontal category="Beer" Ratings={reviewDataBeer} />
+      <ChartBarHorizontal category="Liquor" Ratings={reviewDataLiqour} />
+      <ChartBarHorizontal category="Staff" Ratings={reviewDataStaff} />
     </div>
   );
 }
