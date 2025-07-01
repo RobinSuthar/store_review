@@ -102,7 +102,6 @@ export default function Wine() {
               question1: question1,
               question2: question2,
             };
-            console.log("From Front-end Check : ", reviewData);
             await SubmitResponse(reviewData);
 
             redirect("/reviewed");

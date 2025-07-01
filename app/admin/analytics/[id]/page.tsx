@@ -1,5 +1,6 @@
 import { ChartBarHorizontal } from "@/components/BarChart";
 import QuestionDisplay from "@/components/question";
+import RedirectButtonComments from "@/components/RedirectButtonComments";
 import { BeerSort } from "@/lib/beerSort";
 import { LiqourSort } from "@/lib/liqoureSort";
 import { StaffSort } from "@/lib/staffSort";
@@ -37,6 +38,7 @@ export default async function AnalyticsPage({ params }: Params) {
         <ChartBarHorizontal category="Staff" Ratings={staffData} />
       </div>
       <div>
+        <RedirectButtonComments id={id} />
         <QuestionDisplay data={arrayData} />
       </div>
     </div>
