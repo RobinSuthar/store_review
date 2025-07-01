@@ -1,3 +1,5 @@
+import RedirectButtonComparison from "@/components/RedirectButtonComparison";
+import RedirectButtonInsights from "@/components/RedirectInsights";
 import Link from "next/link";
 
 export default async function Dashboard() {
@@ -11,7 +13,8 @@ export default async function Dashboard() {
   return (
     <div>
       <div className="text-4xl text-center flex justify-center">Dashboard</div>
-
+      <RedirectButtonInsights />
+      <RedirectButtonComparison />
       {stores["message"].map((x: { id: number; Name: string }) => {
         return (
           <Link key={x.id} href={`/admin/store/${x.id}`}>

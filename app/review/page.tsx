@@ -9,7 +9,7 @@ export default async function Page() {
     redirect("/reviewed");
   }
   return (
-    <div className="bg-white">
+    <div>
       <Header />
       <Wine />
     </div>
