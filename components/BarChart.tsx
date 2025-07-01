@@ -159,7 +159,7 @@ export function ChartBarHorizontal(data: Props) {
           Showing Average (out of 5) for {totalNumber} Reviews
         </div>
         <div className="flex ">
-          <div>5/{averageRating.toFixed(2)}</div>
+          <div>{averageRating.toFixed(2)}/5</div>
         </div>
       </CardFooter>
     </Card>
