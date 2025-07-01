@@ -1,20 +1,24 @@
 "use client";
 
 import * as React from "react";
+import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
 
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
+  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuLabel,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export function DropdownMenuRadioGroupDemo() {
-  const [position, setPosition] = React.useState("bottom");
+type Checked = DropdownMenuCheckboxItemProps["checked"];
+
+export function DropdownMenuCheckboxes() {
+  const [showStatusBar, setShowStatusBar] = React.useState<Checked>(true);
+  const [showActivityBar, setShowActivityBar] = React.useState<Checked>(false);
+  const [showPanel, setShowPanel] = React.useState<Checked>(false);
 
   return (
     <DropdownMenu>
@@ -22,13 +26,27 @@ export function DropdownMenuRadioGroupDemo() {
         <Button variant="outline">Open</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
+        <DropdownMenuLabel>Appearance</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
-          <DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="bottom">Bottom</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="right">Right</DropdownMenuRadioItem>
-        </DropdownMenuRadioGroup>
+        <DropdownMenuCheckboxItem
+          checked={showStatusBar}
+          onCheckedChange={setShowStatusBar}
+        >
+          Status Bar
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          checked={showActivityBar}
+          onCheckedChange={setShowActivityBar}
+          disabled
+        >
+          Activity Bar
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          checked={showPanel}
+          onCheckedChange={setShowPanel}
+        >
+          Panel
+        </DropdownMenuCheckboxItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
