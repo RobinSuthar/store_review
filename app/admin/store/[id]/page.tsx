@@ -18,7 +18,7 @@ export default async function StorePage({ params }: Params) {
   const totalReviews = arrayData.length;
 
   return (
-    <div className="text-3xl text-center mt-3 text-black">
+    <div className="text-3xl text-center mt-3 ">
       Store Page for ID: {id}
       <GraphChart totalNumberOfReviews={totalReviews} />
       <RedirectButton id={id} />

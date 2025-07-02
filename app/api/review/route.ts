@@ -29,10 +29,6 @@ export const POST = async (req: NextRequest) => {
       await req.json();
     const shortName: string = uniqueNamesGenerator(customConfig);
 
-    console.log(storeId);
-    console.log(wine, beer, liqour, staff, question1, question2);
-    console.log(shortName);
-
     const cookieStore = await cookies();
     const data = await db.review.create({
       data: {
@@ -46,7 +42,6 @@ export const POST = async (req: NextRequest) => {
         Question2: question2,
       },
     });
-    console.log("Final Step : ", data);
     cookieStore.set("review", "yes");
 
     return NextResponse.json({
