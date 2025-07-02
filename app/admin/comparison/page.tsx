@@ -11,7 +11,7 @@ export default async function Page() {
     Selection: "Wine",
   };
   const result = await GetData(data);
-  const sortedData = await SortData({ data: result, Selection: "Wine" });
+  const sortedData = await SortData({ data: result, Selection: "Beer" });
   console.log("Sorted Data", sortedData);
   return (
     <div>
