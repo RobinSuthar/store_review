@@ -1,8 +1,18 @@
 import { DropdownMenuCheckboxes } from "@/components/DropdownMenuRadio";
 import { ChartLineInteractive } from "@/components/interactove";
 import { SelectionCheckBox } from "@/components/Selection";
+import GetData from "@/lib/actions/getData";
+import SortData from "@/lib/actions/SortData";
+import { CloudHail } from "lucide-react";
 
-export default function Page() {
+export default async function Page() {
+  const data = {
+    Name: "Aspen",
+    Selection: "Wine",
+  };
+  const result = await GetData(data);
+  const sortedData = await SortData({ data: result, Selection: "Wine" });
+  console.log("Sorted Data", sortedData);
   return (
     <div>
       Comparison
