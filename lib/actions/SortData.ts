@@ -18,6 +18,7 @@ type data = {
 export default async function SortData(params: data) {
   const { data, Selection } = params;
 
+  console.log(data, Selection);
   // Sort the data based on dynamic Selection
   const selectedRatings = data.map((e) => ({
     id: e.id,

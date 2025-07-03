@@ -13,24 +13,42 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import GetData from "@/lib/actions/getData";
+import SelectionCheckBox from "./Selection";
 
 type Checked = DropdownMenuCheckboxItemProps["checked"];
 
+type IncomingData = {
+  Beer: number;
+  Liquore: number;
+  Name: string;
+  Question1: string;
+  Question2: string;
+  Staff: number;
+  StoreId: number;
+  Wine: number;
+  id: number;
+};
+
 export function DropdownMenuCheckboxes() {
   const [selection, setSelection] = React.useState("");
+  const [finalData, setFinalData] = React.useState<IncomingData[]>([]);
   const data = {
     Name: "Aspen",
     Selection: "Wine",
   };
 
   React.useEffect(() => {
-    console.log("ASdasdasdadsadasdasndkabdkabsdkbakmbds ");
-    async function x() {
-      const result = await GetData(data);
-      console.log(result);
+    if (selection) {
+      async function fetchData() {
+        const result: IncomingData[] = await GetData({
+          Name: selection,
+          Selection: "Wine", // or dynamic
+        });
+        setFinalData(result);
+      }
+
+      fetchData();
     }
-    x();
-    console.log(selection);
   }, [selection]);
 
   const [showStatusBar, setShowStatusBar] = React.useState<Checked>(true);
@@ -49,33 +67,36 @@ export function DropdownMenuCheckboxes() {
   const [showPanel, setShowPanel] = React.useState<Checked>(false);
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline">Open</Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>Appearance</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        {Object.keys(checkedStores).map((store) => (
-          <DropdownMenuCheckboxItem
-            key={store}
-            checked={checkedStores[store]}
-            onCheckedChange={() => {
-              // Set only the selected store to true, others false
-              setCheckedStores(() =>
-                Object.fromEntries(
-                  Object.keys(checkedStores).map((s) => [s, s === store])
-                )
-              );
+    <div>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline">Stores</Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="w-56">
+          <DropdownMenuLabel>Appearance</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          {Object.keys(checkedStores).map((store) => (
+            <DropdownMenuCheckboxItem
+              key={store}
+              checked={checkedStores[store]}
+              onCheckedChange={() => {
+                // Set only the selected store to true, others false
+                setCheckedStores(() =>
+                  Object.fromEntries(
+                    Object.keys(checkedStores).map((s) => [s, s === store])
+                  )
+                );
 
-              // Update selection to the selected store name
-              setSelection(store);
-            }}
-          >
-            {store}
-          </DropdownMenuCheckboxItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
+                // Update selection to the selected store name
+                setSelection(store);
+              }}
+            >
+              {store}
+            </DropdownMenuCheckboxItem>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
+      <SelectionCheckBox data={finalData} />
+    </div>
   );
 }
