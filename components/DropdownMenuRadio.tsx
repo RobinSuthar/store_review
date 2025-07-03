@@ -12,11 +12,39 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import GetData from "@/lib/actions/getData";
 
 type Checked = DropdownMenuCheckboxItemProps["checked"];
 
 export function DropdownMenuCheckboxes() {
+  const [selection, setSelection] = React.useState("");
+  const data = {
+    Name: "Aspen",
+    Selection: "Wine",
+  };
+
+  React.useEffect(() => {
+    console.log("ASdasdasdadsadasdasndkabdkabsdkbakmbds ");
+    async function x() {
+      const result = await GetData(data);
+      console.log(result);
+    }
+    x();
+    console.log(selection);
+  }, [selection]);
+
   const [showStatusBar, setShowStatusBar] = React.useState<Checked>(true);
+  const [checkedStores, setCheckedStores] = React.useState<
+    Record<string, boolean>
+  >({
+    "North Hill": false,
+    Aspen: false,
+    "8th Ave": false,
+    "Marda Loop": false,
+    Ricmond: false,
+    Seton: false,
+    Okotoks: false,
+  });
   const [showActivityBar, setShowActivityBar] = React.useState<Checked>(false);
   const [showPanel, setShowPanel] = React.useState<Checked>(false);
 
@@ -28,49 +56,25 @@ export function DropdownMenuCheckboxes() {
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>Appearance</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuCheckboxItem
-          checked={showStatusBar}
-          onCheckedChange={setShowStatusBar}
-        >
-          North Hill
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
-          checked={showActivityBar}
-          onCheckedChange={setShowActivityBar}
-          disabled
-        >
-          Aspen
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
-          checked={showPanel}
-          onCheckedChange={setShowPanel}
-        >
-          8th Ave
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
-          checked={showPanel}
-          onCheckedChange={setShowPanel}
-        >
-          Marda Loop
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
-          checked={showPanel}
-          onCheckedChange={setShowPanel}
-        >
-          Ricmond
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
-          checked={showPanel}
-          onCheckedChange={setShowPanel}
-        >
-          Seton
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
-          checked={showPanel}
-          onCheckedChange={setShowPanel}
-        >
-          Okotoks
-        </DropdownMenuCheckboxItem>
+        {Object.keys(checkedStores).map((store) => (
+          <DropdownMenuCheckboxItem
+            key={store}
+            checked={checkedStores[store]}
+            onCheckedChange={() => {
+              // Set only the selected store to true, others false
+              setCheckedStores(() =>
+                Object.fromEntries(
+                  Object.keys(checkedStores).map((s) => [s, s === store])
+                )
+              );
+
+              // Update selection to the selected store name
+              setSelection(store);
+            }}
+          >
+            {store}
+          </DropdownMenuCheckboxItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -1,3 +1,4 @@
+"use server";
 import db from "@/lib/db";
 type Pros = {
   Name: string;
@@ -13,12 +14,10 @@ function getId(Store: string) {
   }
 }
 
-function Sort(Selection: string) {
-  return null;
-}
-
 export default async function GetData(data: Pros) {
+  console.log(data);
   const storeId = getId(data.Name);
+  console.log("SADasdaskndkjasbdkbaksjbdkasbdksbdkjbaskjsbdnx");
   const a = await db.review.findMany({
     where: {
       StoreId: storeId,

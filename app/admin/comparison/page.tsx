@@ -4,15 +4,11 @@ import { SelectionCheckBox } from "@/components/Selection";
 import GetData from "@/lib/actions/getData";
 import SortData from "@/lib/actions/SortData";
 import { CloudHail } from "lucide-react";
+import { useState } from "react";
 
 export default async function Page() {
-  const data = {
-    Name: "Aspen",
-    Selection: "Wine",
-  };
-  const result = await GetData(data);
-  const sortedData = await SortData({ data: result, Selection: "Beer" });
-  console.log("Sorted Data", sortedData);
+  // const sortedData = await SortData({ data: result, Selection: "Beer" });
+  // console.log("Sorted Data", sortedData);
   return (
     <div>
       Comparison

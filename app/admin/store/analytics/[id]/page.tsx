@@ -1,5 +1,7 @@
+
 import GraphChart from "@/components/GraphChart";
 import RedirectButton from "@/components/RedirectButton";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 type Params = {
@@ -21,7 +23,9 @@ export default async function StorePage({ params }: Params) {
     <div className="text-3xl text-center mt-3 ">
       Store Page for ID: {id}
       <GraphChart totalNumberOfReviews={totalReviews} />
-      <RedirectButton id={id} />
+      <Link href={`/admin/analytics/comments/${id}`}>
+        <button onClick={} className="px-4 py-2 rounded">Go to Comments</button>
+      </Link>
       <div className="grid justify-center grid-cols-3 gap-3 mt-3">
         {arrayData.map(
           (value: {

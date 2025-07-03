@@ -13,6 +13,12 @@ type Params = {
   };
 };
 
+type Props = {
+  id?: string;
+  text: string;
+  link: string;
+};
+
 export default async function AnalyticsPage({ params }: Params) {
   const { id } = await params;
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
