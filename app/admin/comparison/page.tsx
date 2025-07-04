@@ -8,7 +8,7 @@ export default async function Page() {
     <div>
       Comparison
       <div className="grid grid-cols-2">
-        <div className="grid grid-cols-1 m-11 gap-10">
+        <div className="grid grid-cols-2 m-11 gap-10">
           <DropdownMenuCheckboxes />
         </div>
         <div className="bg-card ml-12 text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm">

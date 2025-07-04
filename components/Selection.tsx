@@ -34,21 +34,6 @@ type Props = {
   data: IncomingData[];
 };
 
-type IncomingData2 = {
-  Name: string;
-  Data: {
-    id: number;
-    StoreId: number | null;
-    Name: string;
-    Wine: number;
-    Beer: number;
-    Liquore: number;
-    Staff: number;
-    Question1: string;
-    Question2: string;
-  };
-};
-
 export default function SelectionCheckBox({ data }: Props) {
   console.log("Data ah Gya! ", data);
 
@@ -82,10 +67,6 @@ export default function SelectionCheckBox({ data }: Props) {
     }
   }, [selection]);
 
-  const [showStatusBar, setShowStatusBar] = React.useState<Checked>(true);
-  const [showActivityBar, setShowActivityBar] = React.useState<Checked>(false);
-  const [showPanel, setShowPanel] = React.useState<Checked>(false);
-
   return (
     <div>
       <DropdownMenu>
@@ -100,14 +81,11 @@ export default function SelectionCheckBox({ data }: Props) {
               key={store}
               checked={category[store]}
               onCheckedChange={() => {
-                // Set only the selected store to true, others false
                 setCategory(() =>
                   Object.fromEntries(
                     Object.keys(category).map((s) => [s, s === store])
                   )
                 );
-
-                // Update selection to the selected store name
                 setSelection(store);
               }}
             >
