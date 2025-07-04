@@ -42,7 +42,18 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function ChartLineInteractive() {
+type SortedDataType = { [Selection: string]: number; id: number }[];
+
+type MyGroupSortedDataType = {
+  [key: string]: SortedDataType;
+};
+
+export function ChartLineInteractive({
+  userTestData,
+}: {
+  userTestData: SortedDataType | undefined;
+}) {
+  console.log("Display Data on Chatt : ", userTestData);
   const [activeChart, setActiveChart] =
     React.useState<keyof typeof chartConfig>("desktop");
 

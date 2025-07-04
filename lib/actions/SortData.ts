@@ -10,16 +10,22 @@ type Pros = {
   Question2: string;
 }[];
 
-type data = {
+type x = {
   data: Pros;
-  Selection: "Wine" | "Beer" | "Liquore" | "Staff";
+  Selection: "Wine" | "Beer" | "Liquore" | "Staff" | undefined;
 };
 
-export default async function SortData(params: data) {
-  const { data, Selection } = params;
+export default async function SortData(params: x) {
+  const data = params?.data;
+  const Selection = params?.Selection;
+  if (Selection == undefined) {
+    return;
+  }
 
+  if (data == undefined) {
+    return;
+  }
   console.log(data, Selection);
-  // Sort the data based on dynamic Selection
   const selectedRatings = data.map((e) => ({
     id: e.id,
     [Selection]: e[Selection],
