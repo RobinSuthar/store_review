@@ -54,6 +54,8 @@ type x = {
   Selection: "Wine" | "Beer" | "Liquore" | "Staff";
 };
 
+type b = "Wine" | "Beer" | "Liquor" | "Staff";
+
 export default function SelectionCheckBox({ data }: Props) {
   console.log("Data ah Gya! ", data);
 
@@ -67,6 +69,7 @@ export default function SelectionCheckBox({ data }: Props) {
     Liquor: false,
   });
   const [z, setZ] = React.useState<string>("");
+  const [fixedType, setFixedType] = React.useState<b>("Wine");
   const [selection, setSelection] = React.useState<
     "Wine" | "Beer" | "Liquore" | "Staff" | undefined
   >();
@@ -79,9 +82,7 @@ export default function SelectionCheckBox({ data }: Props) {
             data: data,
             Selection: selection,
           });
-          console.log("Sorted Result : ", result);
           setFinalData(result);
-          console.log("Finald Data State Set : ", finalData);
         } catch (error) {
           console.error("Error fetching sorted data: ", error);
         }
@@ -91,7 +92,7 @@ export default function SelectionCheckBox({ data }: Props) {
 
       fetchData();
     }
-  }, [z]);
+  }, [selection]);
 
   return (
     <div>
@@ -112,7 +113,19 @@ export default function SelectionCheckBox({ data }: Props) {
                     Object.keys(category).map((s) => [s, s === store])
                   )
                 );
-                setZ(store);
+                if (store == "Wine") {
+                  fixedType == "Wine";
+                }
+                if (store == "Beer") {
+                  fixedType == "Beer";
+                }
+                if (store == "Liquor") {
+                  fixedType == "Liquor";
+                }
+                if (store == "Staff") {
+                  fixedType == "Staff";
+                }
+                setSelection(store);
               }}
             >
               {store}
