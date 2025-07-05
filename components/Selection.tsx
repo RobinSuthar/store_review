@@ -54,7 +54,7 @@ type x = {
   Selection: "Wine" | "Beer" | "Liquore" | "Staff";
 };
 
-type b = "Wine" | "Beer" | "Liquor" | "Staff";
+type b = "Wine" | "Beer" | "Liquore" | "Staff";
 
 export default function SelectionCheckBox({ data }: Props) {
   console.log("Data ah Gya! ", data);
@@ -75,8 +75,10 @@ export default function SelectionCheckBox({ data }: Props) {
   >();
 
   React.useEffect(() => {
+    console.log("Use Effect CAlled");
     if (selection) {
       async function fetchData() {
+        console.log("Insided Async Function");
         try {
           const result = await sortData({
             data: data,
@@ -88,11 +90,11 @@ export default function SelectionCheckBox({ data }: Props) {
         }
       }
 
-      console.log(selection);
-
       fetchData();
     }
-  }, [selection]);
+    console.log("GLobal Fixed Data type : ", fixedType);
+    console.log("Final Data INsided Asyn Function : ", finalData);
+  }, [category]);
 
   return (
     <div>
@@ -103,32 +105,40 @@ export default function SelectionCheckBox({ data }: Props) {
         <DropdownMenuContent className="w-56">
           <DropdownMenuLabel>Appearance</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          {Object.keys(category).map((store: string) => (
+          {Object.keys(category).map((x: string) => (
             <DropdownMenuCheckboxItem
-              key={store}
-              checked={category[store]}
+              key={x}
+              checked={category[x]}
               onCheckedChange={() => {
                 setCategory(() =>
                   Object.fromEntries(
-                    Object.keys(category).map((s) => [s, s === store])
+                    Object.keys(category).map((s) => [s, s === fixedType])
                   )
                 );
-                if (store == "Wine") {
-                  fixedType == "Wine";
+
+                console.log("X: ", fixedType);
+                if (x == "Wine") {
+                  console.log(1);
+                  setFixedType("Wine");
                 }
-                if (store == "Beer") {
-                  fixedType == "Beer";
+                if (x == "Beer") {
+                  console.log(2);
+                  setFixedType("Beer");
                 }
-                if (store == "Liquor") {
-                  fixedType == "Liquor";
+                if (x == "Liqour") {
+                  console.log(3);
+                  setFixedType("Liquore");
                 }
-                if (store == "Staff") {
-                  fixedType == "Staff";
+                if (x == "Staff") {
+                  console.log(4);
+                  setFixedType("Staff");
                 }
-                setSelection(store);
+                console.log("Store: ", x);
+                console.log("Fixed Data Type  ", fixedType);
+                setSelection(x);
               }}
             >
-              {store}
+              {x}
             </DropdownMenuCheckboxItem>
           ))}
         </DropdownMenuContent>
