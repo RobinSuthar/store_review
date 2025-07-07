@@ -49,5 +49,6 @@ export const POST = async (req: NextRequest) => {
     });
   } catch (e) {
     console.log(e);
+    return;
   }
 };
