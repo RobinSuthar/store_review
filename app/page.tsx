@@ -5,7 +5,7 @@ export default async function Home() {
   const reviewSubmitted = cookieStore.get("review");
   console.log("Check For Review Submitted :  ", reviewSubmitted);
   if (!cookieStore.get("review")) {
-    redirect("/review");
+    redirect("pages/review");
   } else {
     redirect("/reviewed");
   }
