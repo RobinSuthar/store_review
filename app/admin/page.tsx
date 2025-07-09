@@ -1,10 +1,12 @@
-"use client";
 import Loginbutton from "@/components/login-btn";
+import ServerSiderenderdComponent from "@/lib/actions/ServerSiderenderdComponent";
 
 export default function Page() {
   return (
     <div>
-      <Loginbutton></Loginbutton>
+      SERVER SIDE RENDERED :{" "}
+      <ServerSiderenderdComponent></ServerSiderenderdComponent>
+      CLIENT SIDE RENDERED : <Loginbutton></Loginbutton>
     </div>
   );
 }

@@ -21,7 +21,7 @@ model Store {
 
 model User {
   id Int @id @default(autoincrement())
-  Username String
+  Username  String @unique
   Password String 
 }
 
