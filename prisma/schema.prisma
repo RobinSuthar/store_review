@@ -19,6 +19,12 @@ model Store {
   posts   Review[] 
 }
 
+model User {
+  id Int @id @default(autoincrement())
+  Username  String @unique
+  Password String 
+}
+
 
 model Review {
   id       Int  @id @default(autoincrement())
@@ -29,6 +35,7 @@ model Review {
   Beer Int
   Liquore Int
   Staff Int
+  Member Boolean
   Question1 String
   Question2 String
   }

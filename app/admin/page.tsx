@@ -1,30 +1,15 @@
-import RedirectButtonComparison from "@/components/RedirectButtonComparison";
-import RedirectButtonInsights from "@/components/RedirectInsights";
-import Link from "next/link";
+import LoginButton from "@/components/login/login-btn";
+import ServerComponent from "@/components/login/server-component";
+import { LoginForm } from "@/components/ui/login-form";
 
-export default async function Dashboard() {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
-  const res = await fetch(`${apiUrl}/api/analysis`);
-  if (!res.ok) {
-    throw new Error(`HTTP error! status: ${res.status}`);
-  }
-  const stores = await res.json();
+export default function Page() {
   return (
     <div>
-      <div className="text-4xl text-center flex justify-center">Dashboard</div>
-      <RedirectButtonInsights />
-      <RedirectButtonComparison />
-      {stores["message"].map((x: { id: number; Name: string }) => {
-        return (
-          <Link key={x.id} href={`/admin/store/${x.id}`}>
-            <div key={x.id} className="text-2xl  mt-5 f">
-              <div>{x.id}</div>
-              <div>{x.Name}</div>
-            </div>
-          </Link>
-        );
-      })}
+      <div className="bg-muted flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
+        <div className="w-full max-w-sm md:max-w-3xl">
+          <LoginForm />
+        </div>
+      </div>
     </div>
   );
 }
