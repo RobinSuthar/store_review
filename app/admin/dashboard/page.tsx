@@ -1,3 +1,9 @@
+import AppBar from "@/components/ui/custom/aapbar";
+
 export default function Page() {
-  return <div>Hello</div>;
+  return (
+    <div>
+      <AppBar />
+    </div>
+  );
 }

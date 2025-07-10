@@ -6,11 +6,16 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import greenImage from "@/public/greenimage.jpg";
 import Image from "next/image";
-import { signIn, signOut } from "next-auth/react";
+import { signIn } from "next-auth/react";
+import { useState } from "react";
+import { tree } from "next/dist/build/templates/app-page";
+
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="overflow-hidden p-0">
@@ -26,10 +31,13 @@ export function LoginForm({
               <div className="grid gap-3">
                 <Label htmlFor="email">Email</Label>
                 <Input
-                  id="email"
-                  type="email"
-                  placeholder="m@example.com"
+                  id="Username"
+                  type="text"
+                  placeholder="Enter your username"
                   required
+                  onChange={(e) => {
+                    setUsername(e.target.value);
+                  }}
                 />
               </div>
               <div className="grid gap-3">
@@ -42,28 +50,32 @@ export function LoginForm({
                     Forgot your password?
                   </a>
                 </div>
-                <Input id="password" type="password" required />
+                <Input
+                  id="password"
+                  type="password"
+                  required
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                />
               </div>
               <Button
                 type="submit"
                 className="w-full"
-                onClick={async () => {
-                  const result = await signIn();
+                onClick={async (e) => {
+                  e.preventDefault();
+                  const result = await signIn("credentials", {
+                    username: username,
+                    password: password,
+                    redirect: true,
+                    callbackUrl: "/admin/dashboard",
+                  });
                   console.log(result);
                 }}
               >
                 Login
               </Button>
-              <Button
-                type="submit"
-                className="w-full"
-                onClick={async () => {
-                  const result = await signOut();
-                  console.log(result);
-                }}
-              >
-                Login Out
-              </Button>
+
               <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
                 <span className="bg-card text-muted-foreground relative z-10 px-2">
                   Or continue with
