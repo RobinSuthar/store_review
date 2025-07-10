@@ -1,12 +1,11 @@
-import Loginbutton from "@/components/login-btn";
-import ServerSiderenderdComponent from "@/lib/actions/ServerSiderenderdComponent";
+import LoginButton from "@/components/login-button";
+import ServerComponent from "@/components/ServerComponent";
 
 export default function Page() {
   return (
     <div>
-      SERVER SIDE RENDERED :{" "}
-      <ServerSiderenderdComponent></ServerSiderenderdComponent>
-      CLIENT SIDE RENDERED : <Loginbutton></Loginbutton>
+      <ServerComponent></ServerComponent>
+      <LoginButton></LoginButton>
     </div>
   );
 }
