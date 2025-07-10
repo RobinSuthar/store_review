@@ -1,3 +1,5 @@
+import LoginButton from "@/components/login/login-btn";
+import ServerComponent from "@/components/login/server-component";
 import { LoginForm } from "@/components/ui/login-form";
 
 export default function Page() {

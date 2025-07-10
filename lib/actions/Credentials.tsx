@@ -1,5 +1,6 @@
 import database from "@/database/db";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { signIn } from "next-auth/react";
 export const NEXT_AUTH = {
   providers: [
     CredentialsProvider({
@@ -47,5 +48,8 @@ export const NEXT_AUTH = {
       console.log("Session after Chagne : ", session);
       return session;
     },
+  },
+  pages: {
+    signIn: "/admin",
   },
 };

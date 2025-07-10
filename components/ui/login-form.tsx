@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import greenImage from "@/public/greenimage.jpg";
 import Image from "next/image";
-import { signIn } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 export function LoginForm({
   className,
   ...props
@@ -47,11 +47,22 @@ export function LoginForm({
               <Button
                 type="submit"
                 className="w-full"
-                onClick={() => {
-                  signIn();
+                onClick={async () => {
+                  const result = await signIn();
+                  console.log(result);
                 }}
               >
                 Login
+              </Button>
+              <Button
+                type="submit"
+                className="w-full"
+                onClick={async () => {
+                  const result = await signOut();
+                  console.log(result);
+                }}
+              >
+                Login Out
               </Button>
               <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
                 <span className="bg-card text-muted-foreground relative z-10 px-2">
