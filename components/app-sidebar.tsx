@@ -35,17 +35,17 @@ const data = {
     },
     {
       title: "Analytics",
-      url: "#",
+      url: "Analytics",
       icon: IconListDetails,
     },
     {
       title: "Comparison",
-      url: "#",
+      url: "Comparison",
       icon: IconChartBar,
     },
     {
       title: "AI",
-      url: "#",
+      url: "AI",
       icon: IconFolder,
     },
   ],
