@@ -30,7 +30,7 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "admin/dasboard",
+      url: "admin/dashboard",
       icon: IconDashboard,
     },
     {
