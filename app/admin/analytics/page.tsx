@@ -49,17 +49,7 @@ export default function Page() {
                 </div>
               </CardFooter>
             </Card>
-            <Card className="w-10/12">
-              <CardHeader>
-                <CardDescription>Anonums</CardDescription>
-              </CardHeader>
-              <CardFooter className="flex-col items-start gap-1.5 text-sm">
-                <div className="line-clamp-1 flex gap-2 font-medium">
-                  Lopem Ispum Lopem Ispum Lopem Ispum Lopem Ispum Lopem Ispum
-                  Lopem Ispum Lopem Ispum Lopem Ispum{" "}
-                </div>
-              </CardFooter>
-            </Card>
+
             <Card className="w-10/12">
               <CardHeader>
                 <CardDescription>Anonums</CardDescription>
