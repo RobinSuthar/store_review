@@ -17,9 +17,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
-
+import { signOut, useSession } from "next-auth/react";
 export function NavUser({
   user,
 }: {
@@ -77,12 +75,12 @@ export function NavUser({
             <DropdownMenuSeparator />
 
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <IconLogout
-                onClick={() => {
-                  redirect("/admin");
-                }}
-              />
+            <DropdownMenuItem
+              onClick={async () => {
+                await signOut();
+              }}
+            >
+              <IconLogout />
               Log out
             </DropdownMenuItem>
           </DropdownMenuContent>
