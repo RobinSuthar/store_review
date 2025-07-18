@@ -12,6 +12,8 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "lucide-react";
 import { IconTrendingUp } from "@tabler/icons-react";
+import { PaginationMenu } from "@/components/ui/paginationmenu";
+import { ChartPieLabelList } from "@/components/charts/piechart";
 
 export default function Page() {
   return (
@@ -30,6 +32,9 @@ export default function Page() {
             <div className="flex gap-20 justify-center">
               <AnalyticsSelectStore />
               <FilterSelect />
+            </div>
+            <div className="p-24">
+              <ChartPieLabelList />
             </div>
           </div>
           <div className="flex flex-col justify-center gap-9 ml-20 ">
@@ -77,6 +82,7 @@ export default function Page() {
                 </div>
               </CardFooter>
             </Card>
+            <PaginationMenu />
           </div>
         </div>
       </SidebarInset>
