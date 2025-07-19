@@ -1,15 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { Rating, ThinRoundedStar } from "@smastrom/react-rating";
+import { Progress } from "./progress";
+import { Button } from "./stateful-button";
 
 let interval: any;
-
-const myStyles = {
-  itemShapes: ThinRoundedStar,
-  activeFillColor: "#ffb700",
-  inactiveFillColor: "#fbf1a9",
-};
 
 type Card = {
   id: number;
@@ -30,12 +25,17 @@ export const CardStack = ({
   const CARD_OFFSET = offset || 10;
   const SCALE_FACTOR = scaleFactor || 0.06;
   const [cards, setCards] = useState<Card[]>(items);
+  const [rating, setRating] = React.useState(0); // Initial value
 
   useEffect(() => {
+    if (rating == 0) {
+      return;
+    }
     startFlipping();
 
     return () => clearInterval(interval);
-  }, []);
+  }, [rating]);
+
   const startFlipping = () => {
     interval = setInterval(() => {
       setCards((prevCards: Card[]) => {
@@ -43,10 +43,8 @@ export const CardStack = ({
         newArray.unshift(newArray.pop()!); // move the last element to the front
         return newArray;
       });
-    }, 5000);
+    }, 3000);
   };
-  const [rating, setRating] = React.useState(0); // Initial value
-
   return (
     <div className="relative  min-h-96 min-w-96 md:h-60 md:w-96">
       {cards.map((card, index) => {
@@ -65,20 +63,55 @@ export const CardStack = ({
           >
             <div className="font-normal text-neutral-700 dark:text-neutral-200">
               {card.content}
-              fiv adsadasdas
-              <Rating
-                style={{ maxWidth: 45 }}
-                //             itemShapes: JSX.Element | JSX.Element[];
-                // /** Stroke width of the SVG, expressed in viewBox user coordinate's unit size. */
-                // itemStrokeWidth?: number;
-                // /** Border width of the SVG bounding box, expressed with an integer representing the pixels. */
-                // boxBorderWidth?: number;
-                spaceInside={"large"}
-                itemStyles={myStyles}
-                value={rating}
-                transition="zoom"
-                onChange={setRating}
-              />
+              <div className="grid grid-cols-2 mt-6 p-2 gap-8 ">
+                <div>
+                  {" "}
+                  <Button
+                    className="bg-red-500 min-w-40 rounded-md"
+                    onClick={() => {
+                      setRating(1);
+                      console.log("Red");
+                    }}
+                  >
+                    Awful
+                  </Button>
+                </div>
+
+                <Button
+                  className="bg-orange-500 min-w-40 rounded-md"
+                  onClick={() => {
+                    setRating(2);
+                  }}
+                >
+                  Bad
+                </Button>
+                <Button
+                  className="bg-yellow-500  min-w-40 rounded-md"
+                  onClick={() => {
+                    setRating(3);
+                  }}
+                >
+                  Okay
+                </Button>
+                <Button
+                  className="bg-green-200 min-w-40 rounded-md"
+                  onClick={() => {
+                    setRating(4);
+                  }}
+                >
+                  Good
+                </Button>
+                <Button
+                  className="bg-green-500 min-w-[340px] rounded-md"
+                  onClick={() => {
+                    setRating(5);
+                  }}
+                >
+                  Great
+                </Button>
+              </div>
+
+              <Progress value={10} className="mt-8" />
             </div>
           </motion.div>
         );
