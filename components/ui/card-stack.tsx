@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { Progress } from "./progress";
-import { Button } from "./stateful-button";
 
 let interval: any;
 
@@ -37,13 +36,11 @@ export const CardStack = ({
   }, [rating]);
 
   const startFlipping = () => {
-    interval = setInterval(() => {
-      setCards((prevCards: Card[]) => {
-        const newArray = [...prevCards]; // create a copy of the array
-        newArray.unshift(newArray.pop()!); // move the last element to the front
-        return newArray;
-      });
-    }, 3000);
+    setCards((prevCards: Card[]) => {
+      const newArray = [...prevCards]; // create a copy of the array
+      newArray.unshift(newArray.pop()!); // move the last element to the front
+      return newArray;
+    });
   };
   return (
     <div className="relative  min-h-96 min-w-96 md:h-60 md:w-96">
@@ -51,7 +48,7 @@ export const CardStack = ({
         return (
           <motion.div
             key={card.id}
-            className="absolute dark:bg-black bg-white  min-h-96 min-w-96 md:h-60 md:w-96 rounded-3xl p-4 shadow-xl border border-neutral-200 dark:border-white/[0.1]  shadow-black/[0.1] dark:shadow-white/[0.05] flex flex-row  "
+            className="absolute dark:bg-black bg-white  min-h-96 min-w-96 md:h-60 md:w-96 -3xl p-4 shadow-xl border border-neutral-200 dark:border-white/[0.1]  shadow-black/[0.1] dark:shadow-white/[0.05] flex flex-row  "
             style={{
               transformOrigin: "top center",
             }}
@@ -66,49 +63,49 @@ export const CardStack = ({
               <div className="grid grid-cols-2 mt-6 p-2 gap-8 ">
                 <div>
                   {" "}
-                  <Button
-                    className="bg-red-500 min-w-40 rounded-md"
+                  <button
+                    className="flex min-w-[120px]  cursor-pointer rounded-md items-center justify-center gap-2  bg-red-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-green-500 dark:ring-offset-black"
                     onClick={() => {
                       setRating(1);
                       console.log("Red");
                     }}
                   >
                     Awful
-                  </Button>
+                  </button>
                 </div>
 
-                <Button
-                  className="bg-orange-500 min-w-40 rounded-md"
+                <button
+                  className="flex min-w-[120px]  cursor-pointer items-center rounded-md justify-center gap-2  bg-red-300 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-green-500 dark:ring-offset-black"
                   onClick={() => {
                     setRating(2);
                   }}
                 >
                   Bad
-                </Button>
-                <Button
-                  className="bg-yellow-500  min-w-40 rounded-md"
+                </button>
+                <button
+                  className="flex min-w-[120px]  cursor-pointer items-center justify-center gap-2 rounded-md  bg-yellow-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-green-500 dark:ring-offset-black"
                   onClick={() => {
                     setRating(3);
                   }}
                 >
                   Okay
-                </Button>
-                <Button
-                  className="bg-green-200 min-w-40 rounded-md"
+                </button>
+                <button
+                  className="flex min-w-[120px] bg-orange-300  cursor-pointer items-center justify-center gap-2  rounded-md  px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-green-500 dark:ring-offset-black"
                   onClick={() => {
                     setRating(4);
                   }}
                 >
                   Good
-                </Button>
-                <Button
-                  className="bg-green-500 min-w-[340px] rounded-md"
+                </button>
+                <button
+                  className="flex min-w-[120px] cursor-pointer items-center justify-center gap-2 rounded-md  bg-green-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-green-500 dark:ring-offset-black"
                   onClick={() => {
                     setRating(5);
                   }}
                 >
                   Great
-                </Button>
+                </button>
               </div>
 
               <Progress value={10} className="mt-8" />
