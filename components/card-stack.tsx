@@ -73,4 +73,37 @@ const CARDS = [
       </p>
     ),
   },
+  {
+    id: 4,
+    name: "Tyler Durden",
+    designation: "Manager Project Mayhem",
+    content: (
+      <p>
+        Have you signed up our
+        <Highlight>member ship </Highlight> ?
+      </p>
+    ),
+  },
+  {
+    id: 5,
+    name: "Tyler Durden",
+    designation: "Manager Project Mayhem",
+    content: (
+      <p>
+        What you
+        <Highlight>do not </Highlight> like about our store ?
+      </p>
+    ),
+  },
+  {
+    id: 6,
+    name: "Tyler Durden",
+    designation: "Manager Project Mayhem",
+    content: (
+      <p>
+        What do
+        <Highlight>like about our </Highlight> ?
+      </p>
+    ),
+  },
 ];
