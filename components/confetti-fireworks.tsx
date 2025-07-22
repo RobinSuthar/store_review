@@ -5,7 +5,7 @@ import confetti from "canvas-confetti";
 export function ConfettiFireworks() {
   const duration = 5 * 1000;
   const animationEnd = Date.now() + duration;
-  const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+  const defaults = { startVelocity: 10, spread: 200, ticks: 50, zIndex: 0 };
 
   const randomInRange = (min: number, max: number) =>
     Math.random() * (max - min) + min;
