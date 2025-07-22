@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { Progress } from "./progress";
+import { TextareaWithText } from "../text-area";
+import { ConfettiFireworks } from "../confetti-fireworks";
 
 let interval: any;
 
@@ -31,6 +33,7 @@ export const CardStack = ({
   const [staffRating, setStaffRating] = React.useState(0);
 
   useEffect(() => {
+    console.log("Rating: ", rating);
     console.log("Wine Rating : ", wineRating);
 
     console.log("Beer Rating : ", beerRating);
@@ -56,8 +59,7 @@ export const CardStack = ({
   return (
     <div className="relative  min-h-96 min-w-96 md:h-60 md:w-96">
       {cards.map((card, index) => {
-        console.log("Card ki id : ", card.id);
-        if (card.id == 0 || 1 || 2 || 3) {
+        if (card.id < 4) {
           return (
             <motion.div
               key={card.id}
@@ -91,7 +93,7 @@ export const CardStack = ({
                         if (card.id == 3) {
                           setStaffRating(1);
                         }
-                        setRating(1);
+                        setRating(rating + 1);
                         console.log("Red");
                       }}
                     >
@@ -114,7 +116,7 @@ export const CardStack = ({
                       if (card.id == 3) {
                         setStaffRating(2);
                       }
-                      setRating(2);
+                      setRating(rating + 1);
                     }}
                   >
                     Bad
@@ -134,7 +136,7 @@ export const CardStack = ({
                       if (card.id == 3) {
                         setStaffRating(3);
                       }
-                      setRating(3);
+                      setRating(rating + 1);
                     }}
                   >
                     Okay
@@ -154,7 +156,7 @@ export const CardStack = ({
                       if (card.id == 3) {
                         setStaffRating(4);
                       }
-                      setRating(4);
+                      setRating(rating + 1);
                     }}
                   >
                     Good
@@ -174,18 +176,19 @@ export const CardStack = ({
                       if (card.id == 3) {
                         setStaffRating(5);
                       }
-                      setRating(5);
+                      setRating(rating + 1);
                     }}
                   >
                     Great
                   </button>
                 </div>
 
-                <Progress value={card.id * 10} className="mt-8" />
+                <Progress value={rating * 21} className="mt-8" />
               </div>
             </motion.div>
           );
-        } else {
+        }
+        if (card.id == 4) {
           return (
             <motion.div
               key={card.id}
@@ -219,7 +222,7 @@ export const CardStack = ({
                         if (card.id == 3) {
                           setStaffRating(1);
                         }
-                        setRating(1);
+                        setRating(rating + 1);
                         console.log("Red");
                       }}
                     >
@@ -242,14 +245,86 @@ export const CardStack = ({
                       if (card.id == 3) {
                         setStaffRating(5);
                       }
-                      setRating(5);
+                      setRating(rating + 1);
                     }}
                   >
                     Yes
                   </button>
                 </div>
+                <Progress value={rating * 21} className="mt-8" />
+              </div>
+            </motion.div>
+          );
+        }
+        if (card.id == 5) {
+          return (
+            <motion.div
+              key={card.id}
+              className="absolute dark:bg-black  bg-white  min-h-96 min-w-96 md:h-60 md:w-96 -3xl p-4 shadow-xl border border-neutral-200 dark:border-white/[0.1] rounded-3xl  shadow-black/[0.1] dark:shadow-white/[0.05] flex flex-row  "
+              style={{
+                transformOrigin: "top center",
+              }}
+              animate={{
+                top: index * -CARD_OFFSET,
+                scale: 1 - index * SCALE_FACTOR, // decrease scale for cards that are behind
+                zIndex: cards.length - index, //  decrease z-index for the cards that are behind
+              }}
+            >
+              <div className="font-normal text-neutral-700 dark:text-neutral-200">
+                {card.content}
+                <div className="grid grid-cols-2 mt-2 p-2 gap-8 ">
+                  <div>
+                    {" "}
+                    <TextareaWithText />
+                  </div>
+                </div>
+                <button
+                  className="flex mt-2 min-w-[140px] min-h-[45px] cursor-pointer items-center justify-center gap-2 rounded-md  bg-green-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-green-500 dark:ring-offset-black"
+                  onClick={() => {
+                    setRating(rating + 1);
 
-                <Progress value={card.id * 10} className="mt-8" />
+                    ConfettiFireworks();
+                  }}
+                >
+                  Submit{" "}
+                </button>
+
+                <Progress value={rating * 21} className="mt-8" />
+              </div>
+            </motion.div>
+          );
+        } else {
+          return (
+            <motion.div
+              key={card.id}
+              className="absolute dark:bg-black  bg-white  min-h-96 min-w-96 md:h-60 md:w-96 -3xl p-4 shadow-xl border border-neutral-200 dark:border-white/[0.1] rounded-3xl  shadow-black/[0.1] dark:shadow-white/[0.05] flex flex-row  "
+              style={{
+                transformOrigin: "top center",
+              }}
+              animate={{
+                top: index * -CARD_OFFSET,
+                scale: 1 - index * SCALE_FACTOR, // decrease scale for cards that are behind
+                zIndex: cards.length - index, //  decrease z-index for the cards that are behind
+              }}
+            >
+              <div className="font-normal text-neutral-700 dark:text-neutral-200">
+                {card.content}
+                <div className="grid grid-cols-2 mt-2 p-2 gap-8 ">
+                  <div>
+                    {" "}
+                    <TextareaWithText />
+                  </div>
+                </div>
+                <button
+                  className="flex mt-2 min-w-[140px] min-h-[45px] cursor-pointer items-center justify-center gap-2 rounded-md  bg-green-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-green-500 dark:ring-offset-black"
+                  onClick={() => {
+                    setRating(rating + 1);
+                  }}
+                >
+                  Submit{" "}
+                </button>
+
+                <Progress value={rating * 21} className="mt-8" />
               </div>
             </motion.div>
           );

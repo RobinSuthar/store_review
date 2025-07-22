@@ -3,12 +3,8 @@ import { Textarea } from "@/components/ui/textarea";
 
 export function TextareaWithText() {
   return (
-    <div className="grid w-full gap-3">
-      <Label htmlFor="message-2">Your Message</Label>
+    <div className="grid min-w-80 min-h-32 gap-3">
       <Textarea placeholder="Type your message here." id="message-2" />
-      <p className="text-muted-foreground text-sm">
-        Your message will be copied to the support team.
-      </p>
     </div>
   );
 }

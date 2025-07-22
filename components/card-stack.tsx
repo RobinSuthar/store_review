@@ -52,6 +52,17 @@ const CARDS = [
     ),
   },
   {
+    id: 5,
+    name: "Tyler Durden",
+    designation: "Manager Project Mayhem",
+    content: (
+      <p>
+        Any suggestion for
+        <Highlight>improvement </Highlight> ?
+      </p>
+    ),
+  },
+  {
     id: 2,
     name: "Tyler Durden",
     designation: "Manager Project Mayhem",
@@ -81,28 +92,6 @@ const CARDS = [
       <p>
         Have you signed up our
         <Highlight>member ship </Highlight> ?
-      </p>
-    ),
-  },
-  {
-    id: 5,
-    name: "Tyler Durden",
-    designation: "Manager Project Mayhem",
-    content: (
-      <p>
-        What you
-        <Highlight>do not </Highlight> like about our store ?
-      </p>
-    ),
-  },
-  {
-    id: 6,
-    name: "Tyler Durden",
-    designation: "Manager Project Mayhem",
-    content: (
-      <p>
-        What do
-        <Highlight>like about our </Highlight> ?
       </p>
     ),
   },
