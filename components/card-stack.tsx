@@ -41,17 +41,6 @@ const CARDS = [
     ),
   },
   {
-    id: 1,
-    name: "Elon Musk",
-    designation: "Senior Shitposter",
-    content: (
-      <p>
-        What do you think of our
-        <Highlight>Beer</Highlight> Collection
-      </p>
-    ),
-  },
-  {
     id: 5,
     name: "Tyler Durden",
     designation: "Manager Project Mayhem",
@@ -62,6 +51,18 @@ const CARDS = [
       </p>
     ),
   },
+  {
+    id: 1,
+    name: "Elon Musk",
+    designation: "Senior Shitposter",
+    content: (
+      <p>
+        What do you think of our
+        <Highlight>Beer</Highlight> Collection
+      </p>
+    ),
+  },
+
   {
     id: 2,
     name: "Tyler Durden",
