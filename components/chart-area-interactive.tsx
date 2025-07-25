@@ -26,6 +26,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import getData from "@/lib/actions/getData";
 
 export const description = "An interactive area chart";
 
@@ -140,6 +141,14 @@ const chartConfig = {
 export function ChartAreaInteractive() {
   const isMobile = useIsMobile();
   const [timeRange, setTimeRange] = React.useState("90d");
+
+  React.useEffect(() => {
+    async function x() {
+      const reviewData = await getData();
+      console.log("ReviewData  :  ", reviewData);
+    }
+    x();
+  }, []);
 
   React.useEffect(() => {
     if (isMobile) {
