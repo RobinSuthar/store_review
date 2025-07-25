@@ -148,11 +148,12 @@ export function ChartAreaInteractive() {
   const [correctData, setCorrectData] = React.useState<Props>();
 
   React.useEffect(() => {
+    console.log("time range chaged");
     async function x() {
       const reviewData = await getData();
       const filteredData = reviewData.filter((item) => {
         const date = new Date(item.date);
-        const referenceDate = new Date("2024-06-30");
+        const referenceDate = new Date("2025-07-25");
         let daysToSubtract = 90;
         if (timeRange === "30d") {
           daysToSubtract = 30;
@@ -165,11 +166,10 @@ export function ChartAreaInteractive() {
       });
       console.log("Filter Data  : ", filteredData);
       setCorrectData(filteredData);
-      console.log("Correct Data : ", correctData);
     }
 
     x();
-  }, []);
+  }, [timeRange]);
 
   React.useEffect(() => {
     if (isMobile) {
