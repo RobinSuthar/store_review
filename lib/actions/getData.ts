@@ -21,6 +21,14 @@ export default async function getData() {
     };
   });
 
-  const averageData = updatedData.map((x) => {});
-  return updatedData;
+  const averageData = updatedData.map((x) => {
+    return {
+      date: x.date.toISOString().split("T")[0],
+      desktop:
+        (x.desktop.wine + x.desktop.beer + x.desktop.liqour + x.desktop.staff) /
+        5,
+    };
+  });
+
+  return averageData;
 }
