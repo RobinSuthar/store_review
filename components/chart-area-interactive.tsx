@@ -148,13 +148,26 @@ export function ChartAreaInteractive() {
   const [correctData, setCorrectData] = React.useState<Props>();
 
   React.useEffect(() => {
-    c;
     async function x() {
       const reviewData = await getData();
-      setCorrectData(reviewData);
-      console.log("reviewData : ", reviewData);
-      console.log("CorrectData  :  ", correctData);
+      const filteredData = reviewData.filter((item) => {
+        const date = new Date(item.date);
+        const referenceDate = new Date("2024-06-30");
+        let daysToSubtract = 90;
+        if (timeRange === "30d") {
+          daysToSubtract = 30;
+        } else if (timeRange === "7d") {
+          daysToSubtract = 7;
+        }
+        const startDate = new Date(referenceDate);
+        startDate.setDate(startDate.getDate() - daysToSubtract);
+        return date >= startDate;
+      });
+      console.log("Filter Data  : ", filteredData);
+      setCorrectData(filteredData);
+      console.log("Correct Data : ", correctData);
     }
+
     x();
   }, []);
 
@@ -163,20 +176,6 @@ export function ChartAreaInteractive() {
       setTimeRange("7d");
     }
   }, [isMobile]);
-
-  const filteredData = chartData.filter((item) => {
-    const date = new Date(item.date);
-    const referenceDate = new Date("2024-06-30");
-    let daysToSubtract = 90;
-    if (timeRange === "30d") {
-      daysToSubtract = 30;
-    } else if (timeRange === "7d") {
-      daysToSubtract = 7;
-    }
-    const startDate = new Date(referenceDate);
-    startDate.setDate(startDate.getDate() - daysToSubtract);
-    return date >= startDate;
-  });
 
   return (
     <Card className="@container/card">
@@ -227,7 +226,7 @@ export function ChartAreaInteractive() {
           config={chartConfig}
           className="aspect-auto h-[250px] w-full"
         >
-          <AreaChart data={filteredData}>
+          <AreaChart data={correctData}>
             <defs>
               <linearGradient id="fillDesktop" x1="0" y1="0" x2="0" y2="1">
                 <stop
