@@ -9,15 +9,56 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import database from "@/database/db";
 
-export function SectionCards() {
+export async function SectionCards() {
+  const data = await database.review.findMany();
+  const wineData = data.map((x) => {
+    return x.Wine;
+  });
+  const beerData = data.map((x) => {
+    return x.Beer;
+  });
+  const liqourData = data.map((x) => {
+    return x.Liquore;
+  });
+  const staffData = data.map((x) => {
+    return x.Staff;
+  });
+  const averageWineReview =
+    wineData.reduce((acc, grades) => {
+      return acc + grades;
+    }, 0) / wineData.length;
+
+  console.log("Average Wine : ", averageWineReview.toFixed(2));
+
+  const averageBeerReview =
+    beerData.reduce((acc, grades) => {
+      return acc + grades;
+    }, 0) / beerData.length;
+
+  console.log("Average Beer : ", averageBeerReview.toFixed(2));
+
+  const averageLiqourReview =
+    liqourData.reduce((acc, grades) => {
+      return acc + grades;
+    }, 0) / liqourData.length;
+
+  console.log("Average Liqour : ", averageLiqourReview.toFixed(2));
+
+  const averageStaffReview =
+    staffData.reduce((acc, grades) => {
+      return acc + grades;
+    }, 0) / staffData.length;
+
+  console.log("Staff Averagew :", averageStaffReview.toFixed(2));
   return (
     <div className="*:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card grid grid-cols-1 gap-4 px-4 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:shadow-xs lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4">
       <Card className="@container/card">
         <CardHeader>
           <CardDescription>Average Wine Rating</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            3.4/5
+            {averageWineReview.toFixed(2)} / 5
           </CardTitle>
           <CardAction>
             <Badge variant="outline">
@@ -39,7 +80,7 @@ export function SectionCards() {
         <CardHeader>
           <CardDescription>Average Beer Rating</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            4.2/5
+            {averageBeerReview.toFixed(2)} / 5
           </CardTitle>
           <CardAction>
             <Badge variant="outline">
@@ -61,7 +102,7 @@ export function SectionCards() {
         <CardHeader>
           <CardDescription>Average Staff Rating</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            3/5
+            {averageStaffReview.toFixed(2)} / 5
           </CardTitle>
           <CardAction>
             <Badge variant="outline">
