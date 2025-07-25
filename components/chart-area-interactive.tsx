@@ -138,14 +138,22 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
+type Props = {
+  date: string;
+  desktop: number;
+}[];
 export function ChartAreaInteractive() {
   const isMobile = useIsMobile();
   const [timeRange, setTimeRange] = React.useState("90d");
+  const [correctData, setCorrectData] = React.useState<Props>();
 
   React.useEffect(() => {
+    c;
     async function x() {
       const reviewData = await getData();
-      console.log("ReviewData  :  ", reviewData);
+      setCorrectData(reviewData);
+      console.log("reviewData : ", reviewData);
+      console.log("CorrectData  :  ", correctData);
     }
     x();
   }, []);
