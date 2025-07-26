@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 
 import {
@@ -10,9 +11,17 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export function FilterSelect() {
+export function FilterSelect({
+  setFilter,
+}: {
+  setFilter: React.Dispatch<React.SetStateAction<string>>;
+}) {
   return (
-    <Select>
+    <Select
+      onValueChange={(e) => {
+        setFilter(e);
+      }}
+    >
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Select a filter" />
       </SelectTrigger>

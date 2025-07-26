@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 
 import {
@@ -10,15 +11,23 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export function AnalyticsSelectStore() {
+type T = {
+  setStore: string;
+};
+
+export function AnalyticsSelectStore({
+  setStore,
+}: {
+  setStore: React.Dispatch<React.SetStateAction<string>>;
+}) {
   return (
-    <Select>
+    <Select onValueChange={(e) => setStore(e)}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Select a Store" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>Fruits</SelectLabel>
+          <SelectLabel>Stores</SelectLabel>
           <SelectItem value="North Hill">North Hill</SelectItem>
           <SelectItem value="Aspen">Aspen</SelectItem>
           <SelectItem value="Marda Loop">Marda Loop</SelectItem>
