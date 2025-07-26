@@ -33,7 +33,7 @@ export default function Page() {
               <AnalyticsSelectStore />
               <FilterSelect />
             </div>
-            <div className="p-24">
+            <div className="md:p-24 sm:mt-20 md:mt-2">
               <ChartPieLabelList />
             </div>
           </div>
