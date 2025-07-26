@@ -11,47 +11,25 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export function AnalyticsSelectStore() {
-  const [value, setValue] = React.useState("");
-  console.log(value);
+type T = {
+  setStore: string;
+};
+
+export function AnalyticsSelectStore({
+  setStore,
+}: {
+  setStore: React.Dispatch<React.SetStateAction<string>>;
+}) {
   return (
-    <Select>
+    <Select onValueChange={(e) => setStore(e)}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Select a Store" />
       </SelectTrigger>
-      <SelectContent
-        onChange={(e) => {
-          setValue("dasdasd");
-        }}
-      >
-        <SelectGroup
-          onClick={() => {
-            console.log("SADasdasda");
-          }}
-        >
-          <SelectLabel
-            onSelect={() => {
-              console.log("ASdasdsa");
-            }}
-          >
-            Stores
-          </SelectLabel>
-          <SelectItem
-            onClick={() => {
-              console.log("as");
-            }}
-            value="North Hill"
-          >
-            North Hill
-          </SelectItem>
-          <SelectItem
-            value="Aspen"
-            onSelect={() => {
-              console.log("asdknajsbd,as");
-            }}
-          >
-            Aspen
-          </SelectItem>
+      <SelectContent>
+        <SelectGroup>
+          <SelectLabel>Stores</SelectLabel>
+          <SelectItem value="North Hill">North Hill</SelectItem>
+          <SelectItem value="Aspen">Aspen</SelectItem>
           <SelectItem value="Marda Loop">Marda Loop</SelectItem>
           <SelectItem value="Richmond">Richmond</SelectItem>
           <SelectItem value="8th Ave">8th Ave</SelectItem>

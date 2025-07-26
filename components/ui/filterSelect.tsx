@@ -11,54 +11,28 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export function FilterSelect() {
+export function FilterSelect({
+  setFilter,
+}: {
+  setFilter: React.Dispatch<React.SetStateAction<string>>;
+}) {
   return (
-    <Select open>
+    <Select
+      onValueChange={(e) => {
+        setFilter(e);
+      }}
+    >
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Select a filter" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel
-            onClick={() => {
-              console.log("9");
-            }}
-          >
-            Filters
-          </SelectLabel>
+          <SelectLabel>Filters</SelectLabel>
 
-          <SelectItem
-            onClick={(e) => {
-              console.log("8");
-            }}
-            value="Wine"
-          >
-            Wine
-          </SelectItem>
-          <SelectItem
-            value="Beer"
-            onClick={() => {
-              console.log("x");
-            }}
-          >
-            Beer
-          </SelectItem>
-          <SelectItem
-            onClick={() => {
-              console.log("a");
-            }}
-            value="Liquor"
-          >
-            Liqour
-          </SelectItem>
-          <SelectItem
-            onClick={() => {
-              console.log("f");
-            }}
-            value="Staff"
-          >
-            Staff
-          </SelectItem>
+          <SelectItem value="Wine">Wine</SelectItem>
+          <SelectItem value="Beer">Beer</SelectItem>
+          <SelectItem value="Liquor">Liqour</SelectItem>
+          <SelectItem value="Staff">Staff</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>

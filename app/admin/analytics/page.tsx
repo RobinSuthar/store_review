@@ -1,3 +1,4 @@
+"use client";
 import { AppSidebar } from "@/components/app-sidebar";
 import { AnalyticsSelectStore } from "@/components/ui/storeSelect";
 
@@ -5,17 +6,19 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { FilterSelect } from "@/components/ui/filterSelect";
 import {
   Card,
-  CardAction,
   CardDescription,
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { Badge } from "lucide-react";
-import { IconTrendingUp } from "@tabler/icons-react";
 import { PaginationMenu } from "@/components/ui/paginationmenu";
 import { ChartPieLabelList } from "@/components/charts/piechart";
+import React, { useState } from "react";
 
 export default function Page() {
+  const [filter, setfilter] = React.useState("");
+  const [store, setStore] = React.useState("");
+  console.log("Store: ", store);
+  console.log("Filter : ", filter);
   return (
     <SidebarProvider
       style={
@@ -30,8 +33,8 @@ export default function Page() {
         <div className="grid grid-cols-2 mt-10">
           <div>
             <div className="flex gap-20 justify-center">
-              <AnalyticsSelectStore />
-              <FilterSelect />
+              <AnalyticsSelectStore setStore={setStore} />
+              <FilterSelect setFilter={setfilter} />
             </div>
             <div className="md:p-24 sm:mt-20 md:mt-2">
               <ChartPieLabelList />
