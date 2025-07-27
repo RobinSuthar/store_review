@@ -37,7 +37,7 @@ export default function Page() {
               <FilterSelect setFilter={setfilter} />
             </div>
             <div className="md:p-24 sm:mt-20 md:mt-2">
-              <ChartPieLabelList />
+              <ChartPieLabelList data={{ store: store, filter: filter }} />
             </div>
           </div>
           <div className="flex flex-col justify-center gap-9 ml-20 ">
