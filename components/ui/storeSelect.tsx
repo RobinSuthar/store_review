@@ -28,13 +28,13 @@ export function AnalyticsSelectStore({
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Stores</SelectLabel>
-          <SelectItem value="North Hill">North Hill</SelectItem>
-          <SelectItem value="Aspen">Aspen</SelectItem>
-          <SelectItem value="Marda Loop">Marda Loop</SelectItem>
-          <SelectItem value="Richmond">Richmond</SelectItem>
-          <SelectItem value="8th Ave">8th Ave</SelectItem>
-          <SelectItem value="Coopers">Coopers</SelectItem>
-          <SelectItem value="Okatoks">Okatoks</SelectItem>
+          <SelectItem value="1">North Hill</SelectItem>
+          <SelectItem value="2">Aspen</SelectItem>
+          <SelectItem value="3">Marda Loop</SelectItem>
+          <SelectItem value="4">Richmond</SelectItem>
+          <SelectItem value="5">8th Ave</SelectItem>
+          <SelectItem value="6">Coopers</SelectItem>
+          <SelectItem value="7">Okatoks</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>

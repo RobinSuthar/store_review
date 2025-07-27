@@ -33,28 +33,34 @@ const chartConfig = {
     label: "Visitors",
   },
   chrome: {
-    label: "Chrome",
+    label: "5 Star",
     color: "var(--chart-1)",
   },
   safari: {
-    label: "Safari",
+    label: "4 Star",
     color: "var(--chart-2)",
   },
   firefox: {
-    label: "Firefox",
+    label: "3 Star",
     color: "var(--chart-3)",
   },
   edge: {
-    label: "Edge",
+    label: "2 Star",
     color: "var(--chart-4)",
   },
   other: {
-    label: "Other",
+    label: "1 Star",
     color: "var(--chart-5)",
   },
 } satisfies ChartConfig;
 
-export function ChartPieLabelList() {
+export function ChartPieLabelList({
+  data,
+}: {
+  data: { store: string; filter: string };
+}) {
+  console.log("Inside Pie Chart : ", data.store);
+  console.log("Inside Pir Chart : ", data.filter);
   return (
     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
