@@ -10,66 +10,82 @@ import database from "@/database/db";
 //   { browser: "other", visitors: 90, fill: "var(--color-other)" },
 // ];
 
+interface RecivingData {
+  store: string;
+  filter: string;
+}
+
 export default async function GetDataForPie({
   Props,
 }: {
-  Props: { store: string; filter: string };
+  Props: RecivingData;
 }) {
-  if (Props.store || Props.filter) {
-    const result = await database.review.findUnique({
+  console.log("Inside GetData Server Actions, ", Props.filter, Props.store);
+  if (!Props.store || !Props.filter) {
+    const result = await database.review.findMany({
       where: {
-        id: 1,
+        StoreId: 1,
       },
       select: {
         Wine: true,
       },
     });
+    console.log("asda");
     return result;
   }
 
   if (Props.filter == "Wine") {
-    const result = await database.review.findUnique({
+    const result = await database.review.findMany({
       where: {
-        id: Number(Props.store),
+        StoreId: Number(Props.store),
       },
       select: {
         Wine: true,
       },
     });
+    console.log("ssss result data fetching from database , ", result);
+
+    console.log("ssss");
     return result;
   }
   if (Props.filter == "Beer") {
-    const result = await database.review.findUnique({
+    const result = await database.review.findMany({
       where: {
-        id: Number(Props.store),
+        StoreId: Number(Props.store),
       },
       select: {
         Beer: true,
       },
     });
+
+    console.log("www");
     return result;
   }
-  if (Props.filter == "Liqour") {
-    const result = await database.review.findUnique({
+  if (Props.filter == "Liquor") {
+    const result = await database.review.findMany({
       where: {
-        id: Number(Props.store),
+        StoreId: Number(Props.store),
       },
       select: {
         Liquore: true,
       },
     });
+
+    console.log("saqqqq");
     return result;
   }
 
   if (Props.filter == "Staff") {
-    const result = await database.review.findUnique({
+    const result = await database.review.findMany({
       where: {
-        id: Number(Props.store),
+        StoreId: Number(Props.store),
       },
       select: {
         Staff: true,
       },
     });
+
+    console.log("kllll");
     return result;
   }
 }

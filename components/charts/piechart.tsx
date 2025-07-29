@@ -17,6 +17,8 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import React from "react";
+import GetDataForPie from "@/lib/actions/getDataForPie";
 
 export const description = "A pie chart with a label list";
 
@@ -59,8 +61,23 @@ export function ChartPieLabelList({
 }: {
   data: { store: string; filter: string };
 }) {
-  console.log("Inside Pie Chart : ", data.store);
-  console.log("Inside Pir Chart : ", data.filter);
+  const [storeState, setstoreState] = React.useState("");
+  const [filterState, setFilterState] = React.useState("");
+  React.useEffect(() => {
+    setstoreState(data.store);
+    setFilterState(data.filter);
+  }, [data]);
+
+  React.useEffect(() => {
+    async function x() {
+      const data = await GetDataForPie({
+        Props: { store: storeState, filter: filterState },
+      });
+
+      console.log("Use Effect From Pie Chart", data);
+    }
+    x();
+  }, [storeState, filterState]);
   return (
     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
