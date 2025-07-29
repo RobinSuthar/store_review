@@ -29,7 +29,13 @@ export default async function GetDataForPie({
       select: {
         Wine: true,
       },
+      orderBy: {
+        Wine: "asc",
+      },
     });
+
+    result.sort((a, b) => a.Wine - b.Wine);
+
     console.log("asda");
     return result;
   }
@@ -42,10 +48,15 @@ export default async function GetDataForPie({
       select: {
         Wine: true,
       },
+      orderBy: {
+        Wine: "asc",
+      },
     });
-    console.log("ssss result data fetching from database , ", result);
 
-    console.log("ssss");
+    result.map((x) => {
+      if (x.Wine == 5) {
+      }
+    });
     return result;
   }
   if (Props.filter == "Beer") {
@@ -55,6 +66,9 @@ export default async function GetDataForPie({
       },
       select: {
         Beer: true,
+      },
+      orderBy: {
+        Beer: "asc",
       },
     });
 
@@ -69,6 +83,9 @@ export default async function GetDataForPie({
       select: {
         Liquore: true,
       },
+      orderBy: {
+        Liquore: "asc",
+      },
     });
 
     console.log("saqqqq");
@@ -82,6 +99,9 @@ export default async function GetDataForPie({
       },
       select: {
         Staff: true,
+      },
+      orderBy: {
+        Staff: "asc",
       },
     });
 

@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/chart";
 import React from "react";
 import GetDataForPie from "@/lib/actions/getDataForPie";
+import { number } from "motion/react";
 
 export const description = "A pie chart with a label list";
 
@@ -63,6 +64,7 @@ export function ChartPieLabelList({
 }) {
   const [storeState, setstoreState] = React.useState("");
   const [filterState, setFilterState] = React.useState("");
+
   React.useEffect(() => {
     setstoreState(data.store);
     setFilterState(data.filter);
