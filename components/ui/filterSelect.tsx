@@ -31,7 +31,7 @@ export function FilterSelect({
 
           <SelectItem value="Wine">Wine</SelectItem>
           <SelectItem value="Beer">Beer</SelectItem>
-          <SelectItem value="Liquor">Liqour</SelectItem>
+          <SelectItem value="Liquore">Liqour</SelectItem>
           <SelectItem value="Staff">Staff</SelectItem>
         </SelectGroup>
       </SelectContent>

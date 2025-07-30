@@ -75,6 +75,22 @@ export function ChartPieLabelList({
       const data = await GetDataForPie({
         Props: { store: storeState, filter: filterState },
       });
+      if (data) {
+        data.map((x) => {
+          if ("Wine" in x) {
+            console.log(x["Wine"]);
+          }
+          if ("Staff" in x) {
+            console.log(x["Staff"]);
+          }
+          if ("Liqoure" in x) {
+            console.log(x["Liqoure"]);
+          }
+          if ("Beer" in x) {
+            console.log(x["Beer"]);
+          }
+        });
+      }
 
       console.log("Use Effect From Pie Chart", data);
     }
