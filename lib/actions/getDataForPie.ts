@@ -55,6 +55,7 @@ export default async function GetDataForPie({
 
     result.map((x) => {
       if (x.Wine == 5) {
+        console.log(5);
       }
     });
     return result;
@@ -75,7 +76,7 @@ export default async function GetDataForPie({
     console.log("www");
     return result;
   }
-  if (Props.filter == "Liquor") {
+  if (Props.filter == "Liquore") {
     const result = await database.review.findMany({
       where: {
         StoreId: Number(Props.store),
