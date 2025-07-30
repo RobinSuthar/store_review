@@ -24,11 +24,19 @@ import { number } from "motion/react";
 export const description = "A pie chart with a label list";
 
 const chartData = [
-  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
+  { browser: "chrome", visitors: 500, fill: "var(--color-chrome)" },
   { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
   { browser: "firefox", visitors: 187, fill: "var(--color-firefox)" },
   { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
   { browser: "other", visitors: 90, fill: "var(--color-other)" },
+];
+
+type chartDataDemo = [
+  { browser: "chrome"; visitors: number; fill: "var(--color-chrome)" },
+  { browser: "safari"; visitors: number; fill: "var(--color-safari)" },
+  { browser: "firefox"; visitors: number; fill: "var(--color-firefox)" },
+  { browser: "edge"; visitors: number; fill: "var(--color-edge)" },
+  { browser: "other"; visitors: number; fill: "var(--color-other)" }
 ];
 
 const chartConfig = {
@@ -64,13 +72,13 @@ export function ChartPieLabelList({
 }) {
   const [storeState, setstoreState] = React.useState("");
   const [filterState, setFilterState] = React.useState("");
-  const [graphstate, setGraphstate] = React.useState({
-    fiveStar: number,
-    fourStar: number,
-    threeStar: number,
-    twoStar: number,
-    oneStar: number,
-  });
+  const [graphstate, setGraphstate] = React.useState<chartDataDemo>([
+    { browser: "chrome", visitors: 0, fill: "var(--color-chrome)" },
+    { browser: "safari", visitors: 0, fill: "var(--color-safari)" },
+    { browser: "firefox", visitors: 0, fill: "var(--color-firefox)" },
+    { browser: "edge", visitors: 0, fill: "var(--color-edge)" },
+    { browser: "other", visitors: 0, fill: "var(--color-other)" },
+  ]);
 
   React.useEffect(() => {
     setstoreState(data.store);
@@ -86,9 +94,31 @@ export function ChartPieLabelList({
         data.map((x) => {
           if ("Wine" in x) {
             if (x["Wine"] == 1) {
+              setGraphstate([
+                {
+                  browser: "chrome",
+                  visitors: +1,
+                  fill: "var(--color-chrome)",
+                },
+                { browser: "safari", visitors: 0, fill: "var(--color-safari)" },
+                {
+                  browser: "firefox",
+                  visitors: 0,
+                  fill: "var(--color-firefox)",
+                },
+                { browser: "edge", visitors: 0, fill: "var(--color-edge)" },
+                { browser: "other", visitors: 0, fill: "var(--color-other)" },
+              ]);
             }
 
             if (x["Wine"] == 2) {
+              setGraphstate((prevData) => {
+                prevData.map((item) => {
+                  if (item.browser == "edge") {
+                    return item.visitors + 1;
+                  }
+                });
+              });
             }
 
             if (x["Wine"] == 3) {
