@@ -64,6 +64,13 @@ export function ChartPieLabelList({
 }) {
   const [storeState, setstoreState] = React.useState("");
   const [filterState, setFilterState] = React.useState("");
+  const [graphstate, setGraphstate] = React.useState({
+    fiveStar: number,
+    fourStar: number,
+    threeStar: number,
+    twoStar: number,
+    oneStar: number,
+  });
 
   React.useEffect(() => {
     setstoreState(data.store);
@@ -78,7 +85,20 @@ export function ChartPieLabelList({
       if (data) {
         data.map((x) => {
           if ("Wine" in x) {
-            console.log(x["Wine"]);
+            if (x["Wine"] == 1) {
+            }
+
+            if (x["Wine"] == 2) {
+            }
+
+            if (x["Wine"] == 3) {
+            }
+
+            if (x["Wine"] == 4) {
+            }
+
+            if (x["Wine"] == 5) {
+            }
           }
           if ("Staff" in x) {
             console.log(x["Staff"]);
@@ -93,6 +113,8 @@ export function ChartPieLabelList({
       }
 
       console.log("Use Effect From Pie Chart", data);
+
+      console.log(graphstate);
     }
     x();
   }, [storeState, filterState]);
