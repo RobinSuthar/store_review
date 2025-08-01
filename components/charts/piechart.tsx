@@ -24,11 +24,19 @@ import { number } from "motion/react";
 export const description = "A pie chart with a label list";
 
 const chartData = [
-  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
+  { browser: "chrome", visitors: 500, fill: "var(--color-chrome)" },
   { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
   { browser: "firefox", visitors: 187, fill: "var(--color-firefox)" },
   { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
   { browser: "other", visitors: 90, fill: "var(--color-other)" },
+];
+
+type chartDataDemo = [
+  { browser: "chrome"; visitors: number; fill: "var(--color-chrome)" },
+  { browser: "safari"; visitors: number; fill: "var(--color-safari)" },
+  { browser: "firefox"; visitors: number; fill: "var(--color-firefox)" },
+  { browser: "edge"; visitors: number; fill: "var(--color-edge)" },
+  { browser: "other"; visitors: number; fill: "var(--color-other)" }
 ];
 
 const chartConfig = {
@@ -64,13 +72,14 @@ export function ChartPieLabelList({
 }) {
   const [storeState, setstoreState] = React.useState("");
   const [filterState, setFilterState] = React.useState("");
-  const [graphstate, setGraphstate] = React.useState({
-    fiveStar: number,
-    fourStar: number,
-    threeStar: number,
-    twoStar: number,
-    oneStar: number,
-  });
+  const [correctdata, setCorrectData] = React.useState([{}]);
+  const [graphstate, setGraphstate] = React.useState<chartDataDemo>([
+    { browser: "chrome", visitors: 0, fill: "var(--color-chrome)" },
+    { browser: "safari", visitors: 0, fill: "var(--color-safari)" },
+    { browser: "firefox", visitors: 0, fill: "var(--color-firefox)" },
+    { browser: "edge", visitors: 0, fill: "var(--color-edge)" },
+    { browser: "other", visitors: 0, fill: "var(--color-other)" },
+  ]);
 
   React.useEffect(() => {
     setstoreState(data.store);
@@ -82,42 +91,91 @@ export function ChartPieLabelList({
       const data = await GetDataForPie({
         Props: { store: storeState, filter: filterState },
       });
+
       if (data) {
-        data.map((x) => {
-          if ("Wine" in x) {
-            if (x["Wine"] == 1) {
-            }
-
-            if (x["Wine"] == 2) {
-            }
-
-            if (x["Wine"] == 3) {
-            }
-
-            if (x["Wine"] == 4) {
-            }
-
-            if (x["Wine"] == 5) {
-            }
-          }
-          if ("Staff" in x) {
-            console.log(x["Staff"]);
-          }
-          if ("Liqoure" in x) {
-            console.log(x["Liqoure"]);
-          }
-          if ("Beer" in x) {
-            console.log(x["Beer"]);
-          }
-        });
+        setCorrectData(data);
+        console.log(data);
       }
-
-      console.log("Use Effect From Pie Chart", data);
-
-      console.log(graphstate);
     }
+
     x();
   }, [storeState, filterState]);
+
+  React.useEffect(() => {
+    console.log(graphstate);
+    correctdata.map((x) => {
+      if ("Wine" in x) {
+        if (x.Wine == 1) {
+          console.log("1 Star");
+          console.log(x);
+          setGraphstate([
+            {
+              browser: "chrome",
+              visitors: graphstate[0].visitors + 1,
+              fill: "var(--color-chrome)",
+            },
+            {
+              browser: "safari",
+              visitors: graphstate[1].visitors,
+              fill: "var(--color-safari)",
+            },
+            {
+              browser: "firefox",
+              visitors: graphstate[2].visitors,
+              fill: "var(--color-firefox)",
+            },
+            {
+              browser: "edge",
+              visitors: graphstate[3].visitors,
+              fill: "var(--color-edge)",
+            },
+            {
+              browser: "other",
+              visitors: graphstate[4].visitors,
+              fill: "var(--color-other)",
+            },
+          ]);
+        }
+
+        if (x.Wine == 2) {
+          console.log("2 Star");
+          console.log(x);
+        }
+
+        if (x.Wine == 3) {
+          console.log("3 Star");
+          console.log(x);
+        }
+
+        if (x.Wine == 4) {
+          console.log("4 Star");
+          console.log(x);
+        }
+
+        if (x.Wine == 5) {
+          console.log("5 Star");
+          console.log(x);
+        }
+      }
+      if ("Beer" in x) {
+        console.log("Beer reeviews");
+        console.log(x);
+      }
+      if ("Liqoure" in x) {
+        console.log("Liqoure reeviews");
+        console.log(x);
+      }
+      if ("Staff" in x) {
+        console.log("Staff reeviews");
+        console.log(x);
+      }
+    });
+  }, [correctdata]);
+
+  React.useEffect(() => {
+    console.log("New Graph State :", graphstate);
+  }, [graphstate]);
+
   return (
     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
