@@ -102,16 +102,17 @@ export function ChartPieLabelList({
   }, [storeState, filterState]);
 
   React.useEffect(() => {
+    let oneStart = 0;
     console.log(graphstate);
     correctdata.map((x) => {
       if ("Wine" in x) {
         if (x.Wine == 1) {
-          console.log("1 Star");
-          console.log(x);
+          oneStart = oneStart + 1;
+          console.log("One");
           setGraphstate([
             {
               browser: "chrome",
-              visitors: graphstate[0].visitors + 1,
+              visitors: oneStart,
               fill: "var(--color-chrome)",
             },
             {
