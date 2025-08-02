@@ -23,14 +23,6 @@ import { number } from "motion/react";
 
 export const description = "A pie chart with a label list";
 
-const chartData = [
-  { browser: "chrome", visitors: 500, fill: "var(--color-chrome)" },
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-  { browser: "firefox", visitors: 187, fill: "var(--color-firefox)" },
-  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-  { browser: "other", visitors: 90, fill: "var(--color-other)" },
-];
-
 type chartDataDemo = [
   { browser: "chrome"; visitors: number; fill: "var(--color-chrome)" },
   { browser: "safari"; visitors: number; fill: "var(--color-safari)" },
@@ -776,7 +768,7 @@ export function ChartPieLabelList({
             <ChartTooltip
               content={<ChartTooltipContent nameKey="visitors" hideLabel />}
             />
-            <Pie data={chartData} dataKey="visitors">
+            <Pie data={graphstate} dataKey="visitors">
               <LabelList
                 dataKey="browser"
                 className="fill-background"
