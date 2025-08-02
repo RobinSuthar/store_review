@@ -23,14 +23,6 @@ import { number } from "motion/react";
 
 export const description = "A pie chart with a label list";
 
-const chartData = [
-  { browser: "chrome", visitors: 500, fill: "var(--color-chrome)" },
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-  { browser: "firefox", visitors: 187, fill: "var(--color-firefox)" },
-  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-  { browser: "other", visitors: 90, fill: "var(--color-other)" },
-];
-
 type chartDataDemo = [
   { browser: "chrome"; visitors: number; fill: "var(--color-chrome)" },
   { browser: "safari"; visitors: number; fill: "var(--color-safari)" },
@@ -102,16 +94,22 @@ export function ChartPieLabelList({
   }, [storeState, filterState]);
 
   React.useEffect(() => {
+    let oneStart = 0;
+
+    let TwoStart = 0;
+    let ThreeStart = 0;
+    let FourStart = 0;
+    let FiveStart = 0;
     console.log(graphstate);
     correctdata.map((x) => {
       if ("Wine" in x) {
         if (x.Wine == 1) {
-          console.log("1 Star");
-          console.log(x);
+          console.log("One Star");
+          oneStart = oneStart + 1;
           setGraphstate([
             {
               browser: "chrome",
-              visitors: graphstate[0].visitors + 1,
+              visitors: oneStart,
               fill: "var(--color-chrome)",
             },
             {
@@ -139,35 +137,614 @@ export function ChartPieLabelList({
 
         if (x.Wine == 2) {
           console.log("2 Star");
-          console.log(x);
+          TwoStart = TwoStart + 1;
+          setGraphstate([
+            {
+              browser: "chrome",
+              visitors: oneStart,
+              fill: "var(--color-chrome)",
+            },
+            {
+              browser: "safari",
+              visitors: TwoStart,
+              fill: "var(--color-safari)",
+            },
+            {
+              browser: "firefox",
+              visitors: graphstate[2].visitors,
+              fill: "var(--color-firefox)",
+            },
+            {
+              browser: "edge",
+              visitors: graphstate[3].visitors,
+              fill: "var(--color-edge)",
+            },
+            {
+              browser: "other",
+              visitors: graphstate[4].visitors,
+              fill: "var(--color-other)",
+            },
+          ]);
         }
 
         if (x.Wine == 3) {
           console.log("3 Star");
-          console.log(x);
+          ThreeStart = ThreeStart + 1;
+          setGraphstate([
+            {
+              browser: "chrome",
+              visitors: oneStart,
+              fill: "var(--color-chrome)",
+            },
+            {
+              browser: "safari",
+              visitors: TwoStart,
+              fill: "var(--color-safari)",
+            },
+            {
+              browser: "firefox",
+              visitors: ThreeStart,
+              fill: "var(--color-firefox)",
+            },
+            {
+              browser: "edge",
+              visitors: graphstate[3].visitors,
+              fill: "var(--color-edge)",
+            },
+            {
+              browser: "other",
+              visitors: graphstate[4].visitors,
+              fill: "var(--color-other)",
+            },
+          ]);
         }
 
         if (x.Wine == 4) {
           console.log("4 Star");
-          console.log(x);
+          FourStart = FourStart + 1;
+          setGraphstate([
+            {
+              browser: "chrome",
+              visitors: oneStart,
+              fill: "var(--color-chrome)",
+            },
+            {
+              browser: "safari",
+              visitors: TwoStart,
+              fill: "var(--color-safari)",
+            },
+            {
+              browser: "firefox",
+              visitors: ThreeStart,
+              fill: "var(--color-firefox)",
+            },
+            {
+              browser: "edge",
+              visitors: FourStart,
+              fill: "var(--color-edge)",
+            },
+            {
+              browser: "other",
+              visitors: graphstate[4].visitors,
+              fill: "var(--color-other)",
+            },
+          ]);
         }
 
         if (x.Wine == 5) {
           console.log("5 Star");
-          console.log(x);
+          FiveStart = FiveStart + 1;
+          setGraphstate([
+            {
+              browser: "chrome",
+              visitors: oneStart,
+              fill: "var(--color-chrome)",
+            },
+            {
+              browser: "safari",
+              visitors: TwoStart,
+              fill: "var(--color-safari)",
+            },
+            {
+              browser: "firefox",
+              visitors: ThreeStart,
+              fill: "var(--color-firefox)",
+            },
+            {
+              browser: "edge",
+              visitors: FourStart,
+              fill: "var(--color-edge)",
+            },
+            {
+              browser: "other",
+              visitors: FiveStart,
+              fill: "var(--color-other)",
+            },
+          ]);
         }
       }
       if ("Beer" in x) {
-        console.log("Beer reeviews");
-        console.log(x);
+        if (x.Beer == 1) {
+          console.log("1 Star");
+          oneStart = oneStart + 1;
+          setGraphstate([
+            {
+              browser: "chrome",
+              visitors: oneStart,
+              fill: "var(--color-chrome)",
+            },
+            {
+              browser: "safari",
+              visitors: graphstate[1].visitors,
+              fill: "var(--color-safari)",
+            },
+            {
+              browser: "firefox",
+              visitors: graphstate[2].visitors,
+              fill: "var(--color-firefox)",
+            },
+            {
+              browser: "edge",
+              visitors: graphstate[3].visitors,
+              fill: "var(--color-edge)",
+            },
+            {
+              browser: "other",
+              visitors: graphstate[4].visitors,
+              fill: "var(--color-other)",
+            },
+          ]);
+        }
+
+        if (x.Beer == 2) {
+          console.log("2 Star");
+          TwoStart = TwoStart + 1;
+          setGraphstate([
+            {
+              browser: "chrome",
+              visitors: oneStart,
+              fill: "var(--color-chrome)",
+            },
+            {
+              browser: "safari",
+              visitors: TwoStart,
+              fill: "var(--color-safari)",
+            },
+            {
+              browser: "firefox",
+              visitors: graphstate[2].visitors,
+              fill: "var(--color-firefox)",
+            },
+            {
+              browser: "edge",
+              visitors: graphstate[3].visitors,
+              fill: "var(--color-edge)",
+            },
+            {
+              browser: "other",
+              visitors: graphstate[4].visitors,
+              fill: "var(--color-other)",
+            },
+          ]);
+        }
+
+        if (x.Beer == 3) {
+          console.log("3 Star");
+          ThreeStart = ThreeStart + 1;
+          setGraphstate([
+            {
+              browser: "chrome",
+              visitors: oneStart,
+              fill: "var(--color-chrome)",
+            },
+            {
+              browser: "safari",
+              visitors: TwoStart,
+              fill: "var(--color-safari)",
+            },
+            {
+              browser: "firefox",
+              visitors: ThreeStart,
+              fill: "var(--color-firefox)",
+            },
+            {
+              browser: "edge",
+              visitors: graphstate[3].visitors,
+              fill: "var(--color-edge)",
+            },
+            {
+              browser: "other",
+              visitors: graphstate[4].visitors,
+              fill: "var(--color-other)",
+            },
+          ]);
+        }
+
+        if (x.Beer == 4) {
+          console.log("4 Star");
+          FourStart = FourStart + 1;
+          setGraphstate([
+            {
+              browser: "chrome",
+              visitors: oneStart,
+              fill: "var(--color-chrome)",
+            },
+            {
+              browser: "safari",
+              visitors: TwoStart,
+              fill: "var(--color-safari)",
+            },
+            {
+              browser: "firefox",
+              visitors: ThreeStart,
+              fill: "var(--color-firefox)",
+            },
+            {
+              browser: "edge",
+              visitors: FourStart,
+              fill: "var(--color-edge)",
+            },
+            {
+              browser: "other",
+              visitors: graphstate[4].visitors,
+              fill: "var(--color-other)",
+            },
+          ]);
+        }
+
+        if (x.Beer == 5) {
+          console.log("5 Star");
+          FiveStart = FiveStart + 1;
+          setGraphstate([
+            {
+              browser: "chrome",
+              visitors: oneStart,
+              fill: "var(--color-chrome)",
+            },
+            {
+              browser: "safari",
+              visitors: TwoStart,
+              fill: "var(--color-safari)",
+            },
+            {
+              browser: "firefox",
+              visitors: ThreeStart,
+              fill: "var(--color-firefox)",
+            },
+            {
+              browser: "edge",
+              visitors: FourStart,
+              fill: "var(--color-edge)",
+            },
+            {
+              browser: "other",
+              visitors: FiveStart,
+              fill: "var(--color-other)",
+            },
+          ]);
+        }
       }
-      if ("Liqoure" in x) {
-        console.log("Liqoure reeviews");
-        console.log(x);
+      if ("Liquore" in x) {
+        if (x.Liquore == 1) {
+          console.log("1 Star");
+          oneStart = oneStart + 1;
+          setGraphstate([
+            {
+              browser: "chrome",
+              visitors: oneStart,
+              fill: "var(--color-chrome)",
+            },
+            {
+              browser: "safari",
+              visitors: graphstate[1].visitors,
+              fill: "var(--color-safari)",
+            },
+            {
+              browser: "firefox",
+              visitors: graphstate[2].visitors,
+              fill: "var(--color-firefox)",
+            },
+            {
+              browser: "edge",
+              visitors: graphstate[3].visitors,
+              fill: "var(--color-edge)",
+            },
+            {
+              browser: "other",
+              visitors: graphstate[4].visitors,
+              fill: "var(--color-other)",
+            },
+          ]);
+        }
+
+        if (x.Liquore == 2) {
+          console.log("2 Star");
+          TwoStart = TwoStart + 1;
+          setGraphstate([
+            {
+              browser: "chrome",
+              visitors: oneStart,
+              fill: "var(--color-chrome)",
+            },
+            {
+              browser: "safari",
+              visitors: TwoStart,
+              fill: "var(--color-safari)",
+            },
+            {
+              browser: "firefox",
+              visitors: graphstate[2].visitors,
+              fill: "var(--color-firefox)",
+            },
+            {
+              browser: "edge",
+              visitors: graphstate[3].visitors,
+              fill: "var(--color-edge)",
+            },
+            {
+              browser: "other",
+              visitors: graphstate[4].visitors,
+              fill: "var(--color-other)",
+            },
+          ]);
+        }
+
+        if (x.Liquore == 3) {
+          console.log("3 Star");
+          ThreeStart = ThreeStart + 1;
+          setGraphstate([
+            {
+              browser: "chrome",
+              visitors: oneStart,
+              fill: "var(--color-chrome)",
+            },
+            {
+              browser: "safari",
+              visitors: TwoStart,
+              fill: "var(--color-safari)",
+            },
+            {
+              browser: "firefox",
+              visitors: ThreeStart,
+              fill: "var(--color-firefox)",
+            },
+            {
+              browser: "edge",
+              visitors: graphstate[3].visitors,
+              fill: "var(--color-edge)",
+            },
+            {
+              browser: "other",
+              visitors: graphstate[4].visitors,
+              fill: "var(--color-other)",
+            },
+          ]);
+        }
+
+        if (x.Liquore == 4) {
+          console.log("4 Star");
+          FourStart = FourStart + 1;
+          setGraphstate([
+            {
+              browser: "chrome",
+              visitors: oneStart,
+              fill: "var(--color-chrome)",
+            },
+            {
+              browser: "safari",
+              visitors: TwoStart,
+              fill: "var(--color-safari)",
+            },
+            {
+              browser: "firefox",
+              visitors: ThreeStart,
+              fill: "var(--color-firefox)",
+            },
+            {
+              browser: "edge",
+              visitors: FourStart,
+              fill: "var(--color-edge)",
+            },
+            {
+              browser: "other",
+              visitors: graphstate[4].visitors,
+              fill: "var(--color-other)",
+            },
+          ]);
+        }
+
+        if (x.Liquore == 5) {
+          console.log("5 Star");
+          FiveStart = FiveStart + 1;
+          setGraphstate([
+            {
+              browser: "chrome",
+              visitors: oneStart,
+              fill: "var(--color-chrome)",
+            },
+            {
+              browser: "safari",
+              visitors: TwoStart,
+              fill: "var(--color-safari)",
+            },
+            {
+              browser: "firefox",
+              visitors: ThreeStart,
+              fill: "var(--color-firefox)",
+            },
+            {
+              browser: "edge",
+              visitors: FourStart,
+              fill: "var(--color-edge)",
+            },
+            {
+              browser: "other",
+              visitors: FiveStart,
+              fill: "var(--color-other)",
+            },
+          ]);
+        }
       }
       if ("Staff" in x) {
-        console.log("Staff reeviews");
-        console.log(x);
+        if (x.Staff == 1) {
+          console.log("1 Star");
+          oneStart = oneStart + 1;
+          setGraphstate([
+            {
+              browser: "chrome",
+              visitors: oneStart,
+              fill: "var(--color-chrome)",
+            },
+            {
+              browser: "safari",
+              visitors: graphstate[1].visitors,
+              fill: "var(--color-safari)",
+            },
+            {
+              browser: "firefox",
+              visitors: graphstate[2].visitors,
+              fill: "var(--color-firefox)",
+            },
+            {
+              browser: "edge",
+              visitors: graphstate[3].visitors,
+              fill: "var(--color-edge)",
+            },
+            {
+              browser: "other",
+              visitors: graphstate[4].visitors,
+              fill: "var(--color-other)",
+            },
+          ]);
+        }
+
+        if (x.Staff == 2) {
+          console.log("2 Star");
+          TwoStart = TwoStart + 1;
+          setGraphstate([
+            {
+              browser: "chrome",
+              visitors: oneStart,
+              fill: "var(--color-chrome)",
+            },
+            {
+              browser: "safari",
+              visitors: TwoStart,
+              fill: "var(--color-safari)",
+            },
+            {
+              browser: "firefox",
+              visitors: graphstate[2].visitors,
+              fill: "var(--color-firefox)",
+            },
+            {
+              browser: "edge",
+              visitors: graphstate[3].visitors,
+              fill: "var(--color-edge)",
+            },
+            {
+              browser: "other",
+              visitors: graphstate[4].visitors,
+              fill: "var(--color-other)",
+            },
+          ]);
+        }
+
+        if (x.Staff == 3) {
+          console.log("3 Star");
+          ThreeStart = ThreeStart + 1;
+          setGraphstate([
+            {
+              browser: "chrome",
+              visitors: oneStart,
+              fill: "var(--color-chrome)",
+            },
+            {
+              browser: "safari",
+              visitors: TwoStart,
+              fill: "var(--color-safari)",
+            },
+            {
+              browser: "firefox",
+              visitors: ThreeStart,
+              fill: "var(--color-firefox)",
+            },
+            {
+              browser: "edge",
+              visitors: graphstate[3].visitors,
+              fill: "var(--color-edge)",
+            },
+            {
+              browser: "other",
+              visitors: graphstate[4].visitors,
+              fill: "var(--color-other)",
+            },
+          ]);
+        }
+
+        if (x.Staff == 4) {
+          console.log("4 Star");
+          FourStart = FourStart + 1;
+          setGraphstate([
+            {
+              browser: "chrome",
+              visitors: oneStart,
+              fill: "var(--color-chrome)",
+            },
+            {
+              browser: "safari",
+              visitors: TwoStart,
+              fill: "var(--color-safari)",
+            },
+            {
+              browser: "firefox",
+              visitors: ThreeStart,
+              fill: "var(--color-firefox)",
+            },
+            {
+              browser: "edge",
+              visitors: FourStart,
+              fill: "var(--color-edge)",
+            },
+            {
+              browser: "other",
+              visitors: graphstate[4].visitors,
+              fill: "var(--color-other)",
+            },
+          ]);
+        }
+
+        if (x.Staff == 5) {
+          console.log("5 Star");
+          FiveStart = FiveStart + 1;
+          setGraphstate([
+            {
+              browser: "chrome",
+              visitors: oneStart,
+              fill: "var(--color-chrome)",
+            },
+            {
+              browser: "safari",
+              visitors: TwoStart,
+              fill: "var(--color-safari)",
+            },
+            {
+              browser: "firefox",
+              visitors: ThreeStart,
+              fill: "var(--color-firefox)",
+            },
+            {
+              browser: "edge",
+              visitors: FourStart,
+              fill: "var(--color-edge)",
+            },
+            {
+              browser: "other",
+              visitors: FiveStart,
+              fill: "var(--color-other)",
+            },
+          ]);
+        }
       }
     });
   }, [correctdata]);
@@ -191,7 +768,7 @@ export function ChartPieLabelList({
             <ChartTooltip
               content={<ChartTooltipContent nameKey="visitors" hideLabel />}
             />
-            <Pie data={chartData} dataKey="visitors">
+            <Pie data={graphstate} dataKey="visitors">
               <LabelList
                 dataKey="browser"
                 className="fill-background"
