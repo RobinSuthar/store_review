@@ -48,6 +48,11 @@ const data = {
       url: "admin/ai",
       icon: IconFolder,
     },
+    {
+      title: "Feedback",
+      url: "admin/feedback",
+      icon: IconFolder,
+    },
   ],
 };
 
