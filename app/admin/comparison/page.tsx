@@ -13,7 +13,12 @@ export default function Page() {
       }
     >
       <AppSidebar variant="inset" />
-      <SidebarInset>assas</SidebarInset>
+      <SidebarInset>
+        <div className="flex mt-72 text-center justify-center text-7xl">
+          {" "}
+          Coming Soon!
+        </div>
+      </SidebarInset>
     </SidebarProvider>
   );
 }

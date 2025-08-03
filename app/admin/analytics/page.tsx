@@ -66,7 +66,7 @@ export default function Page() {
             </div>
           </div>
           <div className="flex flex-col justify-center gap-9 ml-20 ">
-            <Card className="w-10/12">
+            <Card className="w-10/12 min-h-36">
               <CardHeader>
                 <CardDescription>
                   {QuestionDataComing?.map((x, index) => {
@@ -87,7 +87,7 @@ export default function Page() {
               </CardFooter>
             </Card>
 
-            <Card className="w-10/12">
+            <Card className="w-10/12 min-h-36">
               <CardHeader>
                 <CardDescription>
                   {" "}
@@ -100,18 +100,21 @@ export default function Page() {
               </CardHeader>
               <CardFooter className="flex-col items-start gap-1.5 text-sm">
                 <div className="line-clamp-1 flex gap-2 font-medium">
-                  Lopem Ispum Lopem Ispum Lopem Ispum Lopem Ispum Lopem Ispum
-                  Lopem Ispum Lopem Ispum Lopem Ispum{" "}
+                  {QuestionDataComing?.map((x, index) => {
+                    if (index == 1) {
+                      return x.Question1;
+                    }
+                  })}
                 </div>
               </CardFooter>
             </Card>
-            <Card className="w-10/12">
+            <Card className="w-10/12 min-h-36">
               <CardHeader>
                 <CardDescription>
                   {" "}
                   {QuestionDataComing?.map((x, index) => {
                     if (index == 2) {
-                      return x.Question1;
+                      return x.Name;
                     }
                   })}
                 </CardDescription>
