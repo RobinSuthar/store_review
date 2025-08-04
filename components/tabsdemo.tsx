@@ -12,17 +12,53 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-type props = "graph" | "pie";
 
-export function TabsDemo(data: { data: props }) {
+export function TabsDemo(data: {
+  data: React.Dispatch<React.SetStateAction<"graph" | "pie">>;
+}) {
+  console.log("ASdaaaaaaaaaaaa");
   return (
     <div className=" flex-col gap-6">
-      <Tabs onSelect={(e) => {}} defaultValue="account">
-        <TabsList>
-          <TabsTrigger value="graph">Graph</TabsTrigger>
-          <TabsTrigger value="pie">Pie Chart</TabsTrigger>
+      <Tabs
+        onValueChange={(e) => {
+          console.log("ASdasd");
+          if (e == "graph") {
+            data.data("graph");
+          }
+          if (e == "pie") {
+            data.data("pie");
+          }
+        }}
+        defaultValue="account"
+      >
+        <TabsList
+          onChange={(e) => {
+            console.log(e);
+          }}
+        >
+          <TabsTrigger
+            onChange={(e) => {
+              console.log(e);
+            }}
+            value="graph"
+          >
+            Graph
+          </TabsTrigger>
+          <TabsTrigger
+            onSelect={(e) => {
+              console.log(e);
+            }}
+            value="pie"
+          >
+            Pie Chart
+          </TabsTrigger>
         </TabsList>
-        <TabsContent value="account"></TabsContent>
+        <TabsContent
+          onSelect={(e) => {
+            console.log(e);
+          }}
+          value="account"
+        ></TabsContent>
         <TabsContent value="password"></TabsContent>
       </Tabs>
     </div>
