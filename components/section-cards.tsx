@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import database from "@/database/db";
+import { SkeletonReview } from "./SketonReview";
 
 export async function SectionCards() {
   const data = await database.review.findMany();
@@ -57,9 +58,15 @@ export async function SectionCards() {
       <Card className="@container/card">
         <CardHeader>
           <CardDescription>Average Wine Rating</CardDescription>
-          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            {averageWineReview.toFixed(2)} / 5
-          </CardTitle>
+          {averageWineReview ? (
+            <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
+              {averageWineReview.toFixed(2)} / 5
+            </CardTitle>
+          ) : (
+            <>
+              <SkeletonReview />
+            </>
+          )}
           <CardAction>
             <Badge variant="outline">
               <IconTrendingUp />
