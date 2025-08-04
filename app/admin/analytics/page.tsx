@@ -15,6 +15,10 @@ import { ChartPieLabelList } from "@/components/charts/piechart";
 import React, { useState } from "react";
 import QuestionData from "@/lib/actions/questionData";
 import { Button } from "@/button";
+import { SkeletonCard } from "@/components/SkeletionCard";
+import { SkeletonDemo } from "@/components/Skeltondemo";
+import { ClipLoader } from "react-spinners";
+import { TabsDemo } from "@/components/tabsdemo";
 
 type QuestionDataType = {
   Name: string;
@@ -29,6 +33,7 @@ export default function Page() {
     React.useState<QuestionDataType>();
   console.log("Store: ", store);
   console.log("Filter : ", filter);
+  const [graphType, setGraphType] = useState<"graph" | "pie">();
 
   React.useEffect(() => {
     console.log("Asdbadks");
@@ -57,86 +62,113 @@ export default function Page() {
       <SidebarInset>
         <div className="grid grid-cols-2 mt-10">
           <div>
-            <div className="flex gap-20 justify-center">
+            <div className="flex gap-2 justify-center">
               <AnalyticsSelectStore setStore={setStore} />
               <FilterSelect setFilter={setfilter} />
+              <TabsDemo />
             </div>
             <div className="md:p-24 sm:mt-20 md:mt-2">
               <ChartPieLabelList data={{ store: store, filter: filter }} />
             </div>
           </div>
           <div className="flex flex-col justify-center gap-9 ml-20 ">
-            <Card className="w-10/12 min-h-36">
-              <CardHeader>
-                <CardDescription>
-                  {QuestionDataComing?.map((x, index) => {
-                    if (index == 0) {
-                      return x.Name;
-                    }
-                  })}
-                </CardDescription>
-              </CardHeader>
-              <CardFooter className="flex-col items-start gap-1.5 text-sm">
-                <div className="line-clamp-1 flex gap-2 font-medium">
-                  {QuestionDataComing?.map((x, index) => {
-                    if (index == 0) {
-                      return x.Question1;
-                    }
-                  })}
-                </div>
-              </CardFooter>
-            </Card>
+            {QuestionDataComing ? (
+              <Card className="w-10/12 min-h-36">
+                <CardHeader>
+                  <CardDescription>
+                    <div></div>
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="flex-col items-start gap-1.5 text-sm">
+                  <div className="line-clamp-1 flex gap-2 font-medium">
+                    {QuestionDataComing?.map((x, index) => {
+                      if (index == 0) {
+                        return x.Question1;
+                      }
+                    })}
+                  </div>
+                </CardFooter>
+              </Card>
+            ) : (
+              <>
+                <SkeletonCard />
+              </>
+            )}
 
-            <Card className="w-10/12 min-h-36">
-              <CardHeader>
-                <CardDescription>
-                  {" "}
-                  {QuestionDataComing?.map((x, index) => {
-                    if (index == 1) {
-                      return x.Name;
-                    }
-                  })}
-                </CardDescription>
-              </CardHeader>
-              <CardFooter className="flex-col items-start gap-1.5 text-sm">
-                <div className="line-clamp-1 flex gap-2 font-medium">
-                  {QuestionDataComing?.map((x, index) => {
-                    if (index == 1) {
-                      return x.Question1;
-                    }
-                  })}
-                </div>
-              </CardFooter>
-            </Card>
-            <Card className="w-10/12 min-h-36">
-              <CardHeader>
-                <CardDescription>
-                  {" "}
-                  {QuestionDataComing?.map((x, index) => {
-                    if (index == 2) {
-                      return x.Name;
-                    }
-                  })}
-                </CardDescription>
-              </CardHeader>
-              <CardFooter className="flex-col items-start gap-1.5 text-sm">
-                <div className="line-clamp-1 flex gap-2 font-medium">
-                  {QuestionDataComing?.map((x, index) => {
-                    if (index == 2) {
-                      return x.Question1;
-                    }
-                  })}
-                </div>
-              </CardFooter>
-            </Card>
+            {QuestionDataComing ? (
+              <Card className="w-10/12 min-h-36">
+                <CardHeader>
+                  <CardDescription>
+                    {" "}
+                    {QuestionDataComing?.map((x, index) => {
+                      if (index == 1) {
+                        return x.Name;
+                      }
+                    })}
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="flex-col items-start gap-1.5 text-sm">
+                  <div className="line-clamp-1 flex gap-2 font-medium">
+                    {QuestionDataComing?.map((x, index) => {
+                      if (index == 1) {
+                        return x.Question1;
+                      }
+                    })}
+                  </div>
+                </CardFooter>
+              </Card>
+            ) : (
+              <>
+                <SkeletonCard />
+              </>
+            )}
+            {QuestionDataComing ? (
+              <Card className="w-10/12 min-h-36">
+                <CardHeader>
+                  <CardDescription>
+                    {" "}
+                    {QuestionDataComing?.map((x, index) => {
+                      if (index == 2) {
+                        return x.Name;
+                      }
+                    })}
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="flex-col items-start gap-1.5 text-sm">
+                  <div className="line-clamp-1 flex gap-2 font-medium">
+                    {QuestionDataComing?.map((x, index) => {
+                      if (index == 2) {
+                        return x.Question1;
+                      }
+                    })}
+                  </div>
+                </CardFooter>
+              </Card>
+            ) : (
+              <>
+                <SkeletonCard />
+              </>
+            )}
 
             <Button
               onClick={() => {
                 setButtonCkick(buttonClick + 1);
               }}
-              className="w-3xs ml-36"
+              className="max-w-2xs ml-24 mr-42"
             >
-              Refresh
+              {QuestionDataComing ? (
+                <>Refresh</>
+              ) : (
+                <>
+                  <ClipLoader
+                    color={"#ffffff"}
+                    loading={true}
+                    size={20}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                  />
+                </>
+              )}
             </Button>
           </div>
         </div>

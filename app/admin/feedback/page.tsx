@@ -16,6 +16,7 @@ import React, { useState } from "react";
 import QuestionData from "@/lib/actions/questionData";
 import { Button } from "@/button";
 import FullQuestionData from "@/lib/actions/fullQuestionData";
+import { SkeletonDemo } from "@/components/Skeltondemo";
 
 type QuestionDataType = {
   id: number;
@@ -53,7 +54,7 @@ export default function Page() {
       <AppSidebar variant="inset" />
       <SidebarInset>
         <div className="">
-          <div className="grid grid-cols-2 gap-6 p-12 mt-2 ml-20 ">
+          <div className="grid grid-cols-2 gap-6 p-12 mt ml-20 ">
             {QuestionDataComing?.map((x, index) => {
               {
                 console.log(index);
@@ -63,11 +64,11 @@ export default function Page() {
                   <Card className="w-10/12 min-h-36">
                     <CardHeader>
                       <CardDescription className="font-bold text-xl">
-                        {x.Name}
+                        <SkeletonDemo />
                       </CardDescription>
                     </CardHeader>
                     <CardFooter className="flex-col items-start gap-1.5 text-sm">
-                      <div className="line-clamp-1 flex gap-2 font-medium">
+                      <div className="line-clamp-1 text-2xl flex gap-2 font-medium">
                         {x.Question1}
                       </div>
                     </CardFooter>
