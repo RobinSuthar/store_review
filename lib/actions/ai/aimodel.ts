@@ -1,7 +1,8 @@
+"use server";
 import OpenAI from "openai";
 import DataCollection from "./datacollection";
-import { env } from "process";
-const apiKey = env.OPENAI_API_KEY;
+
+const apiKey = process.env.OPENAI_API_KEY;
 
 const client = new OpenAI({
   apiKey: apiKey,
@@ -13,7 +14,7 @@ export default async function AIAnlysis() {
   const jsonData = JSON.stringify(data);
 
   const prompt = `Analyze the following array of objects and provide insights, trends, Postive reviews and negative rivies of each category(wine,beer,staff, liqoure) analysis prostive and negative feedback from people or notable observations can give a generalised feedback based on All calregory, Also mentioned steps to improve the area and keep your response very short and simple to the points, response should only
-be in such formart as an objects loooking like this :{ Wine: Conculation , Beer:Conculsion ,Liqooure:Conclusion, Staff: Conclusion }:\n\n${jsonData}`;
+be in such formart as an objects loooking like this and It should be if format so in can use JSON.parse() function on it and not else, it should be just an object in this format { Wine: Conculation , Beer:Conculsion ,Liqooure:Conclusion, Staff: Conclusion }: \n\n${jsonData}`;
 
   const input = [
     {
@@ -29,6 +30,8 @@ be in such formart as an objects loooking like this :{ Wine: Conculation , Beer:
       { role: "user", content: prompt },
     ],
   });
+
+  console.log(response);
 
   return response.choices[0].message.content;
 }

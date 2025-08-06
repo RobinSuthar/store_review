@@ -19,8 +19,10 @@ export default function Page() {
     async function x() {
       const resultFromAiFetch = await AIAnlysis();
       if (resultFromAiFetch) {
-        const ParsedResult = JSON.parse(resultFromAiFetch);
-
+        const newresult = resultFromAiFetch.split("```json")[1];
+        const moreNewResult = newresult.split("```")[1];
+        console.log(moreNewResult);
+        const ParsedResult = JSON.parse(moreNewResult);
         console.log(ParsedResult);
       }
     }
