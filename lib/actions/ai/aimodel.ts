@@ -1,26 +1,34 @@
 import OpenAI from "openai";
 import DataCollection from "./datacollection";
-const client = new OpenAI();
+import { env } from "process";
+const apiKey = env.OPENAI_API_KEY;
 
-const data = await DataCollection();
-
-const jsonData = JSON.stringify(data);
-
-const prompt = `Analyze the following array of objects and provide insights, trends, Postive reviews and negative rivies of each category(wine,beer,staff, liqoure) and read the Question1 and analysis prostive and negative feedback from people or notable observations can give a generalised feedback based on All calregory, Also mentioned steps to improve the area:\n\n${jsonData}`;
-
-const input = [
-  {
-    role: "user",
-    content: "give me insight full thoughts based on the data provided",
-  },
-];
-
-const response = await client.chat.completions.create({
-  model: "gpt-4o",
-  messages: [
-    { role: "system", content: "You are a helpful assistant." },
-    { role: "user", content: prompt },
-  ],
+const client = new OpenAI({
+  apiKey: apiKey,
 });
 
-console.log(response.choices[0].message.content);
+export default async function AIAnlysis() {
+  const data = await DataCollection();
+
+  const jsonData = JSON.stringify(data);
+
+  const prompt = `Analyze the following array of objects and provide insights, trends, Postive reviews and negative rivies of each category(wine,beer,staff, liqoure) analysis prostive and negative feedback from people or notable observations can give a generalised feedback based on All calregory, Also mentioned steps to improve the area and keep your response very short and simple to the points, response should only
+be in such formart as an objects loooking like this :{ Wine: Conculation , Beer:Conculsion ,Liqooure:Conclusion, Staff: Conclusion }:\n\n${jsonData}`;
+
+  const input = [
+    {
+      role: "user",
+      content: "give me insight full thoughts based on the data provided",
+    },
+  ];
+
+  const response = await client.chat.completions.create({
+    model: "gpt-4o",
+    messages: [
+      { role: "system", content: "You are a helpful assistant." },
+      { role: "user", content: prompt },
+    ],
+  });
+
+  return response.choices[0].message.content;
+}

@@ -1,16 +1,31 @@
+"use client";
 import { AppSidebar } from "@/components/app-sidebar";
 import { InputWithButton } from "@/components/InputWithButton";
-import { SectionCards } from "@/components/section-cards";
 import { SiteHeader } from "@/components/site-header";
 import { TypographyTable } from "@/components/type-logic";
 import { TypographyBlockquote } from "@/components/typography/blockquote";
 import { TypographyLead } from "@/components/typography/lead";
 import { TypographyP } from "@/components/typography/p";
 import { ScrollArea } from "@/components/ui/scroll-area";
-
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import AIAnlysis from "@/lib/actions/ai/aimodel";
+
+import { useEffect, useState } from "react";
 
 export default function Page() {
+  const [content, setContent] = useState();
+
+  useEffect(() => {
+    async function x() {
+      const resultFromAiFetch = await AIAnlysis();
+      if (resultFromAiFetch) {
+        const ParsedResult = JSON.parse(resultFromAiFetch);
+
+        console.log(ParsedResult);
+      }
+    }
+    x();
+  }, []);
   return (
     <SidebarProvider
       style={
@@ -38,8 +53,13 @@ export default function Page() {
                 </div>
                 <div>
                   <ScrollArea className="h-[600px]  rounded-md border p-4">
-                    <TypographyTable /> <TypographyTable /> <TypographyTable />{" "}
-                    <TypographyTable />{" "}
+                    <TypographyTable title="Wine Analysis" content="Modest" />{" "}
+                    <TypographyTable title="Beer Analysis" content="Modest" />{" "}
+                    <TypographyTable
+                      title="Liqoure Analysis"
+                      content="Modest"
+                    />{" "}
+                    <TypographyTable title="Staff Analysis" content="Modest" />{" "}
                   </ScrollArea>
                 </div>
               </div>{" "}
