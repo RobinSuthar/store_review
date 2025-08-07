@@ -9,6 +9,9 @@ import { TypographyP } from "@/components/typography/p";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import AIAnlysis from "@/lib/actions/ai/aimodel";
+import AIAnlysisForPromt from "@/lib/actions/ai/promtaimodet";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 import { useEffect, useState } from "react";
 
@@ -18,8 +21,28 @@ type ContetntType = {
   Liquore: string;
   Staff: string;
 };
+
+type foramt = {
+  h1: string | undefined;
+  h2: string | undefined;
+  h3: string | undefined;
+  h4: string | undefined;
+  h5: string | undefined;
+  p: string | undefined;
+  l: string | undefined;
+} | null;
+
 export default function Page() {
   const [content, setContent] = useState<ContetntType>();
+
+  const [promtContent, setPromtContent] = useState<foramt>();
+  const [inputchange, setInputChange] = useState<string>(
+    "Give an High Level Ovwer on the Provided Data, and insights"
+  );
+
+  const [userPromt, setUserPromt] = useState<string>(
+    "Give an High Level Ovwer on the Provided Data, and insights"
+  );
 
   useEffect(() => {
     async function x() {
@@ -31,9 +54,22 @@ export default function Page() {
         setContent(parsedResult);
       }
     }
-    console.log(content);
     x();
   }, []);
+
+  useEffect(() => {
+    async function x() {
+      console.log("ASdasds");
+      const resultFromAiFetch = await AIAnlysisForPromt(`${userPromt}`);
+      if (resultFromAiFetch) {
+        const resultPares: foramt = JSON.parse(resultFromAiFetch);
+        console.log(resultPares);
+        setPromtContent(resultPares);
+      }
+    }
+    x();
+  }, [userPromt]);
+
   return (
     <SidebarProvider
       style={
@@ -52,12 +88,33 @@ export default function Page() {
               <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-6 p-2">
                 <div>
                   <ScrollArea className="h-[520px]  rounded-md border p-4">
-                    <TypographyLead></TypographyLead>
-                    <TypographyP></TypographyP>
-                    <TypographyBlockquote></TypographyBlockquote>
+                    <p className="text-muted-foreground text-xl">
+                      {promtContent?.h1}
+                    </p>
+                    <p className="leading-7 [&:not(:first-child)]:mt-6">
+                      {promtContent?.h3}
+                    </p>
                   </ScrollArea>
-
-                  <InputWithButton />
+                  <div className="flex mt-6 w-full max-w-xlg items-center gap-2">
+                    <Input
+                      type="email"
+                      onChange={(e) => {
+                        setInputChange(e.target.value);
+                      }}
+                      placeholder="Enter Your Promt...."
+                    />
+                    <Button
+                      onClick={(e) => {
+                        if (inputchange) {
+                          setUserPromt(inputchange);
+                        }
+                      }}
+                      type="submit"
+                      variant="outline"
+                    >
+                      AI Anlysis
+                    </Button>
+                  </div>
                 </div>
                 <div>
                   <ScrollArea className="h-[600px]  rounded-md border p-4">
