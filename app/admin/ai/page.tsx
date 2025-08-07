@@ -12,20 +12,26 @@ import AIAnlysis from "@/lib/actions/ai/aimodel";
 
 import { useEffect, useState } from "react";
 
+type ContetntType = {
+  Wine: string;
+  Beer: string;
+  Liquore: string;
+  Staff: string;
+};
 export default function Page() {
-  const [content, setContent] = useState();
+  const [content, setContent] = useState<ContetntType>();
 
   useEffect(() => {
     async function x() {
       const resultFromAiFetch = await AIAnlysis();
       if (resultFromAiFetch) {
-        const newresult = resultFromAiFetch.split("```json")[1];
-        const moreNewResult = newresult.split("```")[1];
-        console.log(moreNewResult);
-        const ParsedResult = JSON.parse(moreNewResult);
-        console.log(ParsedResult);
+        const parsedResult = JSON.parse(resultFromAiFetch);
+        console.log(typeof parsedResult);
+        console.log(parsedResult);
+        setContent(parsedResult);
       }
     }
+    console.log(content);
     x();
   }, []);
   return (
@@ -55,13 +61,22 @@ export default function Page() {
                 </div>
                 <div>
                   <ScrollArea className="h-[600px]  rounded-md border p-4">
-                    <TypographyTable title="Wine Analysis" content="Modest" />{" "}
-                    <TypographyTable title="Beer Analysis" content="Modest" />{" "}
+                    <TypographyTable
+                      title="Wine Analysis"
+                      content={content?.Wine}
+                    />{" "}
+                    <TypographyTable
+                      title="Beer Analysis"
+                      content={content?.Beer}
+                    />{" "}
                     <TypographyTable
                       title="Liqoure Analysis"
-                      content="Modest"
+                      content={content?.Liquore}
                     />{" "}
-                    <TypographyTable title="Staff Analysis" content="Modest" />{" "}
+                    <TypographyTable
+                      title="Staff Analysis"
+                      content={content?.Staff}
+                    />{" "}
                   </ScrollArea>
                 </div>
               </div>{" "}

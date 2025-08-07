@@ -1,4 +1,7 @@
-export function TypographyTable(Props: { title: string; content: string }) {
+export function TypographyTable(Props: {
+  title: string;
+  content: string | undefined;
+}) {
   return (
     <div className="my-6 w-full overflow-y-auto">
       <table className="w-full">
