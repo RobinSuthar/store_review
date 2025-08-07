@@ -23,13 +23,9 @@ type ContetntType = {
 };
 
 type foramt = {
-  h1: string | undefined;
-  h2: string | undefined;
-  h3: string | undefined;
-  h4: string | undefined;
-  h5: string | undefined;
-  p: string | undefined;
-  l: string | undefined;
+  heading: string | undefined;
+  Problem: string | undefined;
+  Solution: string | undefined;
 } | null;
 
 export default function Page() {
@@ -41,7 +37,7 @@ export default function Page() {
   );
 
   const [userPromt, setUserPromt] = useState<string>(
-    "Give an High Level Ovwer on the Provided Data, and insights"
+    "Give an High Level Ovwer on the Provided Data, and insights , in h1,h2,h3,h4,h5,p,l"
   );
 
   useEffect(() => {
@@ -62,6 +58,7 @@ export default function Page() {
       console.log("ASdasds");
       const resultFromAiFetch = await AIAnlysisForPromt(`${userPromt}`);
       if (resultFromAiFetch) {
+        console.log(resultFromAiFetch);
         const resultPares: foramt = JSON.parse(resultFromAiFetch);
         console.log(resultPares);
         setPromtContent(resultPares);
@@ -88,11 +85,15 @@ export default function Page() {
               <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-6 p-2">
                 <div>
                   <ScrollArea className="h-[520px]  rounded-md border p-4">
-                    <p className="text-muted-foreground text-xl">
-                      {promtContent?.h1}
+                    <p className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+                      {promtContent?.heading}
                     </p>
                     <p className="leading-7 [&:not(:first-child)]:mt-6">
-                      {promtContent?.h3}
+                      {promtContent?.Problem}
+                    </p>
+
+                    <p className="leading-7 [&:not(:first-child)]:mt-6">
+                      {promtContent?.Solution}
                     </p>
                   </ScrollArea>
                   <div className="flex mt-6 w-full max-w-xlg items-center gap-2">
