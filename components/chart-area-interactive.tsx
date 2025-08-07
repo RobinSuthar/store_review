@@ -1,10 +1,7 @@
 "use client";
-
 import * as React from "react";
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
-
 import { ClipLoader } from "react-spinners";
-
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
   Card,
@@ -29,13 +26,12 @@ import {
 } from "@/components/ui/select";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import getData from "@/lib/actions/getData";
-import { SkeletonCard } from "./SkeletionCard";
 
 export const description = "An interactive area chart";
 
 const chartConfig = {
   visitors: {
-    label: "Visitors",
+    label: "Reviews",
   },
   desktop: {
     label: "Desktop",
@@ -51,13 +47,13 @@ type Props = {
   date: string;
   desktop: number;
 }[];
+
 export function ChartAreaInteractive() {
   const isMobile = useIsMobile();
   const [timeRange, setTimeRange] = React.useState("90d");
   const [correctData, setCorrectData] = React.useState<Props>();
 
   React.useEffect(() => {
-    console.log("time range chaged");
     async function x() {
       const reviewData = await getData();
       const filteredData = reviewData.filter((item) => {
@@ -73,7 +69,6 @@ export function ChartAreaInteractive() {
         startDate.setDate(startDate.getDate() - daysToSubtract);
         return date >= startDate;
       });
-      console.log("Filter Data  : ", filteredData);
       setCorrectData(filteredData);
     }
 

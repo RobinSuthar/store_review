@@ -11,9 +11,13 @@ import {
 } from "@/components/ui/card";
 import database from "@/database/db";
 import { SkeletonReview } from "./SketonReview";
+import React, { useEffect } from "react";
+import DashboardAiAnlasysi from "@/lib/actions/ai/dashboardresult";
 
 export async function SectionCards() {
   const data = await database.review.findMany();
+
+  const result = await DashboardAiAnlasysi();
   const wineData = data.map((x) => {
     return x.Wine;
   });
@@ -127,19 +131,20 @@ export async function SectionCards() {
       </Card>
       <Card className="@container/card">
         <CardHeader>
-          <CardDescription>AI Review</CardDescription>
-
+          <CardDescription>Average Liqoure Rating</CardDescription>
+          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
+            {averageLiqourReview.toFixed(2)} / 5
+          </CardTitle>
           <CardAction>
             <Badge variant="outline">
               <IconTrendingUp />
-              +4.5%
+              +12.5%
             </Badge>
           </CardAction>
         </CardHeader>
         <CardFooter className="flex-col items-start gap-1.5 text-sm">
           <div className="line-clamp-1 flex gap-2 font-medium">
-            Lopem Ispum Lopem Ispum Lopem Ispum Lopem Ispum Lopem Ispum Lopem
-            Ispum Lopem Ispum Lopem Ispum <IconTrendingUp className="size-4" />
+            Strong user retention <IconTrendingUp className="size-4" />
           </div>
           <div className="text-muted-foreground">Meets growth projections</div>
         </CardFooter>

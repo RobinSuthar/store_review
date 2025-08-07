@@ -16,7 +16,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 export function TabsDemo(data: {
   data: React.Dispatch<React.SetStateAction<"graph" | "pie">>;
 }) {
-  console.log("ASdaaaaaaaaaaaa");
   return (
     <div className=" flex-col gap-6">
       <Tabs
