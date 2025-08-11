@@ -11,6 +11,9 @@ import {
 } from "@/components/ui/chart";
 import React from "react";
 import GetDataForPie from "@/lib/actions/getDataForPie";
+import database from "@/database/db";
+import { TotalNumberOfReviews } from "@/lib/actions/numberofreviews";
+import { AverageReview } from "@/lib/actions/getAllData";
 
 export const description = "A mixed bar chart";
 
@@ -64,6 +67,11 @@ export function ChartBarMixed({
   const [storeState, setstoreState] = React.useState("");
   const [filterState, setFilterState] = React.useState("");
   const [correctdata, setCorrectData] = React.useState([{}]);
+  const [totalNumberOfRevies, setTotalNumberOfReviews] =
+    React.useState<number>();
+  const [averageReviewRating, setAverageReviewRating] =
+    React.useState<number>();
+
   const [graphstate, setGraphstate] = React.useState<chartDataDemo>([
     { browser: "chrome", visitors: 0, fill: "var(--color-chrome)" },
     { browser: "safari", visitors: 0, fill: "var(--color-safari)" },
@@ -73,16 +81,33 @@ export function ChartBarMixed({
   ]);
 
   React.useEffect(() => {
+    console.log("Asdasdasdasdasdasdasdasdasdas");
+    async function x() {
+      const AverageCalucationdata: number = await TotalNumberOfReviews();
+      if (AverageCalucationdata) {
+        setTotalNumberOfReviews(AverageCalucationdata);
+      }
+    }
+    x();
+  }, []);
+
+  React.useEffect(() => {
     setstoreState(data.store);
     setFilterState(data.filter);
   }, [data]);
 
   React.useEffect(() => {
     async function x() {
+      const averageRating = await AverageReview({
+        data: { store: storeState, filter: filterState },
+      });
       const data = await GetDataForPie({
         Props: { store: storeState, filter: filterState },
       });
 
+      if (averageRating) {
+        setAverageReviewRating(Number(averageRating));
+      }
       if (data) {
         setCorrectData(data);
         console.log(data);
@@ -789,8 +814,8 @@ export function ChartBarMixed({
           </ChartContainer>
         </div>
         <div className=" flex flex-col gap-2 ">
-          <div className="text-6xl ">4.4</div>
-          <div>213 reviews</div>
+          <div className="text-6xl ">{averageReviewRating}</div>
+          <div>{totalNumberOfRevies} reviews</div>
         </div>
       </CardContent>
     </Card>
