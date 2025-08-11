@@ -72,7 +72,7 @@ export default function Page() {
                 <ChartPieLabelList data={{ store: store, filter: filter }} />
               ) : (
                 <>
-                  <ChartBarMixed />{" "}
+                  <ChartBarMixed data={{ store: store, filter: filter }} />{" "}
                 </>
               )}
             </div>

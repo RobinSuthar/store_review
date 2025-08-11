@@ -19,7 +19,6 @@ import {
 } from "@/components/ui/chart";
 import React from "react";
 import GetDataForPie from "@/lib/actions/getDataForPie";
-import { number } from "motion/react";
 
 export const description = "A pie chart with a label list";
 
@@ -36,23 +35,23 @@ const chartConfig = {
     label: "Visitors",
   },
   chrome: {
-    label: "5 Star",
+    label: "5",
     color: "var(--chart-1)",
   },
   safari: {
-    label: "4 Star",
+    label: "4",
     color: "var(--chart-2)",
   },
   firefox: {
-    label: "3 Star",
+    label: "3",
     color: "var(--chart-3)",
   },
   edge: {
-    label: "2 Star",
+    label: "2",
     color: "var(--chart-4)",
   },
   other: {
-    label: "1 Star",
+    label: "1",
     color: "var(--chart-5)",
   },
 } satisfies ChartConfig;
