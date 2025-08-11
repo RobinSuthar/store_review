@@ -782,8 +782,8 @@ export function ChartBarMixed({
       <CardHeader>
         <CardTitle>Review Summary</CardTitle>
       </CardHeader>
-      <CardContent className="grid grid-cols-3 gap-8">
-        <div className="col-span-2">
+      <CardContent className="grid grid-cols-3 gap-8 min-h-[250px]">
+        <div className="col-span-2 align-middle items-center mt-12">
           <ChartContainer className="" config={chartConfig}>
             <BarChart
               maxBarSize={18}
@@ -813,7 +813,7 @@ export function ChartBarMixed({
             </BarChart>
           </ChartContainer>
         </div>
-        <div className=" flex flex-col gap-2 ">
+        <div className=" flex flex-col gap-2 items-center mt-12 ">
           <div className="text-6xl ">{averageReviewRating}</div>
           <div>{totalNumberOfRevies} reviews</div>
         </div>
