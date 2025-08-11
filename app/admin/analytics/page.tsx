@@ -60,26 +60,28 @@ export default function Page() {
     >
       <AppSidebar variant="inset" />
       <SidebarInset>
-        <div className="grid grid-cols-2 mt-10">
+        <div className="grid md:grid-cols-2 grid-cols-1 mt-10">
           <div>
             <div className="flex gap-2 justify-center">
               <AnalyticsSelectStore setStore={setStore} />
               <FilterSelect setFilter={setfilter} />
               <TabsDemo data={setGraphType} />
             </div>
-            <div className="md:p-24 sm:mt-20 md:mt-2">
-              {graphType == "pie" ? (
-                <ChartPieLabelList data={{ store: store, filter: filter }} />
-              ) : (
-                <>
-                  <ChartBarMixed data={{ store: store, filter: filter }} />{" "}
-                </>
-              )}
+            <div className="md:p-24 p-6 sm:mt-20 md:mt-20">
+              <div>
+                {graphType == "pie" ? (
+                  <ChartPieLabelList data={{ store: store, filter: filter }} />
+                ) : (
+                  <>
+                    <ChartBarMixed data={{ store: store, filter: filter }} />{" "}
+                  </>
+                )}
+              </div>
             </div>
           </div>
-          <div className="flex flex-col justify-center gap-9 ml-20 ">
+          <div className="flex flex-col justify-center gap-9 md:ml-20 md:p-0 p-6 md:mt-0 mt-3 ">
             {QuestionDataComing ? (
-              <Card className="w-10/12 min-h-32">
+              <Card className="md:w-10/12 w-12/12 min-h-32">
                 <CardHeader>
                   <CardDescription>
                     <div>
@@ -104,7 +106,7 @@ export default function Page() {
             )}
 
             {QuestionDataComing ? (
-              <Card className="w-10/12 min-h-36">
+              <Card className="md:w-10/12 w-12/12 min-h-36">
                 <CardHeader>
                   <CardDescription>
                     <div>
@@ -128,7 +130,7 @@ export default function Page() {
               </>
             )}
             {QuestionDataComing ? (
-              <Card className="w-10/12 min-h-36">
+              <Card className="md:w-10/12 w-12/12 min-h-36">
                 <CardHeader>
                   <CardDescription>
                     <div>

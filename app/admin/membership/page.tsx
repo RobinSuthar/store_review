@@ -14,7 +14,7 @@ export default function Page() {
   >
     <AppSidebar variant="inset" />
     <SidebarInset>
-      <div className="">MemberShip ANAllysi</div>
+      <div className="">MemberShip Analysise</div>
     </SidebarInset>
   </SidebarProvider>;
 }

@@ -53,6 +53,11 @@ const data = {
       url: "admin/feedback",
       icon: IconFolder,
     },
+    {
+      title: "Membership",
+      url: "admin/membership",
+      icon: IconListDetails,
+    },
   ],
 };
 
