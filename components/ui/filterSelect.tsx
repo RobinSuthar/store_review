@@ -22,7 +22,7 @@ export function FilterSelect({
         setFilter(e);
       }}
     >
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="md:w-[180px] w-[100px]">
         <SelectValue placeholder="Select a filter" />
       </SelectTrigger>
       <SelectContent>

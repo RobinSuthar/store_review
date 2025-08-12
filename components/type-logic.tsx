@@ -1,3 +1,5 @@
+import { BeatLoader } from "react-spinners";
+
 export function TypographyTable(Props: {
   title: string;
   content: string | undefined;
@@ -15,7 +17,14 @@ export function TypographyTable(Props: {
         <tbody>
           <tr className="even:bg-muted m-0 border-t p-0">
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
-              {Props.content}
+              {Props.content ? (
+                <>{Props.content}</>
+              ) : (
+                <div className="flex ">
+                  {" "}
+                  <BeatLoader size={3} />
+                </div>
+              )}
             </td>
           </tr>
         </tbody>

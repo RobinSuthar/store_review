@@ -11,9 +11,9 @@ import {
 } from "@/components/ui/chart";
 import React from "react";
 import GetDataForPie from "@/lib/actions/getDataForPie";
-import database from "@/database/db";
 import { TotalNumberOfReviews } from "@/lib/actions/numberofreviews";
 import { AverageReview } from "@/lib/actions/getAllData";
+import { PulseLoader } from "react-spinners";
 
 export const description = "A mixed bar chart";
 
@@ -814,8 +814,19 @@ export function ChartBarMixed({
           </ChartContainer>
         </div>
         <div className=" flex flex-col gap-2 items-center mt-12 ">
-          <div className="text-6xl ">{averageReviewRating}</div>
-          <div>{totalNumberOfRevies} reviews</div>
+          <div className="text-6xl ">
+            {averageReviewRating ? <>{averageReviewRating}</> : <PulseLoader />}
+          </div>
+          <div>
+            {" "}
+            {totalNumberOfRevies ? (
+              <>{totalNumberOfRevies} Reviews</>
+            ) : (
+              <>
+                <PulseLoader />
+              </>
+            )}{" "}
+          </div>
         </div>
       </CardContent>
     </Card>
