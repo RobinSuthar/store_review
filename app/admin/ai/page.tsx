@@ -10,7 +10,8 @@ import AIAnlysisForPromt from "@/lib/actions/ai/promtaimodet";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PropagateLoader } from "react-spinners";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import Loading from "@/app/loading";
 
 type ContetntType = {
   Wine: string;
@@ -65,101 +66,103 @@ export default function Page() {
   }, [userPromt]);
 
   return (
-    <SidebarProvider
-      style={
-        {
-          "--sidebar-width": "calc(var(--spacing) * 72)",
-          "--header-height": "calc(var(--spacing) * 12)",
-        } as React.CSSProperties
-      }
-    >
-      <AppSidebar variant="inset" />
-      <SidebarInset>
-        <SiteHeader />
-        <div className="flex flex-1 flex-col">
-          <div className="@container/main flex flex-1 flex-col gap-2">
-            <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
-              <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-6 p-2">
-                <div>
-                  <ScrollArea className="h-[520px]  rounded-md border p-4">
-                    <div>
-                      {promtContent ? (
-                        <>
-                          {" "}
-                          <p className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-                            {promtContent?.heading}
-                          </p>
-                          <p className="leading-7 [&:not(:first-child)]:mt-6">
-                            {promtContent?.Problem}
-                          </p>
-                          <p className="leading-7 [&:not(:first-child)]:mt-6">
-                            {promtContent?.Solution}
-                          </p>
-                        </>
-                      ) : (
-                        <>
-                          {" "}
-                          <div className="flex  flex-col items-center justify-center mt-5">
-                            <div>
-                              <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-                                AI Reading & Analysis, hold tight..
-                              </h2>
+    <Suspense fallback={<Loading />}>
+      <SidebarProvider
+        style={
+          {
+            "--sidebar-width": "calc(var(--spacing) * 72)",
+            "--header-height": "calc(var(--spacing) * 12)",
+          } as React.CSSProperties
+        }
+      >
+        <AppSidebar variant="inset" />
+        <SidebarInset>
+          <SiteHeader />
+          <div className="flex flex-1 flex-col">
+            <div className="@container/main flex flex-1 flex-col gap-2">
+              <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
+                <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-6 p-2">
+                  <div>
+                    <ScrollArea className="h-[520px]  rounded-md border p-4">
+                      <div>
+                        {promtContent ? (
+                          <>
+                            {" "}
+                            <p className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+                              {promtContent?.heading}
+                            </p>
+                            <p className="leading-7 [&:not(:first-child)]:mt-6">
+                              {promtContent?.Problem}
+                            </p>
+                            <p className="leading-7 [&:not(:first-child)]:mt-6">
+                              {promtContent?.Solution}
+                            </p>
+                          </>
+                        ) : (
+                          <>
+                            {" "}
+                            <div className="flex  flex-col items-center justify-center mt-5">
+                              <div>
+                                <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+                                  AI Reading & Analysis, hold tight..
+                                </h2>
+                              </div>
+                              <div className="mt-4">
+                                <PropagateLoader />
+                              </div>
                             </div>
-                            <div className="mt-4">
-                              <PropagateLoader />
-                            </div>
-                          </div>
-                        </>
-                      )}
+                          </>
+                        )}
+                      </div>
+                    </ScrollArea>
+                    <div className="flex mt-6 w-full max-w-xlg items-center gap-2">
+                      <Input
+                        id="InputField"
+                        type="email"
+                        onChange={(e) => {
+                          setInputChange(e.target.value);
+                        }}
+                        placeholder="Enter Your Promt...."
+                      />
+                      <Button
+                        onClick={(e) => {
+                          if (inputchange) {
+                            setUserPromt(inputchange);
+                          }
+                        }}
+                        type="submit"
+                        variant="outline"
+                      >
+                        AI Anlysis
+                      </Button>
                     </div>
-                  </ScrollArea>
-                  <div className="flex mt-6 w-full max-w-xlg items-center gap-2">
-                    <Input
-                      id="InputField"
-                      type="email"
-                      onChange={(e) => {
-                        setInputChange(e.target.value);
-                      }}
-                      placeholder="Enter Your Promt...."
-                    />
-                    <Button
-                      onClick={(e) => {
-                        if (inputchange) {
-                          setUserPromt(inputchange);
-                        }
-                      }}
-                      type="submit"
-                      variant="outline"
-                    >
-                      AI Anlysis
-                    </Button>
                   </div>
-                </div>
-                <div>
-                  <ScrollArea className="h-[600px]  rounded-md border p-4">
-                    <TypographyTable
-                      title="Wine Analysis"
-                      content={content?.Wine}
-                    />{" "}
-                    <TypographyTable
-                      title="Beer Analysis"
-                      content={content?.Beer}
-                    />{" "}
-                    <TypographyTable
-                      title="Liqoure Analysis"
-                      content={content?.Liquore}
-                    />{" "}
-                    <TypographyTable
-                      title="Staff Analysis"
-                      content={content?.Staff}
-                    />{" "}
-                  </ScrollArea>
-                </div>
-              </div>{" "}
+                  <div>
+                    <ScrollArea className="h-[600px]  rounded-md border p-4">
+                      <TypographyTable
+                        title="Wine Analysis"
+                        content={content?.Wine}
+                      />{" "}
+                      <TypographyTable
+                        title="Beer Analysis"
+                        content={content?.Beer}
+                      />{" "}
+                      <TypographyTable
+                        title="Liqoure Analysis"
+                        content={content?.Liquore}
+                      />{" "}
+                      <TypographyTable
+                        title="Staff Analysis"
+                        content={content?.Staff}
+                      />{" "}
+                    </ScrollArea>
+                  </div>
+                </div>{" "}
+              </div>
             </div>
           </div>
-        </div>
-      </SidebarInset>
-    </SidebarProvider>
+        </SidebarInset>
+      </SidebarProvider>
+    </Suspense>
   );
 }
