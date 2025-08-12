@@ -19,7 +19,6 @@ import { ClipLoader } from "react-spinners";
 import { TabsDemo } from "@/components/tabsdemo";
 import { SkeletonDemo } from "@/components/Skeltondemo";
 import { ChartBarMixed } from "@/components/charts/chart-bar";
-
 type QuestionDataType = {
   Name: string;
   Question1: string;
@@ -81,7 +80,7 @@ export default function Page() {
           </div>
           <div className="flex flex-col justify-center gap-9 md:ml-20 md:p-0 p-6 md:mt-0 mt-3 ">
             {QuestionDataComing ? (
-              <Card className="md:w-10/12 w-12/12 min-h-32">
+              <Card className="md:w-10/12 w-12/12 min-h-42 max-h-42">
                 <CardHeader>
                   <CardDescription>
                     <div>
@@ -96,6 +95,13 @@ export default function Page() {
                         return x.Question1;
                       }
                     })}
+
+                    {/* <QRCodeCanvas
+                      size={500}
+                      level="H"
+                      title="North Hill"
+                      value={"http://10.0.0.63:3000/try"}
+                    /> */}
                   </div>
                 </CardFooter>
               </Card>
@@ -104,9 +110,8 @@ export default function Page() {
                 <SkeletonCard />
               </>
             )}
-
             {QuestionDataComing ? (
-              <Card className="md:w-10/12 w-12/12 min-h-36">
+              <Card className="md:w-10/12 w-12/12 min-h-42 max-h-42">
                 <CardHeader>
                   <CardDescription>
                     <div>
@@ -130,7 +135,7 @@ export default function Page() {
               </>
             )}
             {QuestionDataComing ? (
-              <Card className="md:w-10/12 w-12/12 min-h-36">
+              <Card className="md:w-10/12 w-12/12 min-h-42 max-h-42">
                 <CardHeader>
                   <CardDescription>
                     <div>
@@ -153,27 +158,22 @@ export default function Page() {
                 <SkeletonCard />
               </>
             )}
-
-            <Button
-              onClick={() => {
-                setButtonCkick(buttonClick + 1);
-              }}
-              className="max-w-2xs ml-24 mr-42"
-            >
-              {QuestionDataComing ? (
-                <>Refresh</>
-              ) : (
-                <>
-                  <ClipLoader
-                    color={"#ffffff"}
-                    loading={true}
-                    size={20}
-                    aria-label="Loading Spinner"
-                    data-testid="loader"
-                  />
-                </>
-              )}
-            </Button>
+            <div className="flex justify-center  md:ml-24 md:mr-42">
+              <Button
+                onClick={() => {
+                  setButtonCkick(buttonClick + 1);
+                }}
+                className=" w-2xs"
+              >
+                {QuestionDataComing ? (
+                  <>Refresh</>
+                ) : (
+                  <>
+                    <>Refresh</>
+                  </>
+                )}
+              </Button>
+            </div>{" "}
           </div>
         </div>
       </SidebarInset>

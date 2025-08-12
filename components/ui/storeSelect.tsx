@@ -22,8 +22,8 @@ export function AnalyticsSelectStore({
 }) {
   return (
     <Select onValueChange={(e) => setStore(e)}>
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Select a Store" />
+      <SelectTrigger className="md:w-[180px] w-[100px]">
+        <SelectValue placeholder=" Store" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>

@@ -3,16 +3,13 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { InputWithButton } from "@/components/InputWithButton";
 import { SiteHeader } from "@/components/site-header";
 import { TypographyTable } from "@/components/type-logic";
-import { TypographyBlockquote } from "@/components/typography/blockquote";
-import { TypographyLead } from "@/components/typography/lead";
-import { TypographyP } from "@/components/typography/p";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import AIAnlysis from "@/lib/actions/ai/aimodel";
 import AIAnlysisForPromt from "@/lib/actions/ai/promtaimodet";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-
+import { PropagateLoader } from "react-spinners";
 import { useEffect, useState } from "react";
 
 type ContetntType = {
@@ -85,19 +82,40 @@ export default function Page() {
               <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-6 p-2">
                 <div>
                   <ScrollArea className="h-[520px]  rounded-md border p-4">
-                    <p className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-                      {promtContent?.heading}
-                    </p>
-                    <p className="leading-7 [&:not(:first-child)]:mt-6">
-                      {promtContent?.Problem}
-                    </p>
-
-                    <p className="leading-7 [&:not(:first-child)]:mt-6">
-                      {promtContent?.Solution}
-                    </p>
+                    <div>
+                      {promtContent ? (
+                        <>
+                          {" "}
+                          <p className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+                            {promtContent?.heading}
+                          </p>
+                          <p className="leading-7 [&:not(:first-child)]:mt-6">
+                            {promtContent?.Problem}
+                          </p>
+                          <p className="leading-7 [&:not(:first-child)]:mt-6">
+                            {promtContent?.Solution}
+                          </p>
+                        </>
+                      ) : (
+                        <>
+                          {" "}
+                          <div className="flex  flex-col items-center justify-center mt-5">
+                            <div>
+                              <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+                                AI Reading & Analysis, hold tight..
+                              </h2>
+                            </div>
+                            <div className="mt-4">
+                              <PropagateLoader />
+                            </div>
+                          </div>
+                        </>
+                      )}
+                    </div>
                   </ScrollArea>
                   <div className="flex mt-6 w-full max-w-xlg items-center gap-2">
                     <Input
+                      id="InputField"
                       type="email"
                       onChange={(e) => {
                         setInputChange(e.target.value);

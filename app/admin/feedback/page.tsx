@@ -1,22 +1,17 @@
 "use client";
 import { AppSidebar } from "@/components/app-sidebar";
-import { AnalyticsSelectStore } from "@/components/ui/storeSelect";
 
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { FilterSelect } from "@/components/ui/filterSelect";
 import {
   Card,
   CardDescription,
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { PaginationMenu } from "@/components/ui/paginationmenu";
-import { ChartPieLabelList } from "@/components/charts/piechart";
-import React, { useState } from "react";
-import QuestionData from "@/lib/actions/questionData";
-import { Button } from "@/button";
+import React from "react";
 import FullQuestionData from "@/lib/actions/fullQuestionData";
 import { SkeletonDemo } from "@/components/Skeltondemo";
+import { ScaleLoader } from "react-spinners";
 
 type QuestionDataType = {
   id: number;
@@ -54,14 +49,14 @@ export default function Page() {
       <AppSidebar variant="inset" />
       <SidebarInset>
         <div className="">
-          <div className="grid grid-cols-2 gap-6 p-12 mt ml-20 ">
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-6 p-12 mt md:ml-20 ">
             {QuestionDataComing?.map((x, index) => {
               {
                 console.log(index);
               }
               return (
                 <div key={x.id}>
-                  <Card className="w-10/12 min-h-36">
+                  <Card className="md:w-10/12 w-12/12 min-h-36">
                     <CardHeader>
                       <CardDescription className="font-bold text-xl">
                         <SkeletonDemo />
@@ -69,7 +64,13 @@ export default function Page() {
                     </CardHeader>
                     <CardFooter className="flex-col items-start gap-1.5 text-sm">
                       <div className="line-clamp-1 text-2xl flex gap-2 font-medium">
-                        {x.Question1}
+                        {x.Question1 ? (
+                          <>{x.Question1}</>
+                        ) : (
+                          <>
+                            <ScaleLoader />
+                          </>
+                        )}
                       </div>
                     </CardFooter>
                   </Card>

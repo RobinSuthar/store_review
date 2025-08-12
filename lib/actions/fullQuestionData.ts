@@ -8,7 +8,6 @@ export default async function FullQuestionData() {
       Name: true,
       Question1: true,
     },
-    take: 6,
   });
   console.log(data);
 
