@@ -11,7 +11,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { ChartPieLabelList } from "@/components/charts/piechart";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import QuestionData from "@/lib/actions/questionData";
 import { Button } from "@/button";
 import { SkeletonCard } from "@/components/SkeletionCard";
@@ -19,6 +19,7 @@ import { ClipLoader } from "react-spinners";
 import { TabsDemo } from "@/components/tabsdemo";
 import { SkeletonDemo } from "@/components/Skeltondemo";
 import { ChartBarMixed } from "@/components/charts/chart-bar";
+import { SiteHeader } from "@/components/site-header";
 type QuestionDataType = {
   Name: string;
   Question1: string;
@@ -49,134 +50,140 @@ export default function Page() {
     x();
   }, [buttonClick]);
   return (
-    <SidebarProvider
-      style={
-        {
-          "--sidebar-width": "calc(var(--spacing) * 72)",
-          "--header-height": "calc(var(--spacing) * 12)",
-        } as React.CSSProperties
-      }
-    >
-      <AppSidebar variant="inset" />
-      <SidebarInset>
-        <div className="grid md:grid-cols-2 grid-cols-1 mt-10">
-          <div>
-            <div className="flex gap-2 justify-center">
-              <AnalyticsSelectStore setStore={setStore} />
-              <FilterSelect setFilter={setfilter} />
-              <TabsDemo data={setGraphType} />
-            </div>
-            <div className="md:p-24 p-6 sm:mt-20 md:mt-20">
-              <div>
-                {graphType == "pie" ? (
-                  <ChartPieLabelList data={{ store: store, filter: filter }} />
-                ) : (
-                  <>
-                    <ChartBarMixed data={{ store: store, filter: filter }} />{" "}
-                  </>
-                )}
+    <Suspense fallback={<p>Loading...</p>}>
+      {" "}
+      <SidebarProvider
+        style={
+          {
+            "--sidebar-width": "calc(var(--spacing) * 72)",
+            "--header-height": "calc(var(--spacing) * 12)",
+          } as React.CSSProperties
+        }
+      >
+        <AppSidebar variant="inset" />
+        <SidebarInset>
+          <SiteHeader />
+          <div className="grid md:grid-cols-2 grid-cols-1 mt-2">
+            <div>
+              <div className="flex gap-2 justify-center">
+                <AnalyticsSelectStore setStore={setStore} />
+                <FilterSelect setFilter={setfilter} />
+                <TabsDemo data={setGraphType} />
+              </div>
+              <div className="md:p-24 p-6 sm:mt-16 md:mt-16">
+                <div>
+                  {graphType == "pie" ? (
+                    <ChartPieLabelList
+                      data={{ store: store, filter: filter }}
+                    />
+                  ) : (
+                    <>
+                      <ChartBarMixed data={{ store: store, filter: filter }} />{" "}
+                    </>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-          <div className="flex flex-col justify-center gap-9 md:ml-20 md:p-0 p-6 md:mt-0 mt-3 ">
-            {QuestionDataComing ? (
-              <Card className="md:w-10/12 w-12/12 min-h-42 max-h-42">
-                <CardHeader>
-                  <CardDescription>
-                    <div>
-                      <SkeletonDemo />
-                    </div>
-                  </CardDescription>
-                </CardHeader>
-                <CardFooter className="flex-col items-start gap-1.5 text-sm">
-                  <div className="line-clamp-1 text-xl flex gap-2 font-medium">
-                    {QuestionDataComing?.map((x, index) => {
-                      if (index == 0) {
-                        return x.Question1;
-                      }
-                    })}
+            <div className="flex flex-col justify-center gap-9 md:ml-20 md:p-0 p-6 md:mt-0 mt-3 ">
+              {QuestionDataComing ? (
+                <Card className="md:w-10/12 w-12/12 min-h-42 max-h-42">
+                  <CardHeader>
+                    <CardDescription>
+                      <div>
+                        <SkeletonDemo />
+                      </div>
+                    </CardDescription>
+                  </CardHeader>
+                  <CardFooter className="flex-col items-start gap-1.5 text-sm">
+                    <div className="line-clamp-1 text-xl flex gap-2 font-medium">
+                      {QuestionDataComing?.map((x, index) => {
+                        if (index == 0) {
+                          return x.Question1;
+                        }
+                      })}
 
-                    {/* <QRCodeCanvas
+                      {/* <QRCodeCanvas
                       size={500}
                       level="H"
                       title="North Hill"
                       value={"http://10.0.0.63:3000/try"}
                     /> */}
-                  </div>
-                </CardFooter>
-              </Card>
-            ) : (
-              <>
-                <SkeletonCard />
-              </>
-            )}
-            {QuestionDataComing ? (
-              <Card className="md:w-10/12 w-12/12 min-h-42 max-h-42">
-                <CardHeader>
-                  <CardDescription>
-                    <div>
-                      <SkeletonDemo />
                     </div>
-                  </CardDescription>
-                </CardHeader>
-                <CardFooter className="flex-col items-start gap-1.5 text-sm">
-                  <div className="line-clamp-1   text-xl flex gap-2 font-medium">
-                    {QuestionDataComing?.map((x, index) => {
-                      if (index == 1) {
-                        return x.Question1;
-                      }
-                    })}
-                  </div>
-                </CardFooter>
-              </Card>
-            ) : (
-              <>
-                <SkeletonCard />
-              </>
-            )}
-            {QuestionDataComing ? (
-              <Card className="md:w-10/12 w-12/12 min-h-42 max-h-42">
-                <CardHeader>
-                  <CardDescription>
-                    <div>
-                      <SkeletonDemo />
+                  </CardFooter>
+                </Card>
+              ) : (
+                <>
+                  <SkeletonCard />
+                </>
+              )}
+              {QuestionDataComing ? (
+                <Card className="md:w-10/12 w-12/12 min-h-42 max-h-42">
+                  <CardHeader>
+                    <CardDescription>
+                      <div>
+                        <SkeletonDemo />
+                      </div>
+                    </CardDescription>
+                  </CardHeader>
+                  <CardFooter className="flex-col items-start gap-1.5 text-sm">
+                    <div className="line-clamp-1   text-xl flex gap-2 font-medium">
+                      {QuestionDataComing?.map((x, index) => {
+                        if (index == 1) {
+                          return x.Question1;
+                        }
+                      })}
                     </div>
-                  </CardDescription>
-                </CardHeader>
-                <CardFooter className="flex-col items-start gap-1.5 text-sm">
-                  <div className="line-clamp-1  text-xl flex gap-2 font-medium">
-                    {QuestionDataComing?.map((x, index) => {
-                      if (index == 2) {
-                        return x.Question1;
-                      }
-                    })}
-                  </div>
-                </CardFooter>
-              </Card>
-            ) : (
-              <>
-                <SkeletonCard />
-              </>
-            )}
-            <div className="flex justify-center  md:ml-24 md:mr-42">
-              <Button
-                onClick={() => {
-                  setButtonCkick(buttonClick + 1);
-                }}
-                className=" w-2xs"
-              >
-                {QuestionDataComing ? (
-                  <>Refresh</>
-                ) : (
-                  <>
+                  </CardFooter>
+                </Card>
+              ) : (
+                <>
+                  <SkeletonCard />
+                </>
+              )}
+              {QuestionDataComing ? (
+                <Card className="md:w-10/12 w-12/12 min-h-42 max-h-42">
+                  <CardHeader>
+                    <CardDescription>
+                      <div>
+                        <SkeletonDemo />
+                      </div>
+                    </CardDescription>
+                  </CardHeader>
+                  <CardFooter className="flex-col items-start gap-1.5 text-sm">
+                    <div className="line-clamp-1  text-xl flex gap-2 font-medium">
+                      {QuestionDataComing?.map((x, index) => {
+                        if (index == 2) {
+                          return x.Question1;
+                        }
+                      })}
+                    </div>
+                  </CardFooter>
+                </Card>
+              ) : (
+                <>
+                  <SkeletonCard />
+                </>
+              )}
+              <div className="flex justify-center  md:ml-24 md:mr-42">
+                <Button
+                  onClick={() => {
+                    setButtonCkick(buttonClick + 1);
+                  }}
+                  className=" w-2xs"
+                >
+                  {QuestionDataComing ? (
                     <>Refresh</>
-                  </>
-                )}
-              </Button>
-            </div>{" "}
+                  ) : (
+                    <>
+                      <>Refresh</>
+                    </>
+                  )}
+                </Button>
+              </div>{" "}
+            </div>
           </div>
-        </div>
-      </SidebarInset>
-    </SidebarProvider>
+        </SidebarInset>
+      </SidebarProvider>
+    </Suspense>
   );
 }

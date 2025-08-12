@@ -815,7 +815,11 @@ export function ChartBarMixed({
         </div>
         <div className=" flex flex-col gap-2 items-center mt-12 ">
           <div className="text-6xl ">
-            {averageReviewRating ? <>{averageReviewRating}</> : <PulseLoader />}
+            {averageReviewRating ? (
+              <>{averageReviewRating}</>
+            ) : (
+              <PulseLoader size={3} />
+            )}
           </div>
           <div>
             {" "}
@@ -823,7 +827,7 @@ export function ChartBarMixed({
               <>{totalNumberOfRevies} Reviews</>
             ) : (
               <>
-                <PulseLoader />
+                <PulseLoader size={3} />
               </>
             )}{" "}
           </div>

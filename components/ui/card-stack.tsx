@@ -6,7 +6,6 @@ import { TextareaWithText } from "../text-area";
 import { ConfettiFireworks } from "../confetti-fireworks";
 import { Textarea } from "./textarea";
 import UpdateDB from "@/lib/actions/updatedb";
-import ReviewdorNot from "@/lib/actions/Reviewedornot";
 
 import cookies from "js-cookie";
 import { redirect } from "next/navigation";
