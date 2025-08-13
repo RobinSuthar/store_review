@@ -1,7 +1,7 @@
 "use client";
 import { AppSidebar } from "@/components/app-sidebar";
 import { AnalyticsSelectStore } from "@/components/ui/storeSelect";
-
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { FilterSelect } from "@/components/ui/filterSelect";
 import {
@@ -90,6 +90,10 @@ export default function Page() {
                   <CardHeader>
                     <CardDescription>
                       <div>
+                        <Avatar>
+                          <AvatarImage src="https://github.com/shadcn.png" />
+                          <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>{" "}
                         <SkeletonDemo />
                       </div>
                     </CardDescription>
