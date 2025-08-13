@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
-import { ClipLoader } from "react-spinners";
+import { MoonLoader } from "react-spinners";
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
   Card,
@@ -86,7 +86,7 @@ export function ChartAreaInteractive() {
       {correctData ? (
         <Card className="@container/card">
           <CardHeader>
-            <CardTitle>Total Visitors</CardTitle>
+            <CardTitle>Total Reviews</CardTitle>
             <CardDescription>
               <span className="hidden @[540px]/card:block">
                 Total for the last 3 months
@@ -234,7 +234,7 @@ export function ChartAreaInteractive() {
             </CardHeader>
             <div className="flex justify-center gap-7 mt-22 p-4 mb-18">
               <div>
-                <ClipLoader
+                <MoonLoader
                   color={"#000000"}
                   loading={true}
                   size={30}

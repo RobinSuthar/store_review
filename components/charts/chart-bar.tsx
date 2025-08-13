@@ -32,15 +32,15 @@ const chartConfig = {
   },
   chrome: {
     label: "5",
-    color: "var(--chart-1)",
+    color: "var(--chart-4)",
   },
   safari: {
     label: "4",
-    color: "var(--chart-2)",
+    color: "var(--chart-4)",
   },
   firefox: {
     label: "3",
-    color: "var(--chart-3)",
+    color: "var(--chart-4)",
   },
   edge: {
     label: "2",
@@ -48,7 +48,7 @@ const chartConfig = {
   },
   other: {
     label: "1",
-    color: "var(--chart-5)",
+    color: "var(--chart-4)",
   },
 } satisfies ChartConfig;
 
@@ -783,8 +783,8 @@ export function ChartBarMixed({
       <CardHeader>
         <CardTitle>Review Summary</CardTitle>
       </CardHeader>
-      <CardContent className="grid grid-cols-3 gap-8 min-h-[250px]">
-        <div className="col-span-2 align-middle items-center mt-12">
+      <CardContent className="grid md:grid-cols-3 sm:grid-cols-2 gap-8 min-h-[250px]">
+        <div className="md:col-span-2 align-middle items-center mt-12">
           <ChartContainer className="" config={chartConfig}>
             <BarChart
               maxBarSize={18}
