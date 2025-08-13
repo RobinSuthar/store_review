@@ -91,10 +91,12 @@ export default function Page() {
                     <CardDescription>
                       <div>
                         <Avatar>
-                          <AvatarImage src="https://github.com/shadcn.png" />
+                          <AvatarImage
+                            src="https://github.com/shadcn.png"
+                            alt="@shadcn"
+                          />
                           <AvatarFallback>CN</AvatarFallback>
                         </Avatar>{" "}
-                        <SkeletonDemo />
                       </div>
                     </CardDescription>
                   </CardHeader>
@@ -125,7 +127,13 @@ export default function Page() {
                   <CardHeader>
                     <CardDescription>
                       <div>
-                        <SkeletonDemo />
+                        <Avatar>
+                          <AvatarImage
+                            src="https://github.com/shadcn.png"
+                            alt="@shadcn"
+                          />
+                          <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>{" "}
                       </div>
                     </CardDescription>
                   </CardHeader>
@@ -149,7 +157,14 @@ export default function Page() {
                   <CardHeader>
                     <CardDescription>
                       <div>
-                        <SkeletonDemo />
+                        <Avatar>
+                          <div></div>
+                          <AvatarImage
+                            src="https://github.com/shadcn.png"
+                            alt="@shadcn"
+                          />
+                          <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>{" "}
                       </div>
                     </CardDescription>
                   </CardHeader>

@@ -15,6 +15,7 @@ import { TotalNumberOfReviews } from "@/lib/actions/numberofreviews";
 import { AverageReview } from "@/lib/actions/getAllData";
 import { PulseLoader } from "react-spinners";
 
+import { Rating } from "react-simple-star-rating";
 export const description = "A mixed bar chart";
 
 const chartData = [
@@ -813,7 +814,7 @@ export function ChartBarMixed({
             </BarChart>
           </ChartContainer>
         </div>
-        <div className=" flex flex-col gap-2 items-center mt-12 ">
+        <div className=" flex flex-col justify-center gap-2 items-center  ">
           <div className="text-6xl ">
             {averageReviewRating ? (
               <>{averageReviewRating}</>
@@ -821,8 +822,27 @@ export function ChartBarMixed({
               <PulseLoader size={3} />
             )}
           </div>
+
           <div>
-            {" "}
+            {averageReviewRating ? (
+              <Rating
+                SVGstyle={{ display: "inline-block" }}
+                transition
+                className="flex justify-center flex-col "
+                readonly={true}
+                allowFraction
+                initialValue={averageReviewRating ? averageReviewRating : 0}
+                iconsCount={5}
+                size={23}
+              />
+            ) : (
+              <>
+                {" "}
+                <PulseLoader size={3} />
+              </>
+            )}
+          </div>
+          <div>
             {totalNumberOfRevies ? (
               <>{totalNumberOfRevies} Reviews</>
             ) : (
