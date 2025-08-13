@@ -30,8 +30,6 @@ export async function AverageReview({
         return acc + grades;
       }, 0) / beerData.length;
 
-    console.log("Average Beer : ", averageBeerReview.toFixed(2));
-
     return averageBeerReview.toFixed(1);
   }
 
@@ -44,8 +42,6 @@ export async function AverageReview({
       liqourData.reduce((acc, grades) => {
         return acc + grades;
       }, 0) / liqourData.length;
-
-    console.log("Average Liqour : ", averageLiqourReview.toFixed(2));
 
     return averageLiqourReview.toFixed(1);
   }

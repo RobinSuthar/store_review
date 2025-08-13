@@ -20,7 +20,6 @@ export default async function GetDataForPie({
 }: {
   Props: RecivingData;
 }) {
-  console.log("Inside GetData Server Actions, ", Props.filter, Props.store);
   if (!Props.store || !Props.filter) {
     const result = await database.review.findMany({
       where: {
@@ -36,7 +35,7 @@ export default async function GetDataForPie({
 
     result.sort((a, b) => a.Wine - b.Wine);
 
-    console.log("asda");
+    ("asda");
     return result;
   }
 
@@ -55,7 +54,7 @@ export default async function GetDataForPie({
 
     result.map((x) => {
       if (x.Wine == 5) {
-        console.log(5);
+        5;
       }
     });
     return result;
@@ -73,7 +72,7 @@ export default async function GetDataForPie({
       },
     });
 
-    console.log("www");
+    ("www");
     return result;
   }
   if (Props.filter == "Liquore") {
@@ -89,7 +88,7 @@ export default async function GetDataForPie({
       },
     });
 
-    console.log("saqqqq");
+    ("saqqqq");
     return result;
   }
 
@@ -106,7 +105,7 @@ export default async function GetDataForPie({
       },
     });
 
-    console.log("kllll");
+    ("kllll");
     return result;
   }
 }

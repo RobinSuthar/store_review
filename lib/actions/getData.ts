@@ -1,12 +1,7 @@
 "use server";
 import database from "@/database/db";
 
-// const chartData = [
-//   { date: "2024-04-01", desktop: 222 },
-//   { date: "2024-04-02", desktop: 97 },
-
 export default async function getData() {
-  console.log("ASdkas dlas d asmd asm dmas ds");
   const data = await database.review.findMany();
 
   const updatedData = data.map((x) => {

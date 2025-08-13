@@ -20,7 +20,7 @@ export function TabsDemo(data: {
     <div className=" flex-col gap-6">
       <Tabs
         onValueChange={(e) => {
-          console.log("ASdasd");
+          ("ASdasd");
           if (e == "graph") {
             data.data("graph");
           }
@@ -32,12 +32,12 @@ export function TabsDemo(data: {
       >
         <TabsList
           onChange={(e) => {
-            console.log(e);
+            e;
           }}
         >
           <TabsTrigger
             onChange={(e) => {
-              console.log(e);
+              e;
             }}
             value="graph"
           >
@@ -45,7 +45,7 @@ export function TabsDemo(data: {
           </TabsTrigger>
           <TabsTrigger
             onSelect={(e) => {
-              console.log(e);
+              e;
             }}
             value="pie"
           >
@@ -54,7 +54,7 @@ export function TabsDemo(data: {
         </TabsList>
         <TabsContent
           onSelect={(e) => {
-            console.log(e);
+            e;
           }}
           value="account"
         ></TabsContent>

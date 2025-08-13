@@ -35,28 +35,21 @@ export async function SectionCards() {
       return acc + grades;
     }, 0) / wineData.length;
 
-  console.log("Average Wine : ", averageWineReview.toFixed(2));
-
   const averageBeerReview =
     beerData.reduce((acc, grades) => {
       return acc + grades;
     }, 0) / beerData.length;
-
-  console.log("Average Beer : ", averageBeerReview.toFixed(2));
 
   const averageLiqourReview =
     liqourData.reduce((acc, grades) => {
       return acc + grades;
     }, 0) / liqourData.length;
 
-  console.log("Average Liqour : ", averageLiqourReview.toFixed(2));
-
   const averageStaffReview =
     staffData.reduce((acc, grades) => {
       return acc + grades;
     }, 0) / staffData.length;
 
-  console.log("Staff Averagew :", averageStaffReview.toFixed(2));
   return (
     <div className="*:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card grid grid-cols-1 gap-4 px-4 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:shadow-xs lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4">
       <Card className="@container/card">
