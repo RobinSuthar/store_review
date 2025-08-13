@@ -15,9 +15,7 @@ import React, { Suspense, useState } from "react";
 import QuestionData from "@/lib/actions/questionData";
 import { Button } from "@/button";
 import { SkeletonCard } from "@/components/SkeletionCard";
-import { ClipLoader } from "react-spinners";
 import { TabsDemo } from "@/components/tabsdemo";
-import { SkeletonDemo } from "@/components/Skeltondemo";
 import { ChartBarMixed } from "@/components/charts/chart-bar";
 import { SiteHeader } from "@/components/site-header";
 type QuestionDataType = {
@@ -63,7 +61,7 @@ export default function Page() {
         <AppSidebar variant="inset" />
         <SidebarInset>
           <SiteHeader />
-          <div className="grid md:grid-cols-2 grid-cols-1 mt-2">
+          <div className="grid md:grid-cols-2 grid-cols-1 mt-12">
             <div>
               <div className="flex gap-2 justify-center">
                 <AnalyticsSelectStore setStore={setStore} />
@@ -91,10 +89,12 @@ export default function Page() {
                     <CardDescription>
                       <div>
                         <Avatar>
-                          <AvatarImage src="https://github.com/shadcn.png" />
+                          <AvatarImage
+                            src="https://github.com/shadcn.png"
+                            alt="@shadcn"
+                          />
                           <AvatarFallback>CN</AvatarFallback>
                         </Avatar>{" "}
-                        <SkeletonDemo />
                       </div>
                     </CardDescription>
                   </CardHeader>
@@ -125,7 +125,13 @@ export default function Page() {
                   <CardHeader>
                     <CardDescription>
                       <div>
-                        <SkeletonDemo />
+                        <Avatar>
+                          <AvatarImage
+                            src="https://github.com/shadcn.png"
+                            alt="@shadcn"
+                          />
+                          <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>{" "}
                       </div>
                     </CardDescription>
                   </CardHeader>
@@ -149,7 +155,14 @@ export default function Page() {
                   <CardHeader>
                     <CardDescription>
                       <div>
-                        <SkeletonDemo />
+                        <Avatar>
+                          <div></div>
+                          <AvatarImage
+                            src="https://github.com/shadcn.png"
+                            alt="@shadcn"
+                          />
+                          <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>{" "}
                       </div>
                     </CardDescription>
                   </CardHeader>

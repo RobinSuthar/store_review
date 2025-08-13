@@ -66,7 +66,7 @@ export default function Page() {
   }, [userPromt]);
 
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={"Loading..."}>
       <SidebarProvider
         style={
           {

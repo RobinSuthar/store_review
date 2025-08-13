@@ -15,6 +15,7 @@ import { TotalNumberOfReviews } from "@/lib/actions/numberofreviews";
 import { AverageReview } from "@/lib/actions/getAllData";
 import { PulseLoader } from "react-spinners";
 
+import { Rating } from "react-simple-star-rating";
 export const description = "A mixed bar chart";
 
 const chartData = [
@@ -31,15 +32,15 @@ const chartConfig = {
   },
   chrome: {
     label: "5",
-    color: "var(--chart-1)",
+    color: "var(--chart-4)",
   },
   safari: {
     label: "4",
-    color: "var(--chart-2)",
+    color: "var(--chart-4)",
   },
   firefox: {
     label: "3",
-    color: "var(--chart-3)",
+    color: "var(--chart-4)",
   },
   edge: {
     label: "2",
@@ -47,7 +48,7 @@ const chartConfig = {
   },
   other: {
     label: "1",
-    color: "var(--chart-5)",
+    color: "var(--chart-4)",
   },
 } satisfies ChartConfig;
 
@@ -782,8 +783,8 @@ export function ChartBarMixed({
       <CardHeader>
         <CardTitle>Review Summary</CardTitle>
       </CardHeader>
-      <CardContent className="grid grid-cols-3 gap-8 min-h-[250px]">
-        <div className="col-span-2 align-middle items-center mt-12">
+      <CardContent className="grid md:grid-cols-3 sm:grid-cols-2 gap-8 min-h-[250px]">
+        <div className="md:col-span-2 align-middle items-center mt-12">
           <ChartContainer className="" config={chartConfig}>
             <BarChart
               maxBarSize={18}
@@ -813,7 +814,7 @@ export function ChartBarMixed({
             </BarChart>
           </ChartContainer>
         </div>
-        <div className=" flex flex-col gap-2 items-center mt-12 ">
+        <div className=" flex flex-col justify-center gap-2 items-center  ">
           <div className="text-6xl ">
             {averageReviewRating ? (
               <>{averageReviewRating}</>
@@ -821,8 +822,27 @@ export function ChartBarMixed({
               <PulseLoader size={3} />
             )}
           </div>
+
           <div>
-            {" "}
+            {averageReviewRating ? (
+              <Rating
+                SVGstyle={{ display: "inline-block" }}
+                transition
+                className="flex justify-center flex-col "
+                readonly={true}
+                allowFraction
+                initialValue={averageReviewRating ? averageReviewRating : 0}
+                iconsCount={5}
+                size={23}
+              />
+            ) : (
+              <>
+                {" "}
+                <PulseLoader size={3} />
+              </>
+            )}
+          </div>
+          <div>
             {totalNumberOfRevies ? (
               <>{totalNumberOfRevies} Reviews</>
             ) : (
