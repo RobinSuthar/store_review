@@ -40,12 +40,9 @@ export const NEXT_AUTH = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async session({ session, token }: any) {
       // Send properties to the client, like an access_token and user id from a provider.
-      console.log("Session :  ", session);
-      console.log("Token : ", token);
       if (session && session.user) {
         session.user.id = token.sub;
       }
-      console.log("Session after Chagne : ", session);
       return session;
     },
   },

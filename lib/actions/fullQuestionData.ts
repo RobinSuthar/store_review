@@ -9,7 +9,6 @@ export default async function FullQuestionData() {
       Question1: true,
     },
   });
-  console.log(data);
 
   return data;
 }

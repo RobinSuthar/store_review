@@ -47,7 +47,6 @@ export default async function UpdateDB({
       StoreId: 1,
     },
   });
-  console.log(result);
 
   const cookieStore = await cookies();
   cookieStore.set("review", "true");

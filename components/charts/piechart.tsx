@@ -85,7 +85,7 @@ export function ChartPieLabelList({
 
       if (data) {
         setCorrectData(data);
-        console.log(data);
+        data;
       }
     }
 
@@ -99,11 +99,11 @@ export function ChartPieLabelList({
     let ThreeStart = 0;
     let FourStart = 0;
     let FiveStart = 0;
-    console.log(graphstate);
+    graphstate;
     correctdata.map((x) => {
       if ("Wine" in x) {
         if (x.Wine == 1) {
-          console.log("One Star");
+          ("One Star");
           oneStart = oneStart + 1;
           setGraphstate([
             {
@@ -135,7 +135,7 @@ export function ChartPieLabelList({
         }
 
         if (x.Wine == 2) {
-          console.log("2 Star");
+          ("2 Star");
           TwoStart = TwoStart + 1;
           setGraphstate([
             {
@@ -167,7 +167,7 @@ export function ChartPieLabelList({
         }
 
         if (x.Wine == 3) {
-          console.log("3 Star");
+          ("3 Star");
           ThreeStart = ThreeStart + 1;
           setGraphstate([
             {
@@ -199,7 +199,7 @@ export function ChartPieLabelList({
         }
 
         if (x.Wine == 4) {
-          console.log("4 Star");
+          ("4 Star");
           FourStart = FourStart + 1;
           setGraphstate([
             {
@@ -231,7 +231,7 @@ export function ChartPieLabelList({
         }
 
         if (x.Wine == 5) {
-          console.log("5 Star");
+          ("5 Star");
           FiveStart = FiveStart + 1;
           setGraphstate([
             {
@@ -264,7 +264,7 @@ export function ChartPieLabelList({
       }
       if ("Beer" in x) {
         if (x.Beer == 1) {
-          console.log("1 Star");
+          ("1 Star");
           oneStart = oneStart + 1;
           setGraphstate([
             {
@@ -296,7 +296,7 @@ export function ChartPieLabelList({
         }
 
         if (x.Beer == 2) {
-          console.log("2 Star");
+          ("2 Star");
           TwoStart = TwoStart + 1;
           setGraphstate([
             {
@@ -328,7 +328,7 @@ export function ChartPieLabelList({
         }
 
         if (x.Beer == 3) {
-          console.log("3 Star");
+          ("3 Star");
           ThreeStart = ThreeStart + 1;
           setGraphstate([
             {
@@ -360,7 +360,7 @@ export function ChartPieLabelList({
         }
 
         if (x.Beer == 4) {
-          console.log("4 Star");
+          ("4 Star");
           FourStart = FourStart + 1;
           setGraphstate([
             {
@@ -392,7 +392,7 @@ export function ChartPieLabelList({
         }
 
         if (x.Beer == 5) {
-          console.log("5 Star");
+          ("5 Star");
           FiveStart = FiveStart + 1;
           setGraphstate([
             {
@@ -425,7 +425,7 @@ export function ChartPieLabelList({
       }
       if ("Liquore" in x) {
         if (x.Liquore == 1) {
-          console.log("1 Star");
+          ("1 Star");
           oneStart = oneStart + 1;
           setGraphstate([
             {
@@ -457,7 +457,7 @@ export function ChartPieLabelList({
         }
 
         if (x.Liquore == 2) {
-          console.log("2 Star");
+          ("2 Star");
           TwoStart = TwoStart + 1;
           setGraphstate([
             {
@@ -489,7 +489,7 @@ export function ChartPieLabelList({
         }
 
         if (x.Liquore == 3) {
-          console.log("3 Star");
+          ("3 Star");
           ThreeStart = ThreeStart + 1;
           setGraphstate([
             {
@@ -521,7 +521,7 @@ export function ChartPieLabelList({
         }
 
         if (x.Liquore == 4) {
-          console.log("4 Star");
+          ("4 Star");
           FourStart = FourStart + 1;
           setGraphstate([
             {
@@ -553,7 +553,7 @@ export function ChartPieLabelList({
         }
 
         if (x.Liquore == 5) {
-          console.log("5 Star");
+          ("5 Star");
           FiveStart = FiveStart + 1;
           setGraphstate([
             {
@@ -586,7 +586,7 @@ export function ChartPieLabelList({
       }
       if ("Staff" in x) {
         if (x.Staff == 1) {
-          console.log("1 Star");
+          ("1 Star");
           oneStart = oneStart + 1;
           setGraphstate([
             {
@@ -618,7 +618,7 @@ export function ChartPieLabelList({
         }
 
         if (x.Staff == 2) {
-          console.log("2 Star");
+          ("2 Star");
           TwoStart = TwoStart + 1;
           setGraphstate([
             {
@@ -650,7 +650,7 @@ export function ChartPieLabelList({
         }
 
         if (x.Staff == 3) {
-          console.log("3 Star");
+          ("3 Star");
           ThreeStart = ThreeStart + 1;
           setGraphstate([
             {
@@ -682,7 +682,7 @@ export function ChartPieLabelList({
         }
 
         if (x.Staff == 4) {
-          console.log("4 Star");
+          ("4 Star");
           FourStart = FourStart + 1;
           setGraphstate([
             {
@@ -714,7 +714,7 @@ export function ChartPieLabelList({
         }
 
         if (x.Staff == 5) {
-          console.log("5 Star");
+          ("5 Star");
           FiveStart = FiveStart + 1;
           setGraphstate([
             {
@@ -747,10 +747,6 @@ export function ChartPieLabelList({
       }
     });
   }, [correctdata]);
-
-  React.useEffect(() => {
-    console.log("New Graph State :", graphstate);
-  }, [graphstate]);
 
   return (
     <Card className="flex flex-col">
