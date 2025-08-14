@@ -1,5 +1,6 @@
-import { Label } from "@/components/ui/label";
+"use client";
 import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react";
 
 export function TextareaWithText() {
   return (

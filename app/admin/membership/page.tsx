@@ -20,7 +20,6 @@ export default function Page() {
         <SidebarInset>
           <SiteHeader />
           <div className="flex mt-72 text-center justify-center text-7xl">
-            {" "}
             Coming Soon!
           </div>
         </SidebarInset>
