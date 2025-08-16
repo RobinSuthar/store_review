@@ -17,7 +17,10 @@ import React, {
   useRef,
 } from "react";
 
-import { Button, ButtonProps } from "/components/ui/button";
+import { Button } from "@/components/ui/button";
+
+import { buttonVariants } from "@/components/ui/button";
+type x = typeof buttonVariants;
 
 type Api = {
   fire: (options?: ConfettiOptions) => void;
@@ -109,7 +112,7 @@ ConfettiComponent.displayName = "Confetti";
 // Export as Confetti
 export const Confetti = ConfettiComponent;
 
-interface ConfettiButtonProps extends ButtonProps {
+interface ConfettiButtonProps extends x {
   options?: ConfettiOptions &
     ConfettiGlobalOptions & { canvas?: HTMLCanvasElement };
   children?: React.ReactNode;
