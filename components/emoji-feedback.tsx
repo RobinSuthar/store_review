@@ -1,1 +1,0 @@
-import Emoji from "@emoji";
