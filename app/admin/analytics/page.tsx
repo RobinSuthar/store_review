@@ -99,11 +99,19 @@ export default function Page() {
                   </CardHeader>
                   <CardFooter className="flex-col items-start gap-1.5 text-sm">
                     <div className="line-clamp-1 text-xl flex gap-2 font-medium">
-                      {QuestionDataComing?.map((x, index) => {
-                        if (index == 0) {
-                          return x.Question1;
-                        }
-                      })}
+                      <div>
+                        {QuestionDataComing?.map((x, index) => {
+                          if (index == 0) {
+                            return (
+                              <>
+                                <ScrollArea className="max-w-[440px] max-h-14">
+                                  {x.Question1}
+                                </ScrollArea>
+                              </>
+                            );
+                          }
+                        })}
+                      </div>
 
                       {/* <QRCodeCanvas
                       size={500}
@@ -136,13 +144,17 @@ export default function Page() {
                   </CardHeader>
                   <CardFooter className="flex-col items-start gap-1.5 text-sm">
                     <div className="line-clamp-1   text-xl flex gap-2 font-medium">
-                      <ScrollArea className="max-w-[440px] max-h-16">
-                        {QuestionDataComing?.map((x, index) => {
-                          if (index == 1) {
-                            return x.Question1;
-                          }
-                        })}
-                      </ScrollArea>
+                      {QuestionDataComing?.map((x, index) => {
+                        if (index == 1) {
+                          return (
+                            <>
+                              <ScrollArea className="max-w-[440px] max-h-14">
+                                {x.Question1}
+                              </ScrollArea>
+                            </>
+                          );
+                        }
+                      })}
                     </div>
                   </CardFooter>
                 </Card>
@@ -169,9 +181,17 @@ export default function Page() {
                   </CardHeader>
                   <CardFooter className="flex-col items-start gap-1.5 text-sm">
                     <div className="line-clamp-1  text-xl flex gap-2 font-medium">
+                      {" "}
                       {QuestionDataComing?.map((x, index) => {
                         if (index == 2) {
-                          return x.Question1;
+                          return (
+                            <div key={x.Name}>
+                              {" "}
+                              <ScrollArea className="max-w-[440px] max-h-14">
+                                {x.Question1}
+                              </ScrollArea>
+                            </div>
+                          );
                         }
                       })}
                     </div>
