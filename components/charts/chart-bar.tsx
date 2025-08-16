@@ -16,6 +16,7 @@ import { AverageReview } from "@/lib/actions/getAllData";
 import { PulseLoader } from "react-spinners";
 
 import { Rating } from "react-simple-star-rating";
+import { useTheme } from "next-themes";
 export const description = "A mixed bar chart";
 
 const chartData = [
@@ -65,6 +66,7 @@ export function ChartBarMixed({
 }: {
   data: { store: string; filter: string };
 }) {
+  const { theme } = useTheme();
   const [storeState, setstoreState] = React.useState("");
   const [filterState, setFilterState] = React.useState("");
   const [correctdata, setCorrectData] = React.useState([{}]);
@@ -810,7 +812,15 @@ export function ChartBarMixed({
                 cursor={false}
                 content={<ChartTooltipContent hideLabel />}
               />
-              <Bar dataKey="visitors" layout="vertical" radius={5} />
+              <Bar
+                dataKey="visitors"
+                radius={5}
+                background={
+                  <RoundedBackground
+                    fill={`${theme === "light" ? "#dedcdc" : "#5e5e5e"}`}
+                  />
+                }
+              />
             </BarChart>
           </ChartContainer>
         </div>
@@ -856,3 +866,20 @@ export function ChartBarMixed({
     </Card>
   );
 }
+const RoundedBackground = ({
+  x,
+  y,
+  width,
+  height,
+  fill,
+}: {
+  x?: number;
+  y?: number;
+  width?: number;
+  height?: number;
+  fill: string;
+}) => {
+  return (
+    <rect x={x} y={y} width={width} height={height} fill={fill} rx={6} ry={6} />
+  );
+};
