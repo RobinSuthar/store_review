@@ -38,7 +38,7 @@ export const CardStack = ({
   const [staffRating, setStaffRating] = React.useState(0);
   const [member, setMember] = React.useState(false);
   const [question, setQuestion] = React.useState("");
-
+  const [inputValue, setInputValue] = React.useState("");
   useEffect(() => {
     const a = cookies.get("review");
     if (a) {
@@ -46,13 +46,6 @@ export const CardStack = ({
       return;
     }
 
-    console.log("Rating: ", rating);
-    console.log("Wine Rating : ", wineRating);
-    console.log("Beer Rating : ", beerRating);
-    console.log("Liqour Rating : ", LiqourRating);
-    console.log("Staffv Rating : ", staffRating);
-    console.log("Member : ", member);
-    console.log("Question Answer: ", question);
     if (rating == 0) {
       return;
     }
@@ -128,7 +121,6 @@ export const CardStack = ({
                           setStaffRating(1);
                         }
                         setRating(rating + 1);
-                        console.log("Red");
                       }}
                     >
                       Awful
@@ -246,7 +238,6 @@ export const CardStack = ({
                       onClick={() => {
                         setMember(false);
                         setRating(rating + 1);
-                        console.log("Red");
                       }}
                     >
                       No
@@ -287,12 +278,18 @@ export const CardStack = ({
                 <div className="grid grid-cols-2 mt-2 p-2 gap-8 ">
                   <div className="grid min-w-80 min-h-32 gap-3">
                     <Textarea
+                      maxLength={250}
+                      value={inputValue}
                       onChange={(e) => {
+                        setInputValue(e.target.value);
                         setQuestion(e.target.value);
                       }}
-                      placeholder="Type your message here."
+                      placeholder="Type your message hersase."
                       id="message-2"
                     />
+                    <p>
+                      Characters remaining {250 - inputValue.length} words.{" "}
+                    </p>
                   </div>
                 </div>
                 <button
@@ -300,7 +297,6 @@ export const CardStack = ({
                   onClick={async () => {
                     setRating(rating + 1);
                     ConfettiFireworks();
-                    console.log("adsdsa");
                     setRating(rating + 1);
                     UpdateDB({
                       wineReview: wineRating,
@@ -344,9 +340,7 @@ export const CardStack = ({
                 <button
                   className="flex mt-2 min-w-[140px] min-h-[45px] cursor-pointer items-center justify-center gap-2 rounded-md  bg-green-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-green-500 dark:ring-offset-black"
                   onClick={async (e) => {
-                    console.log("adsdsa");
                     setRating(rating + 1);
-                    console.log("asdkjbksadjvsahdvasndvnasv");
                     const result = await UpdateDB({
                       wineReview: wineRating,
                       beerReview: beerRating,
@@ -355,8 +349,6 @@ export const CardStack = ({
                       question: question,
                       member: member,
                     });
-                    console.log("ASdasds");
-                    console.log(result);
                   }}
                 >
                   Submit
