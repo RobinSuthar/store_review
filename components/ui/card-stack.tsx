@@ -9,6 +9,9 @@ import UpdateDB from "@/lib/actions/updatedb";
 
 import cookies from "js-cookie";
 import { redirect } from "next/navigation";
+import { TypographyH1 } from "../typography/Typographh1";
+import { TypographyH2 } from "../typography/typographh2";
+import { TypographySmall } from "../typography/small";
 
 let interval: any;
 
@@ -28,8 +31,8 @@ export const CardStack = ({
   offset?: number;
   scaleFactor?: number;
 }) => {
-  const CARD_OFFSET = offset || 6;
-  const SCALE_FACTOR = scaleFactor || 0.06;
+  const CARD_OFFSET = offset || 4;
+  const SCALE_FACTOR = scaleFactor || 0.16;
   const [cards, setCards] = useState<Card[]>(items);
   const [rating, setRating] = React.useState(0); // Initial value
   const [wineRating, setWineRating] = React.useState(0);
@@ -81,7 +84,8 @@ export const CardStack = ({
               <div className="font-normal text-neutral-700 text-center text-2xl dark:text-neutral-200">
                 <div>Thank You for your Review</div>
                 <div>We appericate your feedback</div>
-                <Progress value={100} className="mt-72" />
+                <Progress value={100} className="mt-60" />
+                <TypographySmall></TypographySmall>
               </div>
             </motion.div>
           );
@@ -106,7 +110,7 @@ export const CardStack = ({
                   <div>
                     {" "}
                     <button
-                      className="flex min-w-[140px]  min-h-[45px] cursor-pointer rounded-md items-center justify-center gap-2  bg-gray-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-red-500 dark:ring-offset-black"
+                      className="flex hover:cursor-pointer min-w-[140px]  min-h-[45px] cursor-pointer rounded-md items-center justify-center gap-2  bg-gray-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-red-500 dark:ring-offset-black"
                       onClick={() => {
                         if (card.id == 0) {
                           setWineRating(1);
@@ -128,7 +132,7 @@ export const CardStack = ({
                   </div>
 
                   <button
-                    className="flex min-w-[140px] min-h-[45px]  cursor-pointer items-center rounded-md justify-center gap-2  bg-gray-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-red-400 dark:ring-offset-black"
+                    className="flex hover:cursor-pointer min-w-[140px] min-h-[45px]  cursor-pointer items-center rounded-md justify-center gap-2  bg-gray-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-red-400 dark:ring-offset-black"
                     onClick={() => {
                       if (card.id == 0) {
                         setWineRating(2);
@@ -148,7 +152,7 @@ export const CardStack = ({
                     Bad
                   </button>
                   <button
-                    className="flex min-w-[140px] min-h-[45px]  cursor-pointer items-center justify-center gap-2 rounded-md  bg-gray-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-yellow-500 dark:ring-offset-black"
+                    className="flex hover:cursor-pointer min-w-[140px] min-h-[45px]  cursor-pointer items-center justify-center gap-2 rounded-md  bg-gray-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-yellow-500 dark:ring-offset-black"
                     onClick={() => {
                       if (card.id == 0) {
                         setWineRating(3);
@@ -168,7 +172,7 @@ export const CardStack = ({
                     Okay
                   </button>
                   <button
-                    className="flex min-w-[140px] min-h-[45px] bg-gray-500  cursor-pointer items-center justify-center gap-2  rounded-md  px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-orange-500 dark:ring-offset-black"
+                    className="flex  hover:cursor-pointer min-w-[140px] min-h-[45px] bg-gray-500  cursor-pointer items-center justify-center gap-2  rounded-md  px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-orange-500 dark:ring-offset-black"
                     onClick={() => {
                       if (card.id == 0) {
                         setWineRating(4);
@@ -188,7 +192,7 @@ export const CardStack = ({
                     Good
                   </button>
                   <button
-                    className="flex min-w-[140px] min-h-[45px] cursor-pointer items-center justify-center gap-2 rounded-md  bg-gray-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-green-500 dark:ring-offset-black"
+                    className="flex hover:cursor-pointer min-w-[140px] min-h-[45px] cursor-pointer items-center justify-center gap-2 rounded-md  bg-gray-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-green-500 dark:ring-offset-black"
                     onClick={() => {
                       if (card.id == 0) {
                         setWineRating(5);
@@ -210,6 +214,7 @@ export const CardStack = ({
                 </div>
 
                 <Progress value={rating * 21} className="mt-8" />
+                <TypographySmall></TypographySmall>
               </div>
             </motion.div>
           );
@@ -234,7 +239,7 @@ export const CardStack = ({
                   <div>
                     {" "}
                     <button
-                      className="flex min-w-[140px]  min-h-[45px] cursor-pointer rounded-md items-center justify-center gap-2  bg-gray-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-red-500 dark:ring-offset-black"
+                      className="flex hover:cursor-pointer min-w-[140px]  min-h-[45px] cursor-pointer rounded-md items-center justify-center gap-2  bg-gray-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-red-500 dark:ring-offset-black"
                       onClick={() => {
                         setMember(false);
                         setRating(rating + 1);
@@ -245,7 +250,7 @@ export const CardStack = ({
                   </div>
 
                   <button
-                    className="flex min-w-[140px] min-h-[45px] cursor-pointer items-center justify-center gap-2 rounded-md  bg-gray-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-green-500 dark:ring-offset-black"
+                    className="flex hover:cursor-pointer min-w-[140px] min-h-[45px] cursor-pointer items-center justify-center gap-2 rounded-md  bg-gray-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-green-500 dark:ring-offset-black"
                     onClick={() => {
                       setMember(true);
                       setRating(rating + 1);
@@ -255,6 +260,7 @@ export const CardStack = ({
                   </button>
                 </div>
                 <Progress value={rating * 21} className="mt-48" />
+                <TypographySmall></TypographySmall>
               </div>
             </motion.div>
           );
@@ -292,26 +298,48 @@ export const CardStack = ({
                     </p>
                   </div>
                 </div>
-                <button
-                  className="flex mt-2 min-w-[140px] min-h-[45px] cursor-pointer items-center justify-center gap-2 rounded-md  bg-gray-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-green-500 dark:ring-offset-black"
-                  onClick={async () => {
-                    setRating(rating + 1);
-                    ConfettiFireworks();
-                    setRating(rating + 1);
-                    UpdateDB({
-                      wineReview: wineRating,
-                      beerReview: beerRating,
-                      staffReview: staffRating,
-                      liqourReview: LiqourRating,
-                      question: question,
-                      member: member,
-                    });
-                  }}
-                >
-                  Submit
-                </button>
+                <div className="flex flex-row gap-6 justify-center">
+                  <button
+                    className="flex hover:cursor-pointer mt-2 min-w-[140px] min-h-[45px] cursor-pointer items-center justify-center gap-2 rounded-md  bg-gray-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-green-500 dark:ring-offset-black"
+                    onClick={async () => {
+                      setRating(rating + 1);
+                      ConfettiFireworks();
+                      setRating(rating + 1);
+                      UpdateDB({
+                        wineReview: wineRating,
+                        beerReview: beerRating,
+                        staffReview: staffRating,
+                        liqourReview: LiqourRating,
+                        question: question,
+                        member: member,
+                      });
+                    }}
+                  >
+                    Submit
+                  </button>
 
-                <Progress value={rating * 21} className="mt-20" />
+                  <button
+                    className="flex hover:cursor-pointer mt-2 min-w-[140px] min-h-[45px] cursor-pointer items-center justify-center gap-2 rounded-md  bg-gray-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-green-500 dark:ring-offset-black"
+                    onClick={async () => {
+                      setRating(rating + 1);
+                      ConfettiFireworks();
+                      setRating(rating + 1);
+                      UpdateDB({
+                        wineReview: wineRating,
+                        beerReview: beerRating,
+                        staffReview: staffRating,
+                        liqourReview: LiqourRating,
+                        question: question,
+                        member: member,
+                      });
+                    }}
+                  >
+                    Skip
+                  </button>
+                </div>
+
+                <Progress value={rating * 21} className="mt-6" />
+                <TypographySmall></TypographySmall>
               </div>
             </motion.div>
           );
@@ -338,7 +366,7 @@ export const CardStack = ({
                   </div>
                 </div>
                 <button
-                  className="flex mt-2 min-w-[140px] min-h-[45px] cursor-pointer items-center justify-center gap-2 rounded-md  bg-green-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-green-500 dark:ring-offset-black"
+                  className="flex hover:cursor-pointer mt-2 min-w-[140px] min-h-[45px] cursor-pointer items-center justify-center gap-2 rounded-md  bg-green-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-green-500 dark:ring-offset-black"
                   onClick={async (e) => {
                     setRating(rating + 1);
                     const result = await UpdateDB({
@@ -355,6 +383,7 @@ export const CardStack = ({
                 </button>
                 <div>
                   <Progress value={rating * 21} className="mt-8  " />
+                  <TypographySmall></TypographySmall>
                 </div>
               </div>
             </motion.div>

@@ -10,7 +10,7 @@ import FullQuestionData from "@/lib/actions/fullQuestionData";
 import { SkeletonDemo } from "@/components/Skeltondemo";
 import { ScaleLoader } from "react-spinners";
 import { SiteHeader } from "@/components/site-header";
-import Loading from "@/app/loading";
+import LoadingSke from "@/components/loading";
 
 type QuestionDataType = {
   id: number;
@@ -35,7 +35,7 @@ export default function Page() {
     x();
   }, []);
   return (
-    <Suspense fallback={<p>Loading</p>}>
+    <Suspense fallback={LoadingSke()}>
       {" "}
       <SidebarProvider
         style={
@@ -68,7 +68,7 @@ export default function Page() {
                       <CardFooter className="flex-col items-start gap-1.5 text-sm">
                         <div className="line-clamp-1 text-2xl flex gap-2 font-medium max">
                           {x.Question1 ? (
-                            <ScrollArea className="md:max-w-[40px] md:min-w-[380px] max-w-[280px] max-h-16">
+                            <ScrollArea className="md:max-w-[40px] md:min-w-[380px] max-w-[280px] max-h-16  md:text-xl text-lg">
                               <>{x.Question1}</>
                             </ScrollArea>
                           ) : (

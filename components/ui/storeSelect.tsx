@@ -28,23 +28,25 @@ export function AnalyticsSelectStore({
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Stores</SelectLabel>
-          <SelectItem value="1">North Hill</SelectItem>
-          <SelectItem value="2" className="text-red-600 hover:me">
+          <SelectItem value="1" className="hover:cursor-pointer ">
+            North Hill
+          </SelectItem>
+          <SelectItem value="2" className="text-red-600 line-through">
             Aspen
           </SelectItem>
-          <SelectItem value="3" className="text-red-600 hover:me">
+          <SelectItem value="3" className="text-red-600 line-through">
             Marda Loop
           </SelectItem>
-          <SelectItem value="4" className="text-red-600 hover:me">
+          <SelectItem value="4" className="text-red-600 line-through">
             Richmond
           </SelectItem>
-          <SelectItem value="5" className="text-red-600 hover:me">
+          <SelectItem value="5" className="text-red-600 line-through">
             8th Ave
           </SelectItem>
-          <SelectItem value="6" className="text-red-600 hover:me">
+          <SelectItem value="6" className="text-red-600 line-through">
             Coopers
           </SelectItem>
-          <SelectItem value="7" className="text-red-600 hover:me">
+          <SelectItem value="7" className="text-red-600 line-through">
             Okatoks
           </SelectItem>
         </SelectGroup>

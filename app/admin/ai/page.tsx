@@ -11,7 +11,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PropagateLoader } from "react-spinners";
 import { Suspense, useEffect, useState } from "react";
-import Loading from "@/app/loading";
+
+import LoadingSke from "@/components/loading";
 
 type ContetntType = {
   Wine: string;
@@ -66,7 +67,7 @@ export default function Page() {
   }, [userPromt]);
 
   return (
-    <Suspense fallback={"Loading..."}>
+    <Suspense fallback={LoadingSke()}>
       <SidebarProvider
         style={
           {
