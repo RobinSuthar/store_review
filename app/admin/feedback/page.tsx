@@ -68,7 +68,7 @@ export default function Page() {
                       <CardFooter className="flex-col items-start gap-1.5 text-sm">
                         <div className="line-clamp-1 text-2xl flex gap-2 font-medium max">
                           {x.Question1 ? (
-                            <ScrollArea className="md:max-w-[420px] md:min-w-[400px] max-w-[280px] max-h-16">
+                            <ScrollArea className="md:max-w-[40px] md:min-w-[380px] max-w-[280px] max-h-16">
                               <>{x.Question1}</>
                             </ScrollArea>
                           ) : (
