@@ -1,5 +1,6 @@
 import { AppSidebar } from "@/components/app-sidebar";
 import { ChartAreaInteractive } from "@/components/chart-area-interactive";
+import LoadingSke from "@/components/loading";
 
 import { SectionCards } from "@/components/section-cards";
 import { SiteHeader } from "@/components/site-header";
@@ -8,7 +9,7 @@ import { Suspense } from "react";
 
 export default function Page() {
   return (
-    <Suspense fallback={<p>Loading...</p>}>
+    <Suspense fallback={LoadingSke()}>
       <SidebarProvider
         style={
           {

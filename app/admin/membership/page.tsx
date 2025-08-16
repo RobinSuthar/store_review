@@ -1,4 +1,5 @@
 import { AppSidebar } from "@/components/app-sidebar";
+import LoadingSke from "@/components/loading";
 import { SiteHeader } from "@/components/site-header";
 
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
@@ -6,7 +7,7 @@ import { Suspense } from "react";
 
 export default function Page() {
   return (
-    <Suspense fallback={<p>Loading...</p>}>
+    <Suspense fallback={LoadingSke()}>
       {" "}
       <SidebarProvider
         style={

@@ -29,10 +29,18 @@ export function FilterSelect({
         <SelectGroup>
           <SelectLabel>Filters</SelectLabel>
 
-          <SelectItem value="Wine">Wine</SelectItem>
-          <SelectItem value="Beer">Beer</SelectItem>
-          <SelectItem value="Liquore">Liqour</SelectItem>
-          <SelectItem value="Staff">Staff</SelectItem>
+          <SelectItem className="hover:cursor-pointer" value="Wine">
+            Wine
+          </SelectItem>
+          <SelectItem className="hover:cursor-pointer" value="Beer">
+            Beer
+          </SelectItem>
+          <SelectItem className="hover:cursor-pointer" value="Liquore">
+            Liqour
+          </SelectItem>
+          <SelectItem className="hover:cursor-pointer" value="Staff">
+            Staff
+          </SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>

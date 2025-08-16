@@ -19,6 +19,8 @@ import { TabsDemo } from "@/components/tabsdemo";
 import { ChartBarMixed } from "@/components/charts/chart-bar";
 import { SiteHeader } from "@/components/site-header";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
+import LoadingSke from "@/components/loading";
+
 type QuestionDataType = {
   Name: string;
   Question1: string;
@@ -47,7 +49,7 @@ export default function Page() {
     x();
   }, [buttonClick]);
   return (
-    <Suspense fallback={<p>Loading...</p>}>
+    <Suspense fallback={LoadingSke()}>
       {" "}
       <SidebarProvider
         style={
@@ -104,7 +106,7 @@ export default function Page() {
                           if (index == 0) {
                             return (
                               <>
-                                <ScrollArea className="md:max-w-[400px] md:min-w-[380px] max-w-[280px] max-h-14">
+                                <ScrollArea className="md:max-w-[400px] md:min-w-[380px] max-w-[280px] max-h-14  md:text-xl text-lg">
                                   {x.Question1}
                                 </ScrollArea>
                               </>
@@ -148,7 +150,7 @@ export default function Page() {
                         if (index == 1) {
                           return (
                             <>
-                              <ScrollArea className="md:max-w-[400px] md:min-w-[380px] max-w-[280px] max-h-14">
+                              <ScrollArea className="md:max-w-[400px] md:min-w-[380px] max-w-[280px] max-h-14  md:text-xl text-lg">
                                 {x.Question1}
                               </ScrollArea>
                             </>
@@ -187,7 +189,7 @@ export default function Page() {
                           return (
                             <div key={x.Name}>
                               {" "}
-                              <ScrollArea className="md:max-w-[400px] md:min-w-[480px] max-w-[280px] max-h-14">
+                              <ScrollArea className="md:max-w-[400px] md:min-w-[480px] max-w-[280px] max-h-14  md:text-xl text-lg">
                                 {x.Question1}
                               </ScrollArea>
                             </div>
@@ -207,7 +209,7 @@ export default function Page() {
                   onClick={() => {
                     setButtonCkick(buttonClick + 1);
                   }}
-                  className=" w-2xs"
+                  className=" w-2xs hover:cursor-pointer"
                 >
                   {QuestionDataComing ? (
                     <>Refresh</>
