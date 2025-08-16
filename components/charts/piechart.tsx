@@ -85,7 +85,6 @@ export function ChartPieLabelList({
 
       if (data) {
         setCorrectData(data);
-        data;
       }
     }
 
@@ -99,7 +98,6 @@ export function ChartPieLabelList({
     let ThreeStart = 0;
     let FourStart = 0;
     let FiveStart = 0;
-    graphstate;
     correctdata.map((x) => {
       if ("Wine" in x) {
         if (x.Wine == 1) {
