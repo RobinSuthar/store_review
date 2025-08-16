@@ -83,7 +83,7 @@ export default function Page() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col justify-center gap-9 md:ml-20 md:p-0 p-6 md:mt-10 mt-12 ">
+            <div className="flex flex-col justify-center gap-9 md:ml-20 md:p-0 p-6 md:mt-0 mt-12 ">
               {QuestionDataComing ? (
                 <Card className="md:w-10/12 w-12/12 min-h-42 max-h-42">
                   <CardHeader>
