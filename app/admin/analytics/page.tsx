@@ -18,6 +18,7 @@ import { SkeletonCard } from "@/components/SkeletionCard";
 import { TabsDemo } from "@/components/tabsdemo";
 import { ChartBarMixed } from "@/components/charts/chart-bar";
 import { SiteHeader } from "@/components/site-header";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
 type QuestionDataType = {
   Name: string;
   Question1: string;
@@ -29,18 +30,16 @@ export default function Page() {
   const [buttonClick, setButtonCkick] = React.useState(0);
   const [QuestionDataComing, setQestionDataComing] =
     React.useState<QuestionDataType>();
-  console.log("Store: ", store);
-  console.log("Filter : ", filter);
+
   const [graphType, setGraphType] = useState<"graph" | "pie">("graph");
 
   React.useEffect(() => {
-    console.log(graphType);
+    graphType;
     async function x() {
       const datafetched: {
         Name: string;
         Question1: string;
       }[] = await QuestionData();
-      console.log("Random Data . ", datafetched);
       if (datafetched) {
         setQestionDataComing(datafetched);
       }
@@ -61,7 +60,7 @@ export default function Page() {
         <AppSidebar variant="inset" />
         <SidebarInset>
           <SiteHeader />
-          <div className="grid md:grid-cols-2 grid-cols-1 mt-12">
+          <div className="grid md:grid-cols-2 grid-cols-1 mt-2">
             <div>
               <div className="flex gap-2 justify-center">
                 <AnalyticsSelectStore setStore={setStore} />
@@ -137,11 +136,13 @@ export default function Page() {
                   </CardHeader>
                   <CardFooter className="flex-col items-start gap-1.5 text-sm">
                     <div className="line-clamp-1   text-xl flex gap-2 font-medium">
-                      {QuestionDataComing?.map((x, index) => {
-                        if (index == 1) {
-                          return x.Question1;
-                        }
-                      })}
+                      <ScrollArea className="max-w-[440px] max-h-16">
+                        {QuestionDataComing?.map((x, index) => {
+                          if (index == 1) {
+                            return x.Question1;
+                          }
+                        })}
+                      </ScrollArea>
                     </div>
                   </CardFooter>
                 </Card>

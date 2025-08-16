@@ -1,14 +1,10 @@
 "use client";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import {
-  Card,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
+import { Card, CardFooter } from "@/components/ui/card";
 import React, { Suspense } from "react";
 import FullQuestionData from "@/lib/actions/fullQuestionData";
 import { SkeletonDemo } from "@/components/Skeltondemo";
@@ -26,14 +22,12 @@ export default function Page() {
   const [QuestionDataComing, setQestionDataComing] =
     React.useState<QuestionDataType>();
   React.useEffect(() => {
-    console.log("Asdbadks");
     async function x() {
       const datafetched: {
         id: number;
         Name: string;
         Question1: string;
       }[] = await FullQuestionData();
-      console.log("Random Data . ", datafetched);
       if (datafetched) {
         setQestionDataComing(datafetched);
       }
@@ -58,7 +52,6 @@ export default function Page() {
             <div className="grid md:grid-cols-2 grid-cols-1 gap-6 p-12 mt md:ml-20 ">
               {QuestionDataComing?.map((x, index) => {
                 {
-                  console.log(index);
                 }
                 return (
                   <div key={x.id}>
@@ -73,9 +66,11 @@ export default function Page() {
                         </Avatar>{" "}
                       </div>
                       <CardFooter className="flex-col items-start gap-1.5 text-sm">
-                        <div className="line-clamp-1 text-2xl flex gap-2 font-medium">
+                        <div className="line-clamp-1 text-2xl flex gap-2 font-medium max">
                           {x.Question1 ? (
-                            <>{x.Question1}</>
+                            <ScrollArea className="max-w-[440px] max-h-16">
+                              <>{x.Question1}</>
+                            </ScrollArea>
                           ) : (
                             <>
                               <ScaleLoader />
