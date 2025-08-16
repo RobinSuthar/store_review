@@ -73,7 +73,7 @@ export default function Page() {
                             </ScrollArea>
                           ) : (
                             <>
-                              <ScaleLoader />
+                              <div>Skipped By User</div>
                             </>
                           )}
                         </div>
