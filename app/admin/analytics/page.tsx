@@ -83,7 +83,7 @@ export default function Page() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col justify-center gap-9 md:ml-20 md:p-0 p-6 md:mt-0 mt-3 ">
+            <div className="flex flex-col justify-center gap-9 md:ml-20 md:p-0 p-6 md:mt-10 mt-12 ">
               {QuestionDataComing ? (
                 <Card className="md:w-10/12 w-12/12 min-h-42 max-h-42">
                   <CardHeader>
@@ -106,7 +106,7 @@ export default function Page() {
                           if (index == 0) {
                             return (
                               <>
-                                <ScrollArea className="md:max-w-[400px] md:min-w-[380px] max-w-[280px] max-h-14  md:text-xl text-lg">
+                                <ScrollArea className="md:max-w-[40px] md:min-w-[380px] max-w-[280px] max-h-16  md:text-xl text-lg">
                                   {x.Question1}
                                 </ScrollArea>
                               </>
@@ -150,7 +150,7 @@ export default function Page() {
                         if (index == 1) {
                           return (
                             <>
-                              <ScrollArea className="md:max-w-[400px] md:min-w-[380px] max-w-[280px] max-h-14  md:text-xl text-lg">
+                              <ScrollArea className="md:max-w-[40px] md:min-w-[380px] max-w-[280px] max-h-16  md:text-xl text-lg">
                                 {x.Question1}
                               </ScrollArea>
                             </>
@@ -189,7 +189,7 @@ export default function Page() {
                           return (
                             <div key={x.Name}>
                               {" "}
-                              <ScrollArea className="md:max-w-[400px] md:min-w-[480px] max-w-[280px] max-h-14  md:text-xl text-lg">
+                              <ScrollArea className="md:max-w-[40px] md:min-w-[380px] max-w-[280px] max-h-16  md:text-xl text-lg">
                                 {x.Question1}
                               </ScrollArea>
                             </div>
