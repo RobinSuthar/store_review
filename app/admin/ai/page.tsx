@@ -43,8 +43,8 @@ export default function Page() {
       const resultFromAiFetch = await AIAnlysis();
       if (resultFromAiFetch) {
         const parsedResult = JSON.parse(resultFromAiFetch);
-        console.log(typeof parsedResult);
-        console.log(parsedResult);
+        typeof parsedResult;
+        parsedResult;
         setContent(parsedResult);
       }
     }
@@ -53,12 +53,12 @@ export default function Page() {
 
   useEffect(() => {
     async function x() {
-      console.log("ASdasds");
+      ("ASdasds");
       const resultFromAiFetch = await AIAnlysisForPromt(`${userPromt}`);
       if (resultFromAiFetch) {
-        console.log(resultFromAiFetch);
+        resultFromAiFetch;
         const resultPares: foramt = JSON.parse(resultFromAiFetch);
-        console.log(resultPares);
+        resultPares;
         setPromtContent(resultPares);
       }
     }

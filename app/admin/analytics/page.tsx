@@ -104,7 +104,7 @@ export default function Page() {
                           if (index == 0) {
                             return (
                               <>
-                                <ScrollArea className="max-w-[440px] max-h-14">
+                                <ScrollArea className="md:max-w-[440px] max-w-[280px] max-h-14">
                                   {x.Question1}
                                 </ScrollArea>
                               </>
@@ -148,7 +148,7 @@ export default function Page() {
                         if (index == 1) {
                           return (
                             <>
-                              <ScrollArea className="max-w-[440px] max-h-14">
+                              <ScrollArea className="md:max-w-[440px] max-w-[280px] max-h-14">
                                 {x.Question1}
                               </ScrollArea>
                             </>
@@ -187,7 +187,7 @@ export default function Page() {
                           return (
                             <div key={x.Name}>
                               {" "}
-                              <ScrollArea className="max-w-[440px] max-h-14">
+                              <ScrollArea className="md:max-w-[440px] max-w-[280px] max-h-14">
                                 {x.Question1}
                               </ScrollArea>
                             </div>
